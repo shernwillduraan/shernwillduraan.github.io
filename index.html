@@ -29,12 +29,64 @@ footer{border-top:1px solid #191814;padding:34px 0;color:#706c63;font-size:12px}
 
 .registration-wrap{display:grid;grid-template-columns:1fr .8fr;gap:18px;align-items:start}.registration-card{padding:38px;border:1px solid rgba(201,162,58,.45);background:linear-gradient(145deg,#151209,#080807)}.registration-card h3{font-size:30px;margin:8px 0 10px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:25px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:#b8b0a1}.field input,.field select{width:100%;padding:14px 15px;background:#0b0b0a;border:1px solid #3a352c;color:#f1ece2;outline:none;font:inherit}.field input:focus,.field select:focus{border-color:var(--gold)}.field select{appearance:auto}.form-note{font-size:12px;color:#8f897d;margin-top:14px}.form-status{display:none;margin-top:15px;padding:13px 15px;border:1px solid #4b4638;font-size:12px}.form-status.show{display:block}.form-status.success{border-color:rgba(201,162,58,.6);color:#e5d5a7}.form-status.error{border-color:#704040;color:#e6b1b1}.registration-side{padding:30px;border:1px solid var(--line);background:#0a0a09}.registration-side h4{font-size:18px;margin:0 0 10px}.registration-side p{color:var(--muted);font-size:14px}.step-list{list-style:none;padding:0;margin:22px 0 0}.step-list li{padding:12px 0;border-top:1px solid var(--line);color:#d0c9bb;font-size:13px}.step-list b{color:var(--gold2);margin-right:9px}
 @media(max-width:800px){.registration-wrap{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+
+/* ===== STUDENT PORTAL / CLASSROOM ===== */
+.portal-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+.portal-card{padding:30px;border:1px solid rgba(201,162,58,.4);background:linear-gradient(145deg,#151209,#080807)}
+.portal-card h3{font-size:28px;margin:8px 0 10px}
+.portal-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}
+.portal-feature{padding:15px;border:1px solid var(--line);background:#0a0a09;color:#cfc8ba;font-size:13px}
+.portal-feature b{display:block;color:var(--gold2);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:5px}
+.portal-login{padding:30px;border:1px solid var(--line);background:#0a0a09}
+.portal-login input{width:100%;padding:14px;background:#0b0b0a;border:1px solid #3a352c;color:#f1ece2;outline:none;margin:12px 0}
+.portal-login input:focus{border-color:var(--gold)}
+.portal-status{display:none;padding:12px;border:1px solid #4b4638;font-size:12px;margin-top:12px}
+.portal-status.show{display:block}.portal-status.error{border-color:#704040;color:#e6b1b1}
+.portal-status.success{border-color:rgba(201,162,58,.6);color:#e5d5a7}
+.classroom{display:none;margin-top:18px}.classroom.show{display:block}
+.classroom-top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:18px}
+.progress-wrap{min-width:240px}.progress-label{display:flex;justify-content:space-between;color:#9f998d;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.progress{height:7px;background:#25221c;border:1px solid #332f27}.progress>span{display:block;height:100%;width:12%;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.module{padding:23px;border:1px solid var(--line);background:linear-gradient(145deg,#11110f,#090908);position:relative}
+.module.locked{opacity:.72}.module-num{color:var(--gold2);font-size:10px;font-weight:900;letter-spacing:2px}
+.module h4{font-size:18px;margin:8px 0 5px}.module p{color:var(--muted);font-size:13px;margin:0 0 15px}
+.lesson-list{list-style:none;padding:0;margin:0}.lesson-list li{padding:8px 0;border-top:1px solid #211f19;color:#bdb6a8;font-size:12px;display:flex;justify-content:space-between;gap:10px}
+.lesson-list span{color:#746f66;font-size:10px}.module .btn{margin-top:16px;min-height:40px;padding:9px 14px}
+.portal-note{margin-top:16px;color:#777167;font-size:11px}
+.enrollment-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.flow-step{padding:18px 14px;border:1px solid var(--line);background:#0a0a09;text-align:center}
+.flow-step strong{display:block;color:var(--gold2);font-size:11px;letter-spacing:1px}.flow-step span{display:block;color:#aaa398;font-size:11px;margin-top:6px}
+.access-badge{display:inline-block;padding:7px 10px;border:1px solid rgba(201,162,58,.5);color:var(--gold2);font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+@media(max-width:850px){.portal-grid{grid-template-columns:1fr}.module-grid{grid-template-columns:1fr}.enrollment-flow{grid-template-columns:1fr 1fr}.classroom-top{align-items:flex-start;flex-direction:column}.progress-wrap{width:100%}}
+@media(max-width:720px){.portal-features{grid-template-columns:1fr}.enrollment-flow{grid-template-columns:1fr}}
+
+
+/* ===== V3 STUDENT SYSTEM ===== */
+.student-system{display:grid;grid-template-columns:250px 1fr;gap:18px}
+.student-sidebar{border:1px solid var(--line);background:#0a0a09;padding:18px;height:max-content;position:sticky;top:90px}
+.student-sidebar button{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid #211f19;color:#aaa398;padding:13px 8px;cursor:pointer;font-size:12px}
+.student-sidebar button.active,.student-sidebar button:hover{color:var(--gold2)}
+.student-main{min-width:0}
+.portal-panel{display:none;border:1px solid var(--line);background:linear-gradient(145deg,#11110f,#090908);padding:28px}
+.portal-panel.active{display:block}
+.portal-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.portal-kpi{padding:18px;border:1px solid var(--line);background:#0a0a09}.portal-kpi strong{display:block;font-size:24px;color:var(--gold2)}.portal-kpi span{font-size:10px;color:#807a70;text-transform:uppercase;letter-spacing:1px}
+.check-list{list-style:none;padding:0;margin:0}.check-list li{padding:12px 0;border-bottom:1px solid #211f19;color:#bbb4a7;font-size:12px}.check-list li:before{content:"✓";color:var(--gold2);margin-right:10px}
+.lesson-detail{border:1px solid var(--line);padding:22px;background:#0a0a09;margin-top:15px}.lesson-detail h4{margin:0 0 8px}.lesson-detail p{color:#aaa398;font-size:13px;line-height:1.7}
+.journal-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.journal-form textarea{grid-column:1/-1;min-height:110px;resize:vertical}
+.journal-form input,.journal-form select,.journal-form textarea{width:100%;padding:13px;background:#080807;border:1px solid #38332b;color:#eee9df;outline:none}.journal-form input:focus,.journal-form select:focus,.journal-form textarea:focus{border-color:var(--gold)}
+.journal-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:11px}.journal-table th,.journal-table td{padding:11px;border-bottom:1px solid #25221c;text-align:left}.journal-table th{color:var(--gold2);font-size:9px;text-transform:uppercase;letter-spacing:1px}.journal-table td{color:#aaa398}
+.announcement{padding:16px;border-left:2px solid var(--gold);background:#0b0b0a;margin-bottom:10px}.announcement b{display:block;color:#e6dfd2;margin-bottom:5px}.announcement span{font-size:11px;color:#807a70}
+.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{padding:11px;border-bottom:1px solid #25221c;text-align:left}.admin-table th{color:var(--gold2);font-size:9px;text-transform:uppercase}.admin-table td{color:#aaa398}
+@media(max-width:850px){.student-system{grid-template-columns:1fr}.student-sidebar{position:static}.portal-kpis{grid-template-columns:1fr}.journal-form{grid-template-columns:1fr}.journal-form textarea{grid-column:auto}}
+
 </style>
 </head>
 <body>
-<nav><div class="wrap nav"><a href="#home" aria-label="Hybrid Traders home"><img class="logo" src="hybrid-traders-logo.png" alt="Hybrid Traders"></a><div class="links" id="siteLinks"><a href="#about">About</a><a href="#pathway">Pathway</a><a href="#curriculum">Curriculum</a><a href="#academy">Academy</a><a href="#founder">Founder</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div><a class="btn gold nav-cta" href="#academy">View Package</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></nav>
+<nav><div class="wrap nav"><a href="#home" aria-label="Hybrid Traders home"><img class="logo" src="hybrid-traders-logo.png" alt="Hybrid Traders"></a><div class="links" id="siteLinks"><a href="#about">About</a><a href="#pathway">Pathway</a><a href="#curriculum">Curriculum</a><a href="#academy">Academy</a><a href="#portal">Student Portal</a><a href="#founder">Founder</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div><a class="btn gold nav-cta" href="#academy">View Package</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></nav>
 
-<header class="hero" id="home"><div class="grid"></div><img src="hybrid-traders-logo.png" class="hero-logo" alt=""><div class="wrap hero-inner"><div class="kicker">Hybrid Traders Online Academy</div><h1>The Next Generation of <span>Traders</span></h1><p class="hero-copy">Build real trading skills, develop discipline, understand the markets and create a foundation for long-term financial growth.</p><div class="actions"><a class="btn gold" href="#academy">Explore The Academy</a><a class="btn ghost" href="#curriculum">View Curriculum</a></div><div class="facts"><span>Structured Learning</span><span>Practical Analysis</span><span>Community</span><span>Risk Awareness</span></div></div></header>
+<header class="hero" id="home"><div class="grid"></div><img src="hybrid-traders-logo.png" class="hero-logo" alt=""><div class="wrap hero-inner"><div class="kicker">Hybrid Traders Online Academy</div><h1>The Next Generation of <span>Traders</span></h1><p class="hero-copy">Build real trading skills, develop discipline, understand the markets and create a foundation for long-term financial growth.</p><div class="actions"><a class="btn gold" href="#academy">Explore The Academy</a><a class="btn ghost" href="#curriculum">View Curriculum</a><a class="btn ghost" href="#portal">Student Portal</a></div><div class="facts"><span>Structured Learning</span><span>Practical Analysis</span><span>Community</span><span>Risk Awareness</span></div></div></header>
 
 <section class="dark" id="about"><div class="wrap"><div class="head"><div class="label">01 / The Vision</div><h2>Real Skills. Financial Freedom. Lasting Wealth.</h2><p class="lead">Hybrid Traders Online Academy is built to bridge the gap between consuming trading information and developing a structured process. The goal is to help students understand the market, practise analysis, manage risk and develop disciplined habits.</p></div><div class="cards"><div class="card"><div class="num">01 / LEARN</div><h3>Build Knowledge</h3><p>Understand the language, concepts and mechanics behind the financial markets.</p></div><div class="card"><div class="num">02 / TRADE</div><h3>Apply The Process</h3><p>Use structured analysis and trade planning instead of random decision-making.</p></div><div class="card"><div class="num">03 / GROW</div><h3>Develop Discipline</h3><p>Work on patience, consistency, risk awareness and continuous improvement.</p></div><div class="card"><div class="num">04 / BUILD</div><h3>Think Long Term</h3><p>Build knowledge and habits that can support broader financial goals.</p></div></div></div></section>
 
@@ -44,15 +96,153 @@ footer{border-top:1px solid #191814;padding:34px 0;color:#706c63;font-size:12px}
 
 <section><div class="wrap feature"><div><div class="label">04 / The Environment</div><h2>Education Beyond The <span>Classroom</span></h2><p class="lead">The academy is designed around more than lessons. It is intended to develop practical thinking, review, accountability and continuous improvement.</p><ul class="feature-list"><li><b>01</b>Structured educational material</li><li><b>02</b>Practical chart and market analysis</li><li><b>03</b>Trade planning and review</li><li><b>04</b>Learning through repetition and practice</li><li><b>05</b>Community and live sessions as the platform develops</li></ul></div><div class="feature-box"><div class="label">Hybrid Traders</div><h3>A Serious Learning Environment</h3><p>Learn the concepts. Study the charts. Build a process. Review your decisions. Keep developing.</p><a class="btn ghost" href="#academy">See The Academy Package</a></div></div></section>
 
-<section class="dark" id="academy"><div class="wrap"><div class="head"><div class="label">05 / Academy</div><h2>One Complete <span>Package</span></h2><p class="lead">A single academy pathway with one price — designed to keep the offer simple and focused.</p></div><div class="package-wrap"><div class="package"><div class="num">COMPLETE ACADEMY PACKAGE</div><h3>Hybrid Traders Online Academy</h3><p class="lead">A structured learning journey covering the core curriculum from forex foundations through market analysis, risk management and execution.</p><div class="price">$100 <small>one-time</small></div><ul class="included"><li>Forex Foundations</li><li>Market Structure</li><li>Technical Analysis</li><li>Price Action</li><li>Risk Management</li><li>Trading Psychology</li><li>Trade Execution</li><li>Live Market Analysis</li></ul><button class="btn gold" type="button" onclick="document.getElementById('registration').scrollIntoView({behavior:'smooth'})">Register Now — $100</button></div><div class="side-card"><div class="num">ACCESS & COMMUNITY</div><h4>Built As One Ecosystem</h4><p>The academy website is the central home for the programme. Community and student access features will be connected as those systems are completed.</p><span class="status">Community Access Coming Soon</span><h4 style="margin-top:28px">What happens next?</h4><p>Follow Hybrid Traders for the official academy launch and enrollment announcement.</p></div></div></div></section>
+<section class="dark" id="academy"><div class="wrap"><div class="head"><div class="label">05 / Academy</div><h2>One Complete <span>Package</span></h2><p class="lead">A single academy pathway with one price — designed to keep the offer simple and focused.</p></div><div class="package-wrap"><div class="package"><div class="num">COMPLETE ACADEMY PACKAGE</div><h3>Hybrid Traders Online Academy</h3><p class="lead">A structured learning journey covering the core curriculum from forex foundations through market analysis, risk management and execution.</p><div class="price">$100 <small>one-time</small></div><ul class="included"><li>Forex Foundations</li><li>Market Structure</li><li>Technical Analysis</li><li>Price Action</li><li>Risk Management</li><li>Trading Psychology</li><li>Trade Execution</li><li>Live Market Analysis</li></ul><button class="btn gold" type="button" onclick="document.getElementById('registration').scrollIntoView({behavior:'smooth'})">Register Now — $100</button></div><div class="side-card"><div class="num">ACCESS & COMMUNITY</div><h4>One Connected Ecosystem</h4><p>Your registration starts the enrollment process. After payment is verified, students can be activated for the private classroom and Hybrid Traders community.</p><span class="access-badge">Student Access • By Approval</span><h4 style="margin-top:28px">Enrollment pathway</h4><p>Register → Payment → Verification → Student Access → Academy Classroom → Discord Community.</p><a class="btn ghost" href="#portal">View Student Portal</a></div></div></div></section>
 
-<section class="dark" id="founder"><div class="wrap founder"><img src="shernwill-duraan.jpg" alt="Shernwill Duraan, CEO and Founder"><div><div class="label">07 / Founder</div><h2>Shernwill Duraan</h2><div class="role">CEO & Founder</div><p class="lead">Hybrid Traders was created with a vision to build more than a trading group — a serious environment where people can learn, practise, grow and build a stronger understanding of the financial markets.</p><p class="quote">“Real Skills. Financial Freedom. Lasting Wealth.”</p><div class="founder-stats"><div><strong>HYBRID</strong><span>Trading Education</span></div><div><strong>ONLINE</strong><span>Learning Platform</span></div><div><strong>2026</strong><span>Academy Launch</span></div></div></div></div></section>
 
-<section class="dark" id="registration"><div class="wrap"><div class="head"><div class="label">06 / Registration</div><h2>Start Your <span>Journey</span></h2><p class="lead">Register your interest in the Complete Academy Package. Submit your details first, then you will be guided to the $100 one-time payment stage.</p></div><div class="registration-wrap"><div class="registration-card"><div class="num">COMPLETE ACADEMY PACKAGE — $100 ONE-TIME</div><h3>Student Registration</h3><p class="lead">Enter your details below. Your registration will be securely recorded in the Hybrid Traders Academy student registration sheet.</p><form id="academyRegistrationForm"><div class="form-grid"><div class="field"><label for="fullName">Full Name</label><input id="fullName" name="fullName" type="text" autocomplete="name" required></div><div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email" required></div><div class="field"><label for="whatsapp">WhatsApp Number</label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+264..." required></div><div class="field"><label for="package">Package</label><select id="package" name="package" disabled><option>Complete Academy Package — $100 one-time</option></select></div><div class="field full"><button class="btn gold" id="submitRegistration" type="submit">Submit Registration</button></div></div><div class="form-note">After registration, payment instructions will be provided. Registration does not itself complete payment.</div><div id="registrationStatus" class="form-status" role="status" aria-live="polite"></div></form></div><div class="registration-side"><div class="num">HOW IT WORKS</div><h4>Simple Enrollment Process</h4><p>We keep the first step straightforward: register your details, receive confirmation, then continue to payment.</p><ol class="step-list"><li><b>01</b>Submit your registration</li><li><b>02</b>Your details are recorded</li><li><b>03</b>Receive the next-step/payment instructions</li><li><b>04</b>Complete the $100 one-time payment</li></ol></div></div></div></section><section id="faq"><div class="wrap"><div class="head"><div class="label">08 / FAQ</div><h2>Frequently Asked <span>Questions</span></h2></div><div class="faq"><div class="faq-item"><button class="q" type="button">What is Hybrid Traders Online Academy?<span>+</span></button><div class="answer">Hybrid Traders Online Academy is an educational platform focused on developing practical trading knowledge, market understanding and disciplined trading processes.</div></div><div class="faq-item"><button class="q" type="button">Who is the academy for?<span>+</span></button><div class="answer">The academy is being developed for people who want to build or strengthen their understanding of forex and financial markets through structured learning and practical application.</div></div><div class="faq-item"><button class="q" type="button">What is included in the Complete Academy Package?<span>+</span></button><div class="answer">The package covers forex foundations, market structure, technical analysis, price action, risk management, trading psychology, trade execution and live market analysis.</div></div><div class="faq-item"><button class="q" type="button">How much is the package?<span>+</span></button><div class="answer">The Complete Academy Package is $100 one-time. Students register first, then continue to the payment stage after registration is confirmed.</div></div><div class="faq-item"><button class="q" type="button">Is the Discord community available yet?<span>+</span></button><div class="answer">The Hybrid Traders community is still being prepared. Official access details will be published when the community is ready.</div></div><div class="faq-item"><button class="q" type="button">Does the academy guarantee trading profits?<span>+</span></button><div class="answer">No. The academy is educational. Trading involves substantial risk, and learning does not guarantee profits or prevent losses.</div></div></div></div></section>
+<section id="portal" class="dark">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">06 / Student Portal</div>
+      <h2>Your <span>Academy Classroom</span></h2>
+      <p class="lead">A dedicated student area for lessons, progress and academy resources. Access is intended for enrolled students after their registration and payment have been verified.</p>
+    </div>
 
-<section class="cta"><div class="wrap cta-inner"><div><div class="label">09 / Launch</div><h2>The Next Generation Starts <span>Here.</span></h2><p>Follow Hybrid Traders for academy launch updates, educational content and the official enrollment announcement.</p></div><a class="btn gold" href="#contact">Connect With Us</a></div></section>
+    <div class="portal-grid">
+      <div class="portal-card">
+        <div class="num">STUDENT DASHBOARD</div>
+        <h3>Learn. Practise. Review. Grow.</h3>
+        <p class="lead">The classroom is organised into modules so students can move through the Hybrid Traders learning pathway in a clear order.</p>
+        <div class="portal-features">
+          <div class="portal-feature"><b>01 / Lessons</b>Structured modules and practical learning.</div>
+          <div class="portal-feature"><b>02 / Progress</b>Track completed modules and lessons.</div>
+          <div class="portal-feature"><b>03 / Practice</b>Apply concepts to charts and trade plans.</div>
+          <div class="portal-feature"><b>04 / Community</b>Move into Discord after access is activated.</div>
+        </div>
+        <a class="btn gold" href="#registration">Register For Access</a>
+      </div>
 
-<section id="contact"><div class="wrap"><div class="head"><div class="label">10 / Contact</div><h2>Connect With <span>Hybrid Traders</span></h2><p class="lead">For academy enquiries, launch information or collaboration, use the contact details below.</p></div><div class="contact-grid"><div class="contact"><small>Email</small><p><a href="mailto:shernwillduraan@gmail.com">shernwillduraan@gmail.com</a></p></div><div class="contact"><small>WhatsApp</small><p><a href="https://wa.me/264813810493?text=Hello%20Hybrid%20Traders%20Online%20Academy%2C%20I%20would%20like%20more%20information%20about%20the%20%24100%20Complete%20Academy%20Package." target="_blank" rel="noopener noreferrer">+264 81 381 0493</a></p></div><div class="contact"><small>TikTok</small><p>Hybrid Traders Academy</p></div></div></div></section>
+      <div class="portal-login">
+        <div class="num">STUDENT ACCESS</div>
+        <h3 style="margin:8px 0">Enter Your Access Code</h3>
+        <p class="lead">Use the email address you registered with and the access code issued after your enrollment has been approved.</p>
+        <input id="studentEmail" type="email" placeholder="Your registered email" autocomplete="email">
+        <input id="studentCode" type="text" placeholder="Your student access code" autocomplete="off">
+        <button class="btn gold" id="portalLoginBtn" type="button">Open Classroom</button>
+        <div id="portalStatus" class="portal-status" role="status" aria-live="polite"></div>
+        <p class="portal-note">Security note: this launch version uses a front-end classroom gate. A server-side student authentication system can be connected later for stronger access control.</p>
+      </div>
+    </div>
+
+    
+<div class="classroom" id="classroom">
+  <div class="student-system">
+    <aside class="student-sidebar">
+      <div class="num">STUDENT AREA</div>
+      <button class="dash-tab active" data-tab="dashboard">Dashboard</button>
+      <button class="dash-tab" data-tab="courses">My Courses</button>
+      <button class="dash-tab" data-tab="journal">Trade Journal</button>
+      <button class="dash-tab" data-tab="live">Live Sessions</button>
+      <button class="dash-tab" data-tab="announcements">Announcements</button>
+      <button class="dash-tab" data-tab="community">Community</button>
+      <button class="dash-tab" data-tab="profile">My Profile</button>
+    </aside>
+
+    <main class="student-main">
+      <div class="portal-panel active" id="panel-dashboard">
+        <div class="num">WELCOME BACK</div><h3 style="margin:7px 0">Hybrid Traders Student Dashboard</h3>
+        <p class="lead">Your learning environment for structured trading education, practice and review.</p>
+        <div class="portal-kpis">
+          <div class="portal-kpi"><strong>12%</strong><span>Course Progress</span></div>
+          <div class="portal-kpi"><strong>1/8</strong><span>Modules Started</span></div>
+          <div class="portal-kpi"><strong>0</strong><span>Journal Entries</span></div>
+        </div>
+        <div class="lesson-detail"><h4>Continue Learning</h4><p><b>Module 01 — Forex Foundations</b><br>Start with the fundamentals before moving into market structure and technical analysis.</p><button class="btn gold dash-open" data-tab-target="courses">Continue Module</button></div>
+      </div>
+
+      <div class="portal-panel" id="panel-courses">
+        <div class="num">MY COURSES</div><h3 style="margin:7px 0">Trading Curriculum</h3>
+        <div class="module-grid">
+          <div class="module"><div class="module-num">01</div><h4>Forex Foundations</h4><p>Core terminology, instruments, sessions and order concepts.</p><button class="btn ghost course-open" data-course="Forex Foundations">Open Lessons</button></div>
+          <div class="module locked"><div class="module-num">02</div><h4>Market Structure</h4><p>Trends, swings, breaks and areas of interest.</p><button class="btn ghost course-open" data-course="Market Structure">Open Lessons</button></div>
+          <div class="module locked"><div class="module-num">03</div><h4>Technical Analysis</h4><p>Levels, context and structured chart analysis.</p><button class="btn ghost course-open" data-course="Technical Analysis">Open Lessons</button></div>
+          <div class="module locked"><div class="module-num">04</div><h4>Price Action</h4><p>Reading price behaviour and continuation structures.</p><button class="btn ghost course-open" data-course="Price Action">Open Lessons</button></div>
+          <div class="module locked"><div class="module-num">05</div><h4>Risk Management</h4><p>Risk, sizing, invalidation and capital preservation.</p><button class="btn ghost course-open" data-course="Risk Management">Open Lessons</button></div>
+          <div class="module locked"><div class="module-num">06</div><h4>Trading Psychology</h4><p>Discipline, patience, decision-making and review.</p><button class="btn ghost course-open" data-course="Trading Psychology">Open Lessons</button></div>
+          <div class="module locked"><div class="module-num">07</div><h4>Trade Execution</h4><p>Setup planning, entries and trade management.</p><button class="btn ghost course-open" data-course="Trade Execution">Open Lessons</button></div>
+          <div class="module locked"><div class="module-num">08</div><h4>Live Market Analysis</h4><p>Apply the framework to live chart scenarios.</p><button class="btn ghost course-open" data-course="Live Market Analysis">Open Lessons</button></div>
+        </div>
+        <div class="lesson-detail" id="courseLessonDetail"><h4>Module preview</h4><p>Select a module to view its lesson plan.</p></div>
+      </div>
+
+      <div class="portal-panel" id="panel-journal">
+        <div class="num">TRADE JOURNAL</div><h3 style="margin:7px 0">Record Your Process</h3>
+        <p class="lead">Journal your analysis, execution and review. This version stores entries in the browser for the current device.</p>
+        <form id="journalForm" class="journal-form">
+          <input id="jDate" type="date" required><input id="jPair" placeholder="Pair / Instrument (e.g. XAUUSD)" required>
+          <select id="jDirection"><option value="Buy">Buy</option><option value="Sell">Sell</option></select>
+          <select id="jResult"><option value="Planned">Planned</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Breakeven">Breakeven</option></select>
+          <textarea id="jNotes" placeholder="Why did you take the trade? What did you see? What will you improve?" required></textarea>
+          <button class="btn gold" type="submit">Save Journal Entry</button>
+        </form>
+        <table class="journal-table"><thead><tr><th>Date</th><th>Instrument</th><th>Direction</th><th>Result</th><th>Notes</th></tr></thead><tbody id="journalRows"></tbody></table>
+      </div>
+
+      <div class="portal-panel" id="panel-live">
+        <div class="num">LIVE SESSIONS</div><h3 style="margin:7px 0">Academy Live Learning</h3>
+        <div class="announcement"><b>Live Market Analysis</b><span>Session schedule will be posted here before each live class. Join through the academy's official Discord environment.</span></div>
+        <div class="announcement"><b>Weekly Review</b><span>Bring your trade journal and questions for review.</span></div>
+        <div class="announcement"><b>Practical Session</b><span>Chart analysis and trade-planning exercises.</span></div>
+      </div>
+
+      <div class="portal-panel" id="panel-announcements">
+        <div class="num">ACADEMY NEWS</div><h3 style="margin:7px 0">Announcements</h3>
+        <div class="announcement"><b>Welcome to Hybrid Traders Online Academy</b><span>Your student classroom is ready for the academy launch.</span></div>
+        <div class="announcement"><b>Coursework</b><span>Modules will be released according to the academy learning pathway.</span></div>
+      </div>
+
+      <div class="portal-panel" id="panel-community">
+        <div class="num">COMMUNITY</div><h3 style="margin:7px 0">Hybrid Traders Discord</h3>
+        <p class="lead">The private Discord environment is where students can access community discussion, live sessions and academy communication after their access has been activated.</p>
+        <ul class="check-list"><li>Start Here & onboarding</li><li>Academy classroom</li><li>Trading Floor</li><li>Community discussion</li><li>Live Sessions</li><li>Management & support</li></ul>
+        <p class="portal-note">Your actual Discord invite can be connected to this button once you have the final invite URL.</p>
+        <button class="btn gold" type="button" id="discordBtn">Open Discord</button>
+      </div>
+
+      <div class="portal-panel" id="panel-profile">
+        <div class="num">MY PROFILE</div><h3 style="margin:7px 0">Student Profile</h3>
+        <p class="lead">Your registration information will be connected to this profile when the student database is added.</p>
+        <ul class="check-list"><li>Enrollment status: <b style="color:var(--gold2)">Active Preview</b></li><li>Academy package: Online Academy</li><li>Learning level: Foundation</li><li>Community access: Pending final invite connection</li></ul>
+      </div>
+    </main>
+  </div>
+</div>
+
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="label">07 / Enrollment System</div>
+      <h2>From Registration to <span>Student Access</span></h2>
+      <p class="lead">The website now presents the complete intended enrollment journey clearly, while payment verification and student activation remain controlled by the academy.</p>
+    </div>
+    <div class="enrollment-flow">
+      <div class="flow-step"><strong>01</strong><span>Register</span></div>
+      <div class="flow-step"><strong>02</strong><span>Payment</span></div>
+      <div class="flow-step"><strong>03</strong><span>Verification</span></div>
+      <div class="flow-step"><strong>04</strong><span>Student Access</span></div>
+      <div class="flow-step"><strong>05</strong><span>Discord + Classroom</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="founder"><div class="wrap founder"><img src="shernwill-duraan.jpg" alt="Shernwill Duraan, CEO and Founder"><div><div class="label">08 / Founder</div><h2>Shernwill Duraan</h2><div class="role">CEO & Founder</div><p class="lead">Hybrid Traders was created with a vision to build more than a trading group — a serious environment where people can learn, practise, grow and build a stronger understanding of the financial markets.</p><p class="quote">“Real Skills. Financial Freedom. Lasting Wealth.”</p><div class="founder-stats"><div><strong>HYBRID</strong><span>Trading Education</span></div><div><strong>ONLINE</strong><span>Learning Platform</span></div><div><strong>2026</strong><span>Academy Launch</span></div></div></div></div></section>
+
+<section class="dark" id="registration"><div class="wrap"><div class="head"><div class="label">09 / Registration</div><h2>Start Your <span>Journey</span></h2><p class="lead">Register your interest in the Complete Academy Package. Submit your details first, then you will be guided to the $100 one-time payment stage.</p></div><div class="registration-wrap"><div class="registration-card"><div class="num">COMPLETE ACADEMY PACKAGE — $100 ONE-TIME</div><h3>Student Registration</h3><p class="lead">Enter your details below. Your registration will be securely recorded in the Hybrid Traders Academy student registration sheet.</p><form id="academyRegistrationForm"><div class="form-grid"><div class="field"><label for="fullName">Full Name</label><input id="fullName" name="fullName" type="text" autocomplete="name" required></div><div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email" required></div><div class="field"><label for="whatsapp">WhatsApp Number</label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+264..." required></div><div class="field"><label for="package">Package</label><select id="package" name="package" disabled><option>Complete Academy Package — $100 one-time</option></select></div><div class="field full"><button class="btn gold" id="submitRegistration" type="submit">Submit Registration</button></div></div><div class="form-note">After registration, payment instructions will be provided. Registration does not itself complete payment.</div><div id="registrationStatus" class="form-status" role="status" aria-live="polite"></div></form></div><div class="registration-side"><div class="num">HOW IT WORKS</div><h4>Simple Enrollment Process</h4><p>We keep the first step straightforward: register your details, receive confirmation, then continue to payment.</p><ol class="step-list"><li><b>01</b>Submit your registration</li><li><b>02</b>Your details are recorded</li><li><b>03</b>Receive the next-step/payment instructions</li><li><b>04</b>Complete the $100 one-time payment</li></ol><p class="portal-note">After payment, the academy team verifies enrollment and activates student access. Approved students receive their personal access code.</p></div></div></div></section><section id="faq"><div class="wrap"><div class="head"><div class="label">10 / FAQ</div><h2>Frequently Asked <span>Questions</span></h2></div><div class="faq"><div class="faq-item"><button class="q" type="button">What is Hybrid Traders Online Academy?<span>+</span></button><div class="answer">Hybrid Traders Online Academy is an educational platform focused on developing practical trading knowledge, market understanding and disciplined trading processes.</div></div><div class="faq-item"><button class="q" type="button">Who is the academy for?<span>+</span></button><div class="answer">The academy is being developed for people who want to build or strengthen their understanding of forex and financial markets through structured learning and practical application.</div></div><div class="faq-item"><button class="q" type="button">What is included in the Complete Academy Package?<span>+</span></button><div class="answer">The package covers forex foundations, market structure, technical analysis, price action, risk management, trading psychology, trade execution and live market analysis.</div></div><div class="faq-item"><button class="q" type="button">How much is the package?<span>+</span></button><div class="answer">The Complete Academy Package is $100 one-time. Students register first, then continue to the payment stage after registration is confirmed.</div></div><div class="faq-item"><button class="q" type="button">Is the Discord community available yet?<span>+</span></button><div class="answer">The Hybrid Traders Discord environment is being prepared for student onboarding. Access details will be provided to enrolled students after verification.</div></div><div class="faq-item"><button class="q" type="button">Does the academy guarantee trading profits?<span>+</span></button><div class="answer">No. The academy is educational. Trading involves substantial risk, and learning does not guarantee profits or prevent losses.</div></div></div></div></section>
+
+<section class="cta"><div class="wrap cta-inner"><div><div class="label">11 / Launch</div><h2>The Next Generation Starts <span>Here.</span></h2><p>Follow Hybrid Traders for academy launch updates, educational content and the official enrollment announcement.</p></div><a class="btn gold" href="#contact">Connect With Us</a></div></section>
+
+<section id="contact"><div class="wrap"><div class="head"><div class="label">12 / Contact</div><h2>Connect With <span>Hybrid Traders</span></h2><p class="lead">For academy enquiries, launch information or collaboration, use the contact details below.</p></div><div class="contact-grid"><div class="contact"><small>Email</small><p><a href="mailto:shernwillduraan@gmail.com">shernwillduraan@gmail.com</a></p></div><div class="contact"><small>WhatsApp</small><p><a href="https://wa.me/264813810493?text=Hello%20Hybrid%20Traders%20Online%20Academy%2C%20I%20would%20like%20more%20information%20about%20the%20%24100%20Complete%20Academy%20Package." target="_blank" rel="noopener noreferrer">+264 81 381 0493</a></p></div><div class="contact"><small>TikTok</small><p>Hybrid Traders Academy</p></div></div></div></section>
 
 <footer><div class="wrap footer"><div><div class="brand">HYBRID TRADERS ONLINE ACADEMY</div><div>Real Skills. Financial Freedom. Lasting Wealth.</div></div><div>© 2026 Hybrid Traders. All rights reserved.</div></div><div class="wrap disclaimer">Educational content only. Trading financial markets involves risk, including the possible loss of capital. Nothing on this website constitutes financial, investment or trading advice, and no profit or performance outcome is guaranteed.</div></footer>
 <script>
@@ -65,7 +255,7 @@ const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isInte
 </script>
 
 <script>
-const REGISTRATION_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw_gqXMb3zHx_Ia1YzVDL1rmbmBkamBFSYWPg5p3EQjopOL-oqNDFLkVSm6VLLHTJom3Q/exec';
+const REGISTRATION_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec';
 const registrationForm = document.getElementById('academyRegistrationForm');
 if (registrationForm) {
   registrationForm.addEventListener('submit', async function(event) {
@@ -97,6 +287,96 @@ if (registrationForm) {
     }
   });
 }
+
+const portalLoginBtn=document.getElementById('portalLoginBtn');
+if(portalLoginBtn){
+  portalLoginBtn.addEventListener('click',async()=>{
+    const email=(document.getElementById('studentEmail').value||'').trim().toLowerCase();
+    const code=(document.getElementById('studentCode').value||'').trim();
+    const status=document.getElementById('portalStatus');
+    const classroom=document.getElementById('classroom');
+    status.className='portal-status show';
+    if(!email || !code){
+      status.className='portal-status show error';
+      status.textContent='Enter both your registered email and student access code.';
+      classroom.classList.remove('show'); return;
+    }
+    status.textContent='Verifying your student access...';
+    try{
+      const body=new URLSearchParams({action:'login',email:email,accessCode:code});
+      const response=await fetch(REGISTRATION_ENDPOINT,{method:'POST',body:body});
+      const result=await response.json();
+      if(!result.success) throw new Error(result.error||'Access denied.');
+      result.student.accessCode=code; sessionStorage.setItem('hybridStudent',JSON.stringify(result.student));
+      status.className='portal-status show success';
+      status.textContent='Access verified. Welcome, '+(result.student.fullName||'Student')+'.';
+      const welcome=document.querySelector('#panel-dashboard h3');
+      if(welcome) welcome.textContent='Welcome, '+(result.student.fullName||'Student');
+      classroom.classList.add('show');
+      classroom.scrollIntoView({behavior:'smooth',block:'start'});
+    }catch(error){
+      status.className='portal-status show error';
+      status.textContent=error.message||'Access could not be verified. Please contact Hybrid Traders.';
+      classroom.classList.remove('show');
+    }
+  });
+}
+document.querySelectorAll('.lesson-btn').forEach(btn=>btn.addEventListener('click',()=>{
+  alert('Module access is ready for the classroom build. The full lesson content will be added to this module before student launch.');
+}));
+
+
+/* ===== V3 STUDENT DASHBOARD ===== */
+document.querySelectorAll('.dash-tab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.dash-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+  document.querySelectorAll('.portal-panel').forEach(p=>p.classList.remove('active'));
+  const panel=document.getElementById('panel-'+btn.dataset.tab); if(panel) panel.classList.add('active');
+}));
+document.querySelectorAll('.dash-open').forEach(btn=>btn.addEventListener('click',()=>{
+  const b=document.querySelector('.dash-tab[data-tab="'+btn.dataset.tabTarget+'"]'); if(b) b.click();
+}));
+const lessonMap={
+"Forex Foundations":["What is Forex?","Currency Pairs","Pips, Lots & Spread","Trading Sessions","Market Orders & Execution"],
+"Market Structure":["Structure Basics","Higher Highs & Higher Lows","Breaks & Shifts","Key Areas","Top-Down Context"],
+"Technical Analysis":["Chart Reading","Support & Resistance","Confluence","Market Context","Building a Trading Plan"],
+"Price Action":["Candlestick Behaviour","Reactions","Continuation Structures","Position & Structure","Entry Context"],
+"Risk Management":["Risk Per Trade","Position Sizing","Stop Loss Planning","Risk / Reward","Capital Preservation"],
+"Trading Psychology":["Trading Discipline","Patience","Emotional Decisions","Process Over Outcome","Review Habits"],
+"Trade Execution":["Trade Plan","Entry Models","Invalidation","Trade Management","Post-Trade Review"],
+"Live Market Analysis":["Top-Down Analysis","Scenario Planning","Position / Structure / Entry","Execution Review","Weekly Review"]
+};
+document.querySelectorAll('.course-open').forEach(btn=>btn.addEventListener('click',()=>{
+ const c=btn.dataset.course, lessons=lessonMap[c]||[];
+ const box=document.getElementById('courseLessonDetail');
+ box.innerHTML='<h4>'+c+'</h4><ul class="check-list">'+lessons.map((x,i)=>'<li>'+x+' <span style="float:right;color:#6f6a61">Lesson '+(i+1)+'</span></li>').join('')+'</ul>';
+ box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}));
+
+function renderJournal(){
+ const rows=document.getElementById('journalRows'); if(!rows) return;
+ const data=JSON.parse(localStorage.getItem('hybridJournal')||'[]');
+ rows.innerHTML=data.length?data.map(x=>'<tr><td>'+x.date+'</td><td>'+x.pair+'</td><td>'+x.direction+'</td><td>'+x.result+'</td><td>'+x.notes.replace(/</g,'&lt;')+'</td></tr>').join(''):'<tr><td colspan="5">No journal entries yet.</td></tr>';
+}
+const jf=document.getElementById('journalForm');
+if(jf) jf.addEventListener('submit',async e=>{
+ e.preventDefault();
+ const student=JSON.parse(sessionStorage.getItem('hybridStudent')||'null');
+ const entry={date:document.getElementById('jDate').value,pair:document.getElementById('jPair').value,direction:document.getElementById('jDirection').value,result:document.getElementById('jResult').value,notes:document.getElementById('jNotes').value};
+ if(student && student.email && student.accessCode){
+   try{
+     const body=new URLSearchParams({action:'journal',email:student.email,accessCode:student.accessCode,date:entry.date,instrument:entry.pair,direction:entry.direction,result:entry.result,notes:entry.notes});
+     const r=await fetch(REGISTRATION_ENDPOINT,{method:'POST',body});
+     const result=await r.json();
+     if(!result.success) throw new Error(result.error||'Could not save journal.');
+   }catch(err){ alert(err.message||'Journal could not be saved online.'); return; }
+ }
+ const data=JSON.parse(localStorage.getItem('hybridJournal')||'[]');
+ data.unshift(entry); localStorage.setItem('hybridJournal',JSON.stringify(data.slice(0,50))); jf.reset(); renderJournal();
+});
+renderJournal();
+const db=document.getElementById('discordBtn');
+if(db) db.addEventListener('click',()=>alert('Your final Hybrid Traders Discord invite link can be connected here once you provide the invite URL.'));
+
 </script>
 </body>
 </html>
