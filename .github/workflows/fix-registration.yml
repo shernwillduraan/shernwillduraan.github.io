@@ -1,0 +1,89 @@
+name: Fix Hybrid Traders registration
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  fix-registration:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Patch registration handler
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          block = '''/* REGISTRATION — native form POST avoids browser CORS issues with Google Apps Script */
+          const registrationForm=document.getElementById('academyRegistrationForm');
+          if(registrationForm){
+            registrationForm.addEventListener('submit',function(event){
+              event.preventDefault();
+              const button=document.getElementById('submitRegistration');
+              const status=document.getElementById('registrationStatus');
+              button.disabled=true;
+              button.textContent='Submitting...';
+              status.className='form-status show';
+              status.textContent='Submitting your registration...';
+              const frameName='hybridRegistrationFrame';
+              let frame=document.getElementById(frameName);
+              if(!frame){
+                frame=document.createElement('iframe');
+                frame.id=frameName;
+                frame.name=frameName;
+                frame.style.display='none';
+                document.body.appendChild(frame);
+              }
+              const postForm=document.createElement('form');
+              postForm.method='POST';
+              postForm.action=REGISTRATION_ENDPOINT;
+              postForm.target=frameName;
+              postForm.style.display='none';
+              const fields={action:'register',fullName:(registrationForm.elements.fullName.value||'').trim(),email:(registrationForm.elements.email.value||'').trim(),whatsapp:(registrationForm.elements.whatsapp.value||'').trim(),package:'Complete Academy Package — $100 one-time'};
+              Object.entries(fields).forEach(([name,value])=>{
+                const input=document.createElement('input');
+                input.type='hidden'; input.name=name; input.value=value;
+                postForm.appendChild(input);
+              });
+              document.body.appendChild(postForm);
+              postForm.submit();
+              postForm.remove();
+              registrationForm.reset();
+              status.className='form-status show success';
+              status.textContent='Registration sent. Please allow a moment for it to appear in the academy system.';
+              button.disabled=false;
+              button.textContent='Submit Registration';
+            });
+          }
+
+          /* STUDENT LOGIN'''
+          block = block.replace('          ', '', 1)
+          pattern = r'/\* REGISTRATION[\s\S]*?(?=/\* STUDENT LOGIN)'
+          s2, n = re.subn(pattern, block + '\n\n', s, count=1)
+          if n != 1:
+              raise SystemExit('Registration block not found')
+          p.write_text(s2, encoding='utf-8')
+          PY
+
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fix academy registration delivery"
+          git push
+
+      - name: Remove one-time workflow
+        run: |
+          git rm .github/workflows/fix-registration.yml
+          git commit -m "Remove one-time registration fix workflow"
+          git push
