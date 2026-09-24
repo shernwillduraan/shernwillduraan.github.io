@@ -1,0 +1,41 @@
+name: Fix live registration handler
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace registration handler
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          new="""document.getElementById('reg').onsubmit=e=>{e.preventDefault();let form=e.target,n=document.getElementById('regn');n.className='notice show';n.textContent='Submitting registration...';let frame=document.getElementById('hybridRegFrame');if(!frame){frame=document.createElement('iframe');frame.id='hybridRegFrame';frame.name='hybridRegFrame';frame.style.display='none';document.body.appendChild(frame)}let f=document.createElement('form');f.method='POST';f.action=API;f.target='hybridRegFrame';f.style.display='none';let fields={action:'register',fullName:form.querySelector('[name=\\\"name\\\"]').value.trim(),email:form.querySelector('[name=\\\"email\\\"]').value.trim(),whatsapp:form.querySelector('[name=\\\"phone\\\"]').value.trim(),package:'Complete Academy'};Object.entries(fields).forEach(([k,v])=>{let i=document.createElement('input');i.type='hidden';i.name=k;i.value=v;f.appendChild(i)});document.body.appendChild(f);f.submit();f.remove();form.reset();n.textContent='Registration sent. Please allow a moment for it to appear in the academy system.'};document.getElementById('login').onsubmit="""
+          pattern=r"document\.getElementById\('reg'\)\.onsubmit=.*?;document\.getElementById\('login'\)\.onsubmit="
+          s2,n=re.subn(pattern,new,s,count=1,flags=re.S)
+          if n!=1: raise SystemExit('Current registration handler not found')
+          p.write_text(s2,encoding='utf-8')
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fix live registration delivery"
+          git push
+      - name: Remove workflow
+        run: |
+          git rm .github/workflows/fix-registration-v2.yml .github/workflows/fix-registration.yml || true
+          git commit -m "Remove registration repair workflows" || true
+          git push || true
