@@ -5,289 +5,794 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#050505">
 <title>Hybrid Traders Online Academy | Real Skills. Financial Freedom. Lasting Wealth.</title>
-<meta name="description" content="Hybrid Traders Online Academy — structured forex education, practical market analysis and disciplined trading development.">
+<meta name="description" content="Hybrid Traders Online Academy — structured trading education built around market structure, technical analysis, price action, risk management, psychology and disciplined execution.">
+
 <style>
-:root{--black:#050505;--panel:#0b0b0a;--panel2:#10100e;--gold:#c9a23a;--gold2:#efd36a;--white:#f6f1e7;--muted:#aaa59a;--line:#2b281f;--max:1180px;--shadow:0 24px 70px rgba(0,0,0,.35)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.6}body.menu-open{overflow:hidden}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,input,textarea{font:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-nav{position:fixed;z-index:100;inset:0 0 auto;background:rgba(5,5,5,.9);border-bottom:1px solid rgba(201,162,58,.2);backdrop-filter:blur(14px)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}.logo{width:70px;height:58px;object-fit:contain}.links{display:flex;align-items:center;gap:24px;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}.links a{color:#d2ccc0;transition:.2s}.links a:hover,.links a.active{color:var(--gold2)}.nav-cta{display:inline-flex}.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--white);width:44px;height:40px;cursor:pointer}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 20px;border:1px solid var(--gold);font-size:11px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px)}.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#090909;border:0}.btn.ghost{border-color:#4b4638;color:#e2d9c8}.btn.disabled{opacity:.55;cursor:not-allowed}.btn.disabled:hover{transform:none}
-.hero{min-height:100svh;position:relative;display:flex;align-items:center;overflow:hidden;background:radial-gradient(circle at 78% 44%,rgba(201,162,58,.18),transparent 31%),linear-gradient(135deg,#020202,#0b0906 55%,#030303)}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.98),rgba(0,0,0,.82) 43%,rgba(0,0,0,.18))}.grid{position:absolute;inset:0;opacity:.12;background-image:linear-gradient(rgba(201,162,58,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,58,.14) 1px,transparent 1px);background-size:60px 60px}.hero-logo{position:absolute;z-index:1;right:4%;top:18%;width:min(46vw,560px);opacity:.62;filter:drop-shadow(0 0 55px rgba(201,162,58,.18))}.hero-inner{position:relative;z-index:2;padding:150px 0 90px}.kicker,.label{color:var(--gold2);font-size:11px;font-weight:900;letter-spacing:3.5px;text-transform:uppercase}.kicker{margin-bottom:17px}h1{font-size:clamp(48px,7.4vw,88px);line-height:.97;letter-spacing:-4px;text-transform:uppercase;max-width:900px;margin:0}h1 span,h2 span{color:var(--gold2)}.hero-copy{max-width:700px;color:#cbc5b8;font-size:18px;margin:28px 0}.actions{display:flex;flex-wrap:wrap;gap:12px}.facts{display:flex;flex-wrap:wrap;gap:22px;margin-top:42px;color:#918c82;font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}.facts span:before{content:"◆";color:var(--gold);font-size:7px;margin-right:7px}
-section{padding:105px 0;scroll-margin-top:75px}.dark{background:#080808}.head{max-width:820px;margin-bottom:45px}h2{font-size:clamp(36px,5vw,58px);line-height:1.03;letter-spacing:-2.5px;margin:10px 0 18px}.lead{color:var(--muted);font-size:17px;max-width:820px}.eyebrow{color:var(--gold2);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card,.step,.course,.contact,.package,.quote-box{background:linear-gradient(145deg,#11110f,#090908);border:1px solid var(--line);box-shadow:var(--shadow)}.card{min-height:205px;padding:26px}.num{color:var(--gold2);font-size:10px;letter-spacing:2px;font-weight:900}.card h3,.step h3{font-size:21px;line-height:1.15;margin:20px 0 8px}.card p,.step p,.course p,.contact p{color:var(--muted);font-size:14px;margin:0}
-.path{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{position:relative;padding:30px;min-height:300px}.step-no{position:absolute;right:18px;top:5px;font-size:44px;color:#29261f;font-weight:900}.step ul{list-style:none;padding:0;margin:20px 0 0;color:#c8c2b7;font-size:13px}.step li{margin:8px 0}.step li:before{content:"—";color:var(--gold);margin-right:8px}
-.curriculum{display:grid;grid-template-columns:1fr 1fr;gap:15px}.course{padding:27px;display:flex;gap:18px}.course-icon{flex:0 0 42px;height:42px;border:1px solid rgba(201,162,58,.55);display:grid;place-items:center;color:var(--gold2);font-weight:900}.course h3{font-size:19px;margin:0 0 5px}
-.feature{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}.feature-list{list-style:none;padding:0;margin:25px 0 0}.feature-list li{padding:13px 0;border-bottom:1px solid #211f19;color:#c8c2b7;font-size:14px}.feature-list b{color:var(--gold2);margin-right:11px}.feature-box{background:radial-gradient(circle at 50% 30%,rgba(201,162,58,.12),transparent 50%),#0a0a09;border:1px solid var(--line);padding:45px}.feature-box h3{font-size:30px;line-height:1.1;margin:12px 0}.feature-box p{color:var(--muted);font-size:14px}
-.package-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch}.package{padding:38px;border-color:rgba(201,162,58,.55);background:linear-gradient(145deg,#151209,#080807)}.package h3{font-size:30px;margin:8px 0}.price{font-size:52px;line-height:1;font-weight:900;color:var(--gold2);margin:25px 0 8px}.price small{font-size:12px;color:var(--muted);font-weight:400}.included{display:grid;grid-template-columns:1fr 1fr;gap:9px 25px;list-style:none;padding:0;margin:25px 0}.included li{color:#d0c9bb;font-size:13px}.included li:before{content:"✓";color:var(--gold2);font-weight:900;margin-right:8px}.side-card{padding:30px;border:1px solid var(--line);background:#0a0a09}.side-card h4{font-size:18px;margin:0 0 10px}.side-card p{color:var(--muted);font-size:14px}.status{display:inline-block;margin-top:8px;padding:7px 10px;border:1px solid #4b4638;color:#a9a294;font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
-.founder{display:grid;grid-template-columns:400px 1fr;gap:70px;align-items:center}.founder img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 20%;border:1px solid #383329}.role{color:var(--gold2);font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.quote{border-left:2px solid var(--gold);padding-left:20px;margin-top:28px;color:#d8d1c5}.founder-stats{display:flex;gap:30px;flex-wrap:wrap;margin-top:28px}.founder-stats strong{display:block;color:var(--gold2);font-size:22px}.founder-stats span{display:block;color:#817c72;font-size:10px;letter-spacing:1.2px;text-transform:uppercase}
-.faq{max-width:900px}.faq-item{border-top:1px solid var(--line)}.faq-item:last-child{border-bottom:1px solid var(--line)}.q{width:100%;background:none;border:0;color:var(--white);padding:21px 0;text-align:left;font-size:16px;font-weight:800;display:flex;justify-content:space-between;gap:20px;cursor:pointer}.q span{color:var(--gold2);font-size:22px;line-height:1}.answer{display:none;color:var(--muted);font-size:14px;padding:0 35px 21px 0}.faq-item.open .answer{display:block}
-.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.contact{padding:27px}.contact small{color:var(--gold2);letter-spacing:2px;text-transform:uppercase;font-size:10px;font-weight:900}.contact p{margin-top:10px}.contact a:hover{color:var(--gold2)}
-.cta{padding:65px 0;background:linear-gradient(135deg,#120f07,#050505);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.cta-inner{display:flex;justify-content:space-between;align-items:center;gap:30px}.cta h2{margin:0 0 10px}.cta p{margin:0;color:var(--muted);max-width:650px}
-footer{border-top:1px solid #191814;padding:34px 0;color:#706c63;font-size:12px}.footer{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.brand{color:#c8c2b7;font-weight:900;letter-spacing:2px}.disclaimer{margin-top:20px;color:#575249;font-size:10px;max-width:850px}
-@media(max-width:950px){.links{gap:15px}.cards{grid-template-columns:repeat(2,1fr)}.path{grid-template-columns:1fr}.feature{grid-template-columns:1fr}.package-wrap{grid-template-columns:1fr}.founder{grid-template-columns:300px 1fr;gap:40px}.hero-logo{opacity:.35}.contact-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:720px){.wrap{width:min(var(--max),calc(100% - 28px))}.nav{height:68px}.logo{width:62px}.menu-btn{display:block}.nav-cta{display:none}.links{position:fixed;top:68px;left:0;right:0;background:rgba(5,5,5,.98);border-bottom:1px solid var(--line);display:none;flex-direction:column;align-items:stretch;padding:16px 20px;gap:0}.links.open{display:flex}.links a{padding:15px 5px;border-bottom:1px solid #1c1a16}.hero-inner{padding:125px 0 75px}.hero-logo{width:75vw;right:-18%;top:21%;opacity:.2}.hero:after{background:linear-gradient(90deg,rgba(0,0,0,.98),rgba(0,0,0,.74))}h1{font-size:clamp(43px,14vw,65px);letter-spacing:-2.5px}.hero-copy{font-size:16px}.facts{gap:12px 18px;margin-top:32px}.actions .btn{width:100%}section{padding:78px 0}.cards,.curriculum,.contact-grid{grid-template-columns:1fr}.card{min-height:auto}.course{padding:23px}.feature-box{padding:30px}.included{grid-template-columns:1fr}.package{padding:28px}.price{font-size:44px}.founder{grid-template-columns:1fr;gap:32px}.founder img{max-width:330px}.cta-inner{flex-direction:column;align-items:flex-start}.cta .btn{width:100%}.footer{flex-direction:column}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+:root{
+  --black:#050505;
+  --black2:#080808;
+  --panel:#0d0d0c;
+  --panel2:#12110f;
+  --gold:#c9a23a;
+  --gold2:#f0d477;
+  --gold3:#8f6c1d;
+  --white:#f7f3ea;
+  --muted:#a7a197;
+  --muted2:#716c63;
+  --line:#29251d;
+  --max:1240px;
+  --shadow:0 25px 80px rgba(0,0,0,.42);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--white);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.6}
+body.menu-open{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}
+.eyebrow{font-size:10px;letter-spacing:3.2px;font-weight:900;text-transform:uppercase;color:var(--gold2)}
+.section{padding:110px 0}
+.section.dark{background:#080808}
+.head{max-width:850px;margin-bottom:50px}
+h1,h2,h3,p{margin-top:0}
+h2{font-size:clamp(38px,5vw,68px);line-height:1;letter-spacing:-3px;margin:12px 0 20px}
+.lead{color:var(--muted);font-size:16px;max-width:820px}
+.gold-text{color:var(--gold2)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:50px;padding:14px 22px;border:1px solid var(--gold);
+  font-size:10px;font-weight:900;letter-spacing:1.7px;text-transform:uppercase;
+  transition:.25s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#080808;border:0}
+.btn.ghost{border-color:#4a4437;color:#eee6d8;background:transparent}
+.btn.dark{background:#0a0a09;border-color:#3a352b}
+.btn.full{width:100%}
 
-.registration-wrap{display:grid;grid-template-columns:1fr .8fr;gap:18px;align-items:start}.registration-card{padding:38px;border:1px solid rgba(201,162,58,.45);background:linear-gradient(145deg,#151209,#080807)}.registration-card h3{font-size:30px;margin:8px 0 10px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:25px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:#b8b0a1}.field input,.field select{width:100%;padding:14px 15px;background:#0b0b0a;border:1px solid #3a352c;color:#f1ece2;outline:none;font:inherit}.field input:focus,.field select:focus{border-color:var(--gold)}.field select{appearance:auto}.form-note{font-size:12px;color:#8f897d;margin-top:14px}.form-status{display:none;margin-top:15px;padding:13px 15px;border:1px solid #4b4638;font-size:12px}.form-status.show{display:block}.form-status.success{border-color:rgba(201,162,58,.6);color:#e5d5a7}.form-status.error{border-color:#704040;color:#e6b1b1}.registration-side{padding:30px;border:1px solid var(--line);background:#0a0a09}.registration-side h4{font-size:18px;margin:0 0 10px}.registration-side p{color:var(--muted);font-size:14px}.step-list{list-style:none;padding:0;margin:22px 0 0}.step-list li{padding:12px 0;border-top:1px solid var(--line);color:#d0c9bb;font-size:13px}.step-list b{color:var(--gold2);margin-right:9px}
-@media(max-width:800px){.registration-wrap{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+/* NAV */
+nav{
+ position:fixed;top:0;left:0;right:0;z-index:1000;
+ background:rgba(5,5,5,.82);backdrop-filter:blur(18px);
+ border-bottom:1px solid rgba(201,162,58,.18)
+}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{width:64px;height:58px;object-fit:contain}
+.links{display:flex;align-items:center;gap:25px}
+.links a{font-size:10px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:#c4bdb0;transition:.2s}
+.links a:hover,.links a.active{color:var(--gold2)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.login-link{font-size:10px;font-weight:900;letter-spacing:1.5px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--white);width:44px;height:40px}
 
-/* ===== STUDENT PORTAL / CLASSROOM ===== */
-.portal-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
-.portal-card{padding:30px;border:1px solid rgba(201,162,58,.4);background:linear-gradient(145deg,#151209,#080807)}
-.portal-card h3{font-size:28px;margin:8px 0 10px}
+/* HERO */
+.hero{
+ min-height:100svh;position:relative;overflow:hidden;display:flex;align-items:center;
+ background:
+ radial-gradient(circle at 78% 43%,rgba(201,162,58,.19),transparent 25%),
+ radial-gradient(circle at 92% 82%,rgba(201,162,58,.08),transparent 22%),
+ linear-gradient(125deg,#020202 0%,#0a0805 52%,#030303 100%);
+}
+.hero-grid{
+ position:absolute;inset:0;opacity:.16;
+ background-image:linear-gradient(rgba(201,162,58,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,58,.12) 1px,transparent 1px);
+ background-size:62px 62px;
+ mask-image:linear-gradient(90deg,black 0%,black 60%,transparent 100%);
+}
+.hero-noise{position:absolute;inset:0;opacity:.05;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:5px 5px}
+.hero-logo{
+ position:absolute;right:3%;top:15%;width:min(43vw,570px);opacity:.48;
+ filter:drop-shadow(0 0 60px rgba(201,162,58,.2));
+ animation:floatLogo 7s ease-in-out infinite;
+}
+@keyframes floatLogo{50%{transform:translateY(-12px) scale(1.015)}}
+.hero-content{position:relative;z-index:3;padding:145px 0 100px;max-width:800px}
+.hero-kicker{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.hero-kicker:before{content:"";width:35px;height:1px;background:var(--gold2)}
+.hero h1{font-size:clamp(52px,8vw,98px);line-height:.91;letter-spacing:-5px;text-transform:uppercase;margin:0;max-width:900px}
+.hero h1 span{color:var(--gold2)}
+.hero-subtitle{font-size:clamp(18px,2vw,25px);font-weight:600;margin:28px 0 12px;max-width:700px}
+.hero-copy{color:#aaa398;max-width:650px;font-size:15px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-stats{display:flex;flex-wrap:wrap;gap:35px;margin-top:50px;padding-top:25px;border-top:1px solid rgba(201,162,58,.2)}
+.hero-stat strong{display:block;color:var(--gold2);font-size:24px;line-height:1}
+.hero-stat span{display:block;color:#777168;font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-top:7px}
+
+/* FLOATING MARKET CARD */
+.market-card{
+ position:absolute;z-index:3;right:8%;bottom:12%;width:330px;padding:20px;
+ background:rgba(8,8,7,.82);border:1px solid rgba(201,162,58,.32);
+ box-shadow:var(--shadow);backdrop-filter:blur(12px)
+}
+.market-top,.market-bottom{display:flex;justify-content:space-between;gap:10px}
+.market-top{font-size:11px;font-weight:900;letter-spacing:1.5px}
+.live{color:var(--gold2);font-size:8px;letter-spacing:1px}
+.chart{height:125px;margin:14px 0;position:relative;overflow:hidden;border-top:1px solid #242119;border-bottom:1px solid #242119}
+.chart:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,58,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,58,.08) 1px,transparent 1px);background-size:32px 32px}
+.chart-line{position:absolute;left:4%;right:4%;top:66%;height:2px;background:var(--gold2);transform:rotate(-8deg);box-shadow:0 0 12px rgba(240,212,119,.5)}
+.chart-line:before,.chart-line:after{content:"";position:absolute;width:70px;height:2px;background:var(--gold2)}
+.chart-line:before{left:20%;top:-20px;transform:rotate(24deg)}
+.chart-line:after{right:14%;top:20px;transform:rotate(-25deg)}
+.market-bottom div{font-size:9px;color:#716c63;text-transform:uppercase;letter-spacing:1px}
+.market-bottom b{display:block;color:#dcd5c7;font-size:10px;margin-top:3px}
+
+/* TRUST STRIP */
+.trust{background:#0b0b0a;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-row{display:grid;grid-template-columns:repeat(4,1fr)}
+.trust-item{padding:28px 20px;border-right:1px solid var(--line)}
+.trust-item:last-child{border-right:0}
+.trust-item strong{display:block;color:var(--gold2);font-size:14px;letter-spacing:1px}
+.trust-item span{display:block;color:#777168;font-size:9px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
+
+/* INTRO */
+.intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.intro-card{position:relative;padding:42px;background:linear-gradient(145deg,#15120a,#090908);border:1px solid rgba(201,162,58,.3);box-shadow:var(--shadow)}
+.intro-card:before{content:"HT";position:absolute;right:25px;top:10px;font-size:110px;font-weight:900;color:#211c11;line-height:1}
+.intro-card h3{font-size:30px;line-height:1.05;margin:12px 0}
+.intro-list{list-style:none;padding:0;margin:25px 0 0}
+.intro-list li{padding:14px 0;border-top:1px solid #28231a;color:#c9c1b3;font-size:13px}
+.intro-list b{color:var(--gold2);margin-right:12px}
+
+/* ROADMAP */
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.road-card{min-height:270px;padding:27px;background:linear-gradient(145deg,#11110f,#090908);border:1px solid var(--line);position:relative;overflow:hidden;transition:.25s}
+.road-card:hover{transform:translateY(-5px);border-color:rgba(201,162,58,.45)}
+.road-no{position:absolute;right:15px;top:-3px;font-size:70px;line-height:1;color:#1c1a16;font-weight:900}
+.road-card .eyebrow{position:relative}
+.road-card h3{font-size:22px;line-height:1.05;margin:45px 0 10px}
+.road-card p{color:var(--muted);font-size:13px;margin:0}
+.road-tag{display:inline-block;margin-top:20px;padding:6px 8px;border:1px solid #3d382e;color:#8f887c;font-size:8px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase}
+
+/* METHOD */
+.method{background:linear-gradient(135deg,#0b0905,#050505 55%,#0d0b07);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.method-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+.method-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:12px}
+.method-box{padding:35px 20px;text-align:center;border:1px solid rgba(201,162,58,.35);background:#0a0a09}
+.method-box strong{display:block;font-size:27px;color:var(--gold2);letter-spacing:1px}
+.method-box span{display:block;color:#7d776d;font-size:9px;letter-spacing:1.5px;font-weight:900;margin-top:5px}
+.arrow{color:var(--gold2);font-size:25px}
+
+/* CURRICULUM */
+.curriculum{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.course{display:flex;gap:20px;padding:25px;border:1px solid var(--line);background:linear-gradient(145deg,#11110f,#090908);transition:.25s}
+.course:hover{border-color:rgba(201,162,58,.4);transform:translateY(-3px)}
+.course-number{flex:0 0 42px;height:42px;border:1px solid rgba(201,162,58,.5);display:grid;place-items:center;color:var(--gold2);font-size:10px;font-weight:900}
+.course h3{font-size:19px;margin:0 0 5px}
+.course p{color:var(--muted);font-size:13px;margin:0}
+
+/* ECOSYSTEM */
+.eco{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.eco-card{padding:35px;border:1px solid var(--line);background:#0b0b0a;min-height:230px}
+.eco-card.featured{background:radial-gradient(circle at 80% 20%,rgba(201,162,58,.14),transparent 35%),linear-gradient(145deg,#141107,#090908);border-color:rgba(201,162,58,.4)}
+.eco-card h3{font-size:27px;margin:10px 0}
+.eco-card p{color:var(--muted);font-size:14px}
+.checks{list-style:none;padding:0;margin:20px 0 0}
+.checks li{padding:8px 0;color:#c9c1b3;font-size:13px}
+.checks li:before{content:"✓";color:var(--gold2);font-weight:900;margin-right:9px}
+
+/* PACKAGE */
+.package-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:15px}
+.package{padding:42px;background:linear-gradient(145deg,#171309,#090908);border:1px solid rgba(201,162,58,.55);box-shadow:var(--shadow)}
+.package h3{font-size:32px;margin:8px 0}
+.price{font-size:65px;font-weight:900;line-height:1;color:var(--gold2);margin:25px 0 4px}
+.price small{font-size:11px;color:#827b70;font-weight:400;letter-spacing:1px}
+.included{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;list-style:none;padding:0;margin:25px 0}
+.included li{color:#d1c9bb;font-size:13px}
+.included li:before{content:"✓";color:var(--gold2);font-weight:900;margin-right:8px}
+.package-side{padding:35px;border:1px solid var(--line);background:#0b0b0a}
+.package-side h3{font-size:23px;margin:8px 0}
+.flow{list-style:none;padding:0;margin:20px 0}
+.flow li{display:flex;gap:12px;padding:13px 0;border-top:1px solid var(--line);font-size:12px;color:#c5bdae}
+.flow b{color:var(--gold2);font-size:10px}
+
+/* FOUNDER */
+.founder{display:grid;grid-template-columns:370px 1fr;gap:75px;align-items:center}
+.founder-photo{width:100%;aspect-ratio:3/4;object-fit:cover;border:1px solid #373228;box-shadow:var(--shadow)}
+.role{color:var(--gold2);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.quote{margin-top:28px;border-left:2px solid var(--gold);padding-left:20px;color:#ddd4c4;font-size:18px}
+
+/* FAQ */
+.faq{max-width:900px}
+.faq-item{border-top:1px solid var(--line)}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.q{width:100%;display:flex;justify-content:space-between;gap:20px;padding:22px 0;background:none;border:0;color:var(--white);text-align:left;font-size:15px;font-weight:800}
+.q span{color:var(--gold2);font-size:21px}
+.answer{display:none;color:var(--muted);font-size:13px;padding:0 40px 20px 0}
+.faq-item.open .answer{display:block}
+
+/* REGISTRATION */
+.registration-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:15px}
+.registration-card{padding:38px;border:1px solid rgba(201,162,58,.45);background:linear-gradient(145deg,#151209,#080807)}
+.registration-card h3{font-size:30px;margin:8px 0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:25px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font-size:9px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase;color:#aaa296}
+.field input,.field select{width:100%;padding:14px 15px;background:#090908;border:1px solid #39342b;color:#f1ece2;outline:none}
+.field input:focus,.field select:focus{border-color:var(--gold)}
+.form-note,.portal-note{color:#777168;font-size:11px;margin-top:13px}
+.form-status{display:none;margin-top:15px;padding:13px;border:1px solid #4b4638;font-size:12px}
+.form-status.show{display:block}
+.form-status.success{border-color:rgba(201,162,58,.6);color:#e5d5a7}
+.form-status.error{border-color:#704040;color:#e6b1b1}
+.registration-side{padding:35px;border:1px solid var(--line);background:#0b0b0a}
+
+/* PORTAL */
+.portal-grid{display:grid;grid-template-columns:1fr .8fr;gap:15px}
+.portal-card,.portal-login{padding:35px;border:1px solid var(--line);background:#0b0b0a}
+.portal-card{background:linear-gradient(145deg,#141107,#090908);border-color:rgba(201,162,58,.35)}
 .portal-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}
-.portal-feature{padding:15px;border:1px solid var(--line);background:#0a0a09;color:#cfc8ba;font-size:13px}
-.portal-feature b{display:block;color:var(--gold2);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:5px}
-.portal-login{padding:30px;border:1px solid var(--line);background:#0a0a09}
-.portal-login input{width:100%;padding:14px;background:#0b0b0a;border:1px solid #3a352c;color:#f1ece2;outline:none;margin:12px 0}
-.portal-login input:focus{border-color:var(--gold)}
-.portal-status{display:none;padding:12px;border:1px solid #4b4638;font-size:12px;margin-top:12px}
-.portal-status.show{display:block}.portal-status.error{border-color:#704040;color:#e6b1b1}
+.portal-feature{padding:15px;border:1px solid var(--line);font-size:12px;color:#c7bfb1}
+.portal-feature b{display:block;color:var(--gold2);font-size:9px;letter-spacing:1px;margin-bottom:5px}
+.portal-login input{width:100%;padding:14px;margin:8px 0;background:#090908;border:1px solid #39342b;color:#eee8dd}
+.portal-status{display:none;margin-top:12px;padding:12px;border:1px solid #4b4638;font-size:12px}
+.portal-status.show{display:block}
 .portal-status.success{border-color:rgba(201,162,58,.6);color:#e5d5a7}
-.classroom{display:none;margin-top:18px}.classroom.show{display:block}
-.classroom-top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:18px}
-.progress-wrap{min-width:240px}.progress-label{display:flex;justify-content:space-between;color:#9f998d;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.progress{height:7px;background:#25221c;border:1px solid #332f27}.progress>span{display:block;height:100%;width:12%;background:linear-gradient(90deg,var(--gold),var(--gold2))}
-.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.module{padding:23px;border:1px solid var(--line);background:linear-gradient(145deg,#11110f,#090908);position:relative}
-.module.locked{opacity:.72}.module-num{color:var(--gold2);font-size:10px;font-weight:900;letter-spacing:2px}
-.module h4{font-size:18px;margin:8px 0 5px}.module p{color:var(--muted);font-size:13px;margin:0 0 15px}
-.lesson-list{list-style:none;padding:0;margin:0}.lesson-list li{padding:8px 0;border-top:1px solid #211f19;color:#bdb6a8;font-size:12px;display:flex;justify-content:space-between;gap:10px}
-.lesson-list span{color:#746f66;font-size:10px}.module .btn{margin-top:16px;min-height:40px;padding:9px 14px}
-.portal-note{margin-top:16px;color:#777167;font-size:11px}
-.enrollment-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.flow-step{padding:18px 14px;border:1px solid var(--line);background:#0a0a09;text-align:center}
-.flow-step strong{display:block;color:var(--gold2);font-size:11px;letter-spacing:1px}.flow-step span{display:block;color:#aaa398;font-size:11px;margin-top:6px}
-.access-badge{display:inline-block;padding:7px 10px;border:1px solid rgba(201,162,58,.5);color:var(--gold2);font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
-@media(max-width:850px){.portal-grid{grid-template-columns:1fr}.module-grid{grid-template-columns:1fr}.enrollment-flow{grid-template-columns:1fr 1fr}.classroom-top{align-items:flex-start;flex-direction:column}.progress-wrap{width:100%}}
-@media(max-width:720px){.portal-features{grid-template-columns:1fr}.enrollment-flow{grid-template-columns:1fr}}
-
-
-/* ===== V3 STUDENT SYSTEM ===== */
-.student-system{display:grid;grid-template-columns:250px 1fr;gap:18px}
-.student-sidebar{border:1px solid var(--line);background:#0a0a09;padding:18px;height:max-content;position:sticky;top:90px}
-.student-sidebar button{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid #211f19;color:#aaa398;padding:13px 8px;cursor:pointer;font-size:12px}
-.student-sidebar button.active,.student-sidebar button:hover{color:var(--gold2)}
-.student-main{min-width:0}
-.portal-panel{display:none;border:1px solid var(--line);background:linear-gradient(145deg,#11110f,#090908);padding:28px}
+.portal-status.error{border-color:#704040;color:#e6b1b1}
+.classroom{display:none;margin-top:15px;padding:30px;border:1px solid var(--line);background:#0a0a09}
+.classroom.show{display:block}
+.student-grid{display:grid;grid-template-columns:220px 1fr;gap:20px}
+.student-sidebar{border-right:1px solid var(--line);padding-right:15px}
+.dash-tab{display:block;width:100%;padding:12px 8px;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);color:#989187;font-size:11px}
+.dash-tab.active,.dash-tab:hover{color:var(--gold2)}
+.portal-panel{display:none}
 .portal-panel.active{display:block}
-.portal-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
-.portal-kpi{padding:18px;border:1px solid var(--line);background:#0a0a09}.portal-kpi strong{display:block;font-size:24px;color:var(--gold2)}.portal-kpi span{font-size:10px;color:#807a70;text-transform:uppercase;letter-spacing:1px}
-.check-list{list-style:none;padding:0;margin:0}.check-list li{padding:12px 0;border-bottom:1px solid #211f19;color:#bbb4a7;font-size:12px}.check-list li:before{content:"✓";color:var(--gold2);margin-right:10px}
-.lesson-detail{border:1px solid var(--line);padding:22px;background:#0a0a09;margin-top:15px}.lesson-detail h4{margin:0 0 8px}.lesson-detail p{color:#aaa398;font-size:13px;line-height:1.7}
-.journal-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.journal-form textarea{grid-column:1/-1;min-height:110px;resize:vertical}
-.journal-form input,.journal-form select,.journal-form textarea{width:100%;padding:13px;background:#080807;border:1px solid #38332b;color:#eee9df;outline:none}.journal-form input:focus,.journal-form select:focus,.journal-form textarea:focus{border-color:var(--gold)}
-.journal-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:11px}.journal-table th,.journal-table td{padding:11px;border-bottom:1px solid #25221c;text-align:left}.journal-table th{color:var(--gold2);font-size:9px;text-transform:uppercase;letter-spacing:1px}.journal-table td{color:#aaa398}
-.announcement{padding:16px;border-left:2px solid var(--gold);background:#0b0b0a;margin-bottom:10px}.announcement b{display:block;color:#e6dfd2;margin-bottom:5px}.announcement span{font-size:11px;color:#807a70}
-.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{padding:11px;border-bottom:1px solid #25221c;text-align:left}.admin-table th{color:var(--gold2);font-size:9px;text-transform:uppercase}.admin-table td{color:#aaa398}
-@media(max-width:850px){.student-system{grid-template-columns:1fr}.student-sidebar{position:static}.portal-kpis{grid-template-columns:1fr}.journal-form{grid-template-columns:1fr}.journal-form textarea{grid-column:auto}}
+.portal-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.kpi{padding:18px;border:1px solid var(--line)}
+.kpi strong{display:block;color:var(--gold2);font-size:24px}
+.kpi span{font-size:9px;color:#777168;text-transform:uppercase;letter-spacing:1px}
+.module-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.module{padding:20px;border:1px solid var(--line);background:#0e0e0d}
+.module h4{margin:7px 0 4px}
+.module p{color:var(--muted);font-size:12px}
+.lesson-detail{margin-top:14px;padding:20px;border:1px solid var(--line)}
+.journal-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.journal-form textarea{grid-column:1/-1;min-height:110px}
+.journal-form input,.journal-form select,.journal-form textarea{width:100%;padding:12px;background:#090908;border:1px solid #39342b;color:#eee8dd}
+.journal-table{width:100%;border-collapse:collapse;margin-top:15px;font-size:10px}
+.journal-table th,.journal-table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
+.journal-table th{color:var(--gold2);text-transform:uppercase;letter-spacing:1px}
 
+/* CTA + FOOTER */
+.cta{padding:90px 0;background:linear-gradient(135deg,#151005,#050505 58%,#0d0b07);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.cta h2{margin-bottom:10px}
+.cta p{color:var(--muted);max-width:700px}
+footer{padding:35px 0;color:#716b61;font-size:11px}
+.footer{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+.brand{color:#d0c7b8;font-weight:900;letter-spacing:2px}
+.disclaimer{margin-top:18px;color:#565149;font-size:9px;max-width:900px}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+ .links{gap:14px}
+ .hero-logo{width:45vw;opacity:.32}
+ .market-card{right:3%;width:280px}
+ .roadmap{grid-template-columns:1fr 1fr}
+ .intro-grid,.method-grid,.package-grid,.registration-grid,.portal-grid{grid-template-columns:1fr}
+ .founder{grid-template-columns:300px 1fr;gap:40px}
+}
+@media(max-width:760px){
+ .wrap{width:min(var(--max),calc(100% - 28px))}
+ .nav{height:68px}
+ .logo{width:58px}
+ .links{position:fixed;top:68px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;padding:12px 20px;background:rgba(5,5,5,.98);border-bottom:1px solid var(--line)}
+ .links.open{display:flex}
+ .links a{padding:14px 4px;border-bottom:1px solid var(--line)}
+ .nav-actions{display:none}
+ .menu-btn{display:block}
+ .hero{min-height:auto}
+ .hero-content{padding:120px 0 80px}
+ .hero h1{font-size:clamp(45px,14vw,68px);letter-spacing:-3px}
+ .hero-logo{width:80vw;right:-22%;top:20%;opacity:.16}
+ .market-card{display:none}
+ .hero-stats{gap:18px}
+ .trust-row{grid-template-columns:1fr 1fr}
+ .trust-item:nth-child(2){border-right:0}
+ .trust-item:nth-child(3),.trust-item:nth-child(4){border-top:1px solid var(--line)}
+ .section{padding:78px 0}
+ .roadmap,.curriculum,.eco{grid-template-columns:1fr}
+ .method-flow{grid-template-columns:1fr;gap:8px}
+ .arrow{transform:rotate(90deg);text-align:center}
+ .included,.portal-features,.module-grid{grid-template-columns:1fr}
+ .founder{grid-template-columns:1fr}
+ .founder-photo{max-width:330px}
+ .form-grid,.journal-form{grid-template-columns:1fr}
+ .field.full,.journal-form textarea{grid-column:auto}
+ .student-grid{grid-template-columns:1fr}
+ .student-sidebar{border-right:0;border-bottom:1px solid var(--line);padding:0 0 12px}
+ .portal-kpis{grid-template-columns:1fr}
+ .cta-inner{flex-direction:column;align-items:flex-start}
+ .cta .btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*:before,*:after{animation:none!important;transition:none!important}
+}
 </style>
 </head>
+
 <body>
-<nav><div class="wrap nav"><a href="#home" aria-label="Hybrid Traders home"><img class="logo" src="hybrid-traders-logo.png" alt="Hybrid Traders"></a><div class="links" id="siteLinks"><a href="#about">About</a><a href="#pathway">Pathway</a><a href="#curriculum">Curriculum</a><a href="#academy">Academy</a><a href="#portal">Student Portal</a><a href="#founder">Founder</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div><a class="btn gold nav-cta" href="#academy">View Package</a><button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button></div></nav>
 
-<header class="hero" id="home"><div class="grid"></div><img src="hybrid-traders-logo.png" class="hero-logo" alt=""><div class="wrap hero-inner"><div class="kicker">Hybrid Traders Online Academy</div><h1>The Next Generation of <span>Traders</span></h1><p class="hero-copy">Build real trading skills, develop discipline, understand the markets and create a foundation for long-term financial growth.</p><div class="actions"><a class="btn gold" href="#academy">Explore The Academy</a><a class="btn ghost" href="#curriculum">View Curriculum</a><a class="btn ghost" href="#portal">Student Portal</a></div><div class="facts"><span>Structured Learning</span><span>Practical Analysis</span><span>Community</span><span>Risk Awareness</span></div></div></header>
-
-<section class="dark" id="about"><div class="wrap"><div class="head"><div class="label">01 / The Vision</div><h2>Real Skills. Financial Freedom. Lasting Wealth.</h2><p class="lead">Hybrid Traders Online Academy is built to bridge the gap between consuming trading information and developing a structured process. The goal is to help students understand the market, practise analysis, manage risk and develop disciplined habits.</p></div><div class="cards"><div class="card"><div class="num">01 / LEARN</div><h3>Build Knowledge</h3><p>Understand the language, concepts and mechanics behind the financial markets.</p></div><div class="card"><div class="num">02 / TRADE</div><h3>Apply The Process</h3><p>Use structured analysis and trade planning instead of random decision-making.</p></div><div class="card"><div class="num">03 / GROW</div><h3>Develop Discipline</h3><p>Work on patience, consistency, risk awareness and continuous improvement.</p></div><div class="card"><div class="num">04 / BUILD</div><h3>Think Long Term</h3><p>Build knowledge and habits that can support broader financial goals.</p></div></div></div></section>
-
-<section id="pathway"><div class="wrap"><div class="head"><div class="label">02 / Learning Pathway</div><h2>From Foundations to <span>Execution</span></h2><p class="lead">A progressive learning structure that moves from understanding the market to analysing price and building a defined trading process.</p></div><div class="path"><div class="step"><div class="step-no">01</div><h3>Foundation</h3><p>Start by understanding the environment you're trading in.</p><ul><li>Forex fundamentals</li><li>Market terminology</li><li>Charts and timeframes</li><li>Trading risk basics</li></ul></div><div class="step"><div class="step-no">02</div><h3>Analysis</h3><p>Develop a framework for reading price and market structure.</p><ul><li>Market structure</li><li>Technical analysis</li><li>Price action</li><li>Key market areas</li></ul></div><div class="step"><div class="step-no">03</div><h3>Execution</h3><p>Turn analysis into a defined plan and review the outcome.</p><ul><li>Trade execution</li><li>Risk management</li><li>Trading psychology</li><li>Live market analysis</li></ul></div></div></div></section>
-
-<section class="dark" id="curriculum"><div class="wrap"><div class="head"><div class="label">03 / Curriculum</div><h2>What You Will <span>Learn</span></h2><p class="lead">The Complete Academy Package is built around the core skills a developing trader needs to understand and practise.</p></div><div class="curriculum"><div class="course"><div class="course-icon">01</div><div><h3>Forex Foundations</h3><p>Market basics, terminology, instruments, sessions and the foundations of forex trading.</p></div></div><div class="course"><div class="course-icon">02</div><div><h3>Market Structure</h3><p>Learn how to read swings, trends, breaks and important areas of price behaviour.</p></div></div><div class="course"><div class="course-icon">03</div><div><h3>Technical Analysis</h3><p>Build a structured approach to charts, levels, confluence and market context.</p></div></div><div class="course"><div class="course-icon">04</div><div><h3>Price Action</h3><p>Study price behaviour and formations as part of a broader market analysis process.</p></div></div><div class="course"><div class="course-icon">05</div><div><h3>Risk Management</h3><p>Understand position sizing, risk per trade, stop-loss planning and capital preservation.</p></div></div><div class="course"><div class="course-icon">06</div><div><h3>Trading Psychology</h3><p>Develop awareness around discipline, patience, emotions and decision-making.</p></div></div><div class="course"><div class="course-icon">07</div><div><h3>Trade Execution</h3><p>Turn a market idea into a defined setup, entry, invalidation and trade-management plan.</p></div></div><div class="course"><div class="course-icon">08</div><div><h3>Live Market Analysis</h3><p>Apply concepts to live charts and learn how analysis can be translated into a trading plan.</p></div></div></div></div></section>
-
-<section><div class="wrap feature"><div><div class="label">04 / The Environment</div><h2>Education Beyond The <span>Classroom</span></h2><p class="lead">The academy is designed around more than lessons. It is intended to develop practical thinking, review, accountability and continuous improvement.</p><ul class="feature-list"><li><b>01</b>Structured educational material</li><li><b>02</b>Practical chart and market analysis</li><li><b>03</b>Trade planning and review</li><li><b>04</b>Learning through repetition and practice</li><li><b>05</b>Community and live sessions as the platform develops</li></ul></div><div class="feature-box"><div class="label">Hybrid Traders</div><h3>A Serious Learning Environment</h3><p>Learn the concepts. Study the charts. Build a process. Review your decisions. Keep developing.</p><a class="btn ghost" href="#academy">See The Academy Package</a></div></div></section>
-
-<section class="dark" id="academy"><div class="wrap"><div class="head"><div class="label">05 / Academy</div><h2>One Complete <span>Package</span></h2><p class="lead">A single academy pathway with one price — designed to keep the offer simple and focused.</p></div><div class="package-wrap"><div class="package"><div class="num">COMPLETE ACADEMY PACKAGE</div><h3>Hybrid Traders Online Academy</h3><p class="lead">A structured learning journey covering the core curriculum from forex foundations through market analysis, risk management and execution.</p><div class="price">$100 <small>one-time</small></div><ul class="included"><li>Forex Foundations</li><li>Market Structure</li><li>Technical Analysis</li><li>Price Action</li><li>Risk Management</li><li>Trading Psychology</li><li>Trade Execution</li><li>Live Market Analysis</li></ul><button class="btn gold" type="button" onclick="document.getElementById('registration').scrollIntoView({behavior:'smooth'})">Register Now — $100</button></div><div class="side-card"><div class="num">ACCESS & COMMUNITY</div><h4>One Connected Ecosystem</h4><p>Your registration starts the enrollment process. After payment is verified, students can be activated for the private classroom and Hybrid Traders community.</p><span class="access-badge">Student Access • By Approval</span><h4 style="margin-top:28px">Enrollment pathway</h4><p>Register → Payment → Verification → Student Access → Academy Classroom → Discord Community.</p><a class="btn ghost" href="#portal">View Student Portal</a></div></div></div></section>
-
-
-<section id="portal" class="dark">
-  <div class="wrap">
-    <div class="head">
-      <div class="label">06 / Student Portal</div>
-      <h2>Your <span>Academy Classroom</span></h2>
-      <p class="lead">A dedicated student area for lessons, progress and academy resources. Access is intended for enrolled students after their registration and payment have been verified.</p>
+<nav>
+  <div class="wrap nav">
+    <a href="#home" aria-label="Hybrid Traders home">
+      <img class="logo" src="https://raw.githubusercontent.com/shernwillduraan/shernwillduraan.github.io/main/hybrid-traders-logo.png" alt="Hybrid Traders">
+    </a>
+    <div class="links" id="siteLinks">
+      <a href="#about">About</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#curriculum">Curriculum</a>
+      <a href="#method">Method</a>
+      <a href="#academy">Academy</a>
+      <a href="#founder">Founder</a>
+      <a href="#faq">FAQ</a>
     </div>
-
-    <div class="portal-grid">
-      <div class="portal-card">
-        <div class="num">STUDENT DASHBOARD</div>
-        <h3>Learn. Practise. Review. Grow.</h3>
-        <p class="lead">The classroom is organised into modules so students can move through the Hybrid Traders learning pathway in a clear order.</p>
-        <div class="portal-features">
-          <div class="portal-feature"><b>01 / Lessons</b>Structured modules and practical learning.</div>
-          <div class="portal-feature"><b>02 / Progress</b>Track completed modules and lessons.</div>
-          <div class="portal-feature"><b>03 / Practice</b>Apply concepts to charts and trade plans.</div>
-          <div class="portal-feature"><b>04 / Community</b>Move into Discord after access is activated.</div>
-        </div>
-        <a class="btn gold" href="#registration">Register For Access</a>
-      </div>
-
-      <div class="portal-login">
-        <div class="num">STUDENT ACCESS</div>
-        <h3 style="margin:8px 0">Enter Your Access Code</h3>
-        <p class="lead">Use the email address you registered with and the access code issued after your enrollment has been approved.</p>
-        <input id="studentEmail" type="email" placeholder="Your registered email" autocomplete="email">
-        <input id="studentCode" type="text" placeholder="Your student access code" autocomplete="off">
-        <button class="btn gold" id="portalLoginBtn" type="button">Open Classroom</button>
-        <div id="portalStatus" class="portal-status" role="status" aria-live="polite"></div>
-        <p class="portal-note">Security note: this launch version uses a front-end classroom gate. A server-side student authentication system can be connected later for stronger access control.</p>
-      </div>
+    <div class="nav-actions">
+      <a class="login-link" href="#portal">LOGIN</a>
+      <a class="btn gold" href="#registration">JOIN THE ACADEMY</a>
     </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
 
-    
-<div class="classroom" id="classroom">
-  <div class="student-system">
-    <aside class="student-sidebar">
-      <div class="num">STUDENT AREA</div>
-      <button class="dash-tab active" data-tab="dashboard">Dashboard</button>
-      <button class="dash-tab" data-tab="courses">My Courses</button>
-      <button class="dash-tab" data-tab="journal">Trade Journal</button>
-      <button class="dash-tab" data-tab="live">Live Sessions</button>
-      <button class="dash-tab" data-tab="announcements">Announcements</button>
-      <button class="dash-tab" data-tab="community">Community</button>
-      <button class="dash-tab" data-tab="profile">My Profile</button>
-    </aside>
+<header class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-noise"></div>
+  <img src="https://raw.githubusercontent.com/shernwillduraan/shernwillduraan.github.io/main/hybrid-traders-logo.png" class="hero-logo" alt="">
+  <div class="wrap hero-content">
+    <div class="hero-kicker eyebrow">Hybrid Traders Online Academy</div>
+    <h1>Master The <span>Markets.</span><br>Build Your Future.</h1>
+    <p class="hero-subtitle">Real Skills. Financial Freedom. Lasting Wealth.</p>
+    <p class="hero-copy">Build a structured understanding of trading through market structure, technical analysis, price action, risk management, psychology and disciplined execution.</p>
+    <div class="actions">
+      <a class="btn gold" href="#registration">Start Your Journey <span>→</span></a>
+      <a class="btn ghost" href="#curriculum">Explore The Academy</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>08</strong><span>Core Subjects</span></div>
+      <div class="hero-stat"><strong>01</strong><span>Trading Framework</span></div>
+      <div class="hero-stat"><strong>$100</strong><span>One-Time Access</span></div>
+    </div>
+  </div>
 
-    <main class="student-main">
-      <div class="portal-panel active" id="panel-dashboard">
-        <div class="num">WELCOME BACK</div><h3 style="margin:7px 0">Hybrid Traders Student Dashboard</h3>
-        <p class="lead">Your learning environment for structured trading education, practice and review.</p>
-        <div class="portal-kpis">
-          <div class="portal-kpi"><strong>12%</strong><span>Course Progress</span></div>
-          <div class="portal-kpi"><strong>1/8</strong><span>Modules Started</span></div>
-          <div class="portal-kpi"><strong>0</strong><span>Journal Entries</span></div>
-        </div>
-        <div class="lesson-detail"><h4>Continue Learning</h4><p><b>Module 01 — Forex Foundations</b><br>Start with the fundamentals before moving into market structure and technical analysis.</p><button class="btn gold dash-open" data-tab-target="courses">Continue Module</button></div>
-      </div>
+  <div class="market-card" aria-hidden="true">
+    <div class="market-top"><span>XAUUSD</span><span class="live">● LIVE MARKET VIEW</span></div>
+    <div class="chart"><div class="chart-line"></div></div>
+    <div class="market-bottom">
+      <div>Position<b>Defined</b></div>
+      <div>Structure<b>Confirmed</b></div>
+      <div>Risk<b>Controlled</b></div>
+    </div>
+  </div>
+</header>
 
-      <div class="portal-panel" id="panel-courses">
-        <div class="num">MY COURSES</div><h3 style="margin:7px 0">Trading Curriculum</h3>
-        <div class="module-grid">
-          <div class="module"><div class="module-num">01</div><h4>Forex Foundations</h4><p>Core terminology, instruments, sessions and order concepts.</p><button class="btn ghost course-open" data-course="Forex Foundations">Open Lessons</button></div>
-          <div class="module locked"><div class="module-num">02</div><h4>Market Structure</h4><p>Trends, swings, breaks and areas of interest.</p><button class="btn ghost course-open" data-course="Market Structure">Open Lessons</button></div>
-          <div class="module locked"><div class="module-num">03</div><h4>Technical Analysis</h4><p>Levels, context and structured chart analysis.</p><button class="btn ghost course-open" data-course="Technical Analysis">Open Lessons</button></div>
-          <div class="module locked"><div class="module-num">04</div><h4>Price Action</h4><p>Reading price behaviour and continuation structures.</p><button class="btn ghost course-open" data-course="Price Action">Open Lessons</button></div>
-          <div class="module locked"><div class="module-num">05</div><h4>Risk Management</h4><p>Risk, sizing, invalidation and capital preservation.</p><button class="btn ghost course-open" data-course="Risk Management">Open Lessons</button></div>
-          <div class="module locked"><div class="module-num">06</div><h4>Trading Psychology</h4><p>Discipline, patience, decision-making and review.</p><button class="btn ghost course-open" data-course="Trading Psychology">Open Lessons</button></div>
-          <div class="module locked"><div class="module-num">07</div><h4>Trade Execution</h4><p>Setup planning, entries and trade management.</p><button class="btn ghost course-open" data-course="Trade Execution">Open Lessons</button></div>
-          <div class="module locked"><div class="module-num">08</div><h4>Live Market Analysis</h4><p>Apply the framework to live chart scenarios.</p><button class="btn ghost course-open" data-course="Live Market Analysis">Open Lessons</button></div>
-        </div>
-        <div class="lesson-detail" id="courseLessonDetail"><h4>Module preview</h4><p>Select a module to view its lesson plan.</p></div>
-      </div>
-
-      <div class="portal-panel" id="panel-journal">
-        <div class="num">TRADE JOURNAL</div><h3 style="margin:7px 0">Record Your Process</h3>
-        <p class="lead">Journal your analysis, execution and review. This version stores entries in the browser for the current device.</p>
-        <form id="journalForm" class="journal-form">
-          <input id="jDate" type="date" required><input id="jPair" placeholder="Pair / Instrument (e.g. XAUUSD)" required>
-          <select id="jDirection"><option value="Buy">Buy</option><option value="Sell">Sell</option></select>
-          <select id="jResult"><option value="Planned">Planned</option><option value="Win">Win</option><option value="Loss">Loss</option><option value="Breakeven">Breakeven</option></select>
-          <textarea id="jNotes" placeholder="Why did you take the trade? What did you see? What will you improve?" required></textarea>
-          <button class="btn gold" type="submit">Save Journal Entry</button>
-        </form>
-        <table class="journal-table"><thead><tr><th>Date</th><th>Instrument</th><th>Direction</th><th>Result</th><th>Notes</th></tr></thead><tbody id="journalRows"></tbody></table>
-      </div>
-
-      <div class="portal-panel" id="panel-live">
-        <div class="num">LIVE SESSIONS</div><h3 style="margin:7px 0">Academy Live Learning</h3>
-        <div class="announcement"><b>Live Market Analysis</b><span>Session schedule will be posted here before each live class. Join through the academy's official Discord environment.</span></div>
-        <div class="announcement"><b>Weekly Review</b><span>Bring your trade journal and questions for review.</span></div>
-        <div class="announcement"><b>Practical Session</b><span>Chart analysis and trade-planning exercises.</span></div>
-      </div>
-
-      <div class="portal-panel" id="panel-announcements">
-        <div class="num">ACADEMY NEWS</div><h3 style="margin:7px 0">Announcements</h3>
-        <div class="announcement"><b>Welcome to Hybrid Traders Online Academy</b><span>Your student classroom is ready for the academy launch.</span></div>
-        <div class="announcement"><b>Coursework</b><span>Modules will be released according to the academy learning pathway.</span></div>
-      </div>
-
-      <div class="portal-panel" id="panel-community">
-        <div class="num">COMMUNITY</div><h3 style="margin:7px 0">Hybrid Traders Discord</h3>
-        <p class="lead">The private Discord environment is where students can access community discussion, live sessions and academy communication after their access has been activated.</p>
-        <ul class="check-list"><li>Start Here & onboarding</li><li>Academy classroom</li><li>Trading Floor</li><li>Community discussion</li><li>Live Sessions</li><li>Management & support</li></ul>
-        <p class="portal-note">Your actual Discord invite can be connected to this button once you have the final invite URL.</p>
-        <button class="btn gold" type="button" id="discordBtn">Open Discord</button>
-      </div>
-
-      <div class="portal-panel" id="panel-profile">
-        <div class="num">MY PROFILE</div><h3 style="margin:7px 0">Student Profile</h3>
-        <p class="lead">Your registration information will be connected to this profile when the student database is added.</p>
-        <ul class="check-list"><li>Enrollment status: <b style="color:var(--gold2)">Active Preview</b></li><li>Academy package: Online Academy</li><li>Learning level: Foundation</li><li>Community access: Pending final invite connection</li></ul>
-      </div>
-    </main>
+<div class="trust">
+  <div class="wrap trust-row">
+    <div class="trust-item"><strong>STRUCTURED</strong><span>Learning Pathway</span></div>
+    <div class="trust-item"><strong>PRACTICAL</strong><span>Market Analysis</span></div>
+    <div class="trust-item"><strong>DISCIPLINED</strong><span>Risk Awareness</span></div>
+    <div class="trust-item"><strong>CONNECTED</strong><span>Student Community</span></div>
   </div>
 </div>
 
+<section class="section dark" id="about">
+  <div class="wrap intro-grid">
+    <div>
+      <div class="eyebrow">01 / The Vision</div>
+      <h2>Trading Education Built Around <span class="gold-text">Structure.</span></h2>
+      <p class="lead">Hybrid Traders Online Academy is designed to help aspiring and developing traders move beyond scattered information and build a repeatable learning process.</p>
+      <p class="lead">The focus is education: understanding the market, reading price, planning trades, managing risk and reviewing decisions.</p>
+    </div>
+    <div class="intro-card">
+      <div class="eyebrow">The Hybrid Traders Journey</div>
+      <h3>Learn. Trade. Grow. Build.</h3>
+      <p class="lead">A serious learning environment for people who want to develop their trading knowledge step by step.</p>
+      <ul class="intro-list">
+        <li><b>01</b> Build your market foundation</li>
+        <li><b>02</b> Learn a structured analysis process</li>
+        <li><b>03</b> Practise disciplined execution</li>
+        <li><b>04</b> Review, improve and keep developing</li>
+      </ul>
+    </div>
   </div>
 </section>
-<section>
+
+<section class="section" id="roadmap">
   <div class="wrap">
     <div class="head">
-      <div class="label">07 / Enrollment System</div>
-      <h2>From Registration to <span>Student Access</span></h2>
-      <p class="lead">The website now presents the complete intended enrollment journey clearly, while payment verification and student activation remain controlled by the academy.</p>
+      <div class="eyebrow">02 / Your Trading Roadmap</div>
+      <h2>From <span class="gold-text">Foundation</span> To Execution.</h2>
+      <p class="lead">A progressive pathway that moves from understanding the market to building a defined trading process.</p>
     </div>
-    <div class="enrollment-flow">
-      <div class="flow-step"><strong>01</strong><span>Register</span></div>
-      <div class="flow-step"><strong>02</strong><span>Payment</span></div>
-      <div class="flow-step"><strong>03</strong><span>Verification</span></div>
-      <div class="flow-step"><strong>04</strong><span>Student Access</span></div>
-      <div class="flow-step"><strong>05</strong><span>Discord + Classroom</span></div>
+    <div class="roadmap">
+      <div class="road-card"><div class="road-no">01</div><div class="eyebrow">Foundation</div><h3>Understand The Market</h3><p>Learn the language, instruments, sessions, charts and core concepts needed to navigate the market.</p><span class="road-tag">Start Here</span></div>
+      <div class="road-card"><div class="road-no">02</div><div class="eyebrow">Analysis</div><h3>Read Price & Structure</h3><p>Develop a framework for market structure, technical analysis, price action and key areas.</p><span class="road-tag">Build Skill</span></div>
+      <div class="road-card"><div class="road-no">03</div><div class="eyebrow">Risk</div><h3>Protect Your Capital</h3><p>Understand risk per trade, position sizing, invalidation and the importance of capital preservation.</p><span class="road-tag">Manage Risk</span></div>
+      <div class="road-card"><div class="road-no">04</div><div class="eyebrow">Execution</div><h3>Build Your Process</h3><p>Turn analysis into a defined setup, entry, management plan and review process.</p><span class="road-tag">Execute</span></div>
     </div>
   </div>
 </section>
 
-<section class="dark" id="founder"><div class="wrap founder"><img src="shernwill-duraan.jpg" alt="Shernwill Duraan, CEO and Founder"><div><div class="label">08 / Founder</div><h2>Shernwill Duraan</h2><div class="role">CEO & Founder</div><p class="lead">Hybrid Traders was created with a vision to build more than a trading group — a serious environment where people can learn, practise, grow and build a stronger understanding of the financial markets.</p><p class="quote">“Real Skills. Financial Freedom. Lasting Wealth.”</p><div class="founder-stats"><div><strong>HYBRID</strong><span>Trading Education</span></div><div><strong>ONLINE</strong><span>Learning Platform</span></div><div><strong>2026</strong><span>Academy Launch</span></div></div></div></div></section>
+<section class="section method" id="method">
+  <div class="wrap method-grid">
+    <div>
+      <div class="eyebrow">03 / The Hybrid Traders Method</div>
+      <h2>Position. <span class="gold-text">Structure.</span> Entry.</h2>
+      <p class="lead">A simple framework for organising the trading decision: identify where price is, understand what the market is showing, then define the entry conditions.</p>
+    </div>
+    <div class="method-flow">
+      <div class="method-box"><strong>POSITION</strong><span>WHERE IS PRICE?</span></div>
+      <div class="arrow">→</div>
+      <div class="method-box"><strong>STRUCTURE</strong><span>WHAT IS PRICE SHOWING?</span></div>
+      <div class="arrow">→</div>
+      <div class="method-box"><strong>ENTRY</strong><span>WHERE IS THE SETUP?</span></div>
+    </div>
+  </div>
+</section>
 
-<section class="dark" id="registration"><div class="wrap"><div class="head"><div class="label">09 / Registration</div><h2>Start Your <span>Journey</span></h2><p class="lead">Register your interest in the Complete Academy Package. Submit your details first, then you will be guided to the $100 one-time payment stage.</p></div><div class="registration-wrap"><div class="registration-card"><div class="num">COMPLETE ACADEMY PACKAGE — $100 ONE-TIME</div><h3>Student Registration</h3><p class="lead">Enter your details below. Your registration will be securely recorded in the Hybrid Traders Academy student registration sheet.</p><form id="academyRegistrationForm"><div class="form-grid"><div class="field"><label for="fullName">Full Name</label><input id="fullName" name="fullName" type="text" autocomplete="name" required></div><div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email" required></div><div class="field"><label for="whatsapp">WhatsApp Number</label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+264..." required></div><div class="field"><label for="package">Package</label><select id="package" name="package" disabled><option>Complete Academy Package — $100 one-time</option></select></div><div class="field full"><button class="btn gold" id="submitRegistration" type="submit">Submit Registration</button></div></div><div class="form-note">After registration, payment instructions will be provided. Registration does not itself complete payment.</div><div id="registrationStatus" class="form-status" role="status" aria-live="polite"></div></form></div><div class="registration-side"><div class="num">HOW IT WORKS</div><h4>Simple Enrollment Process</h4><p>We keep the first step straightforward: register your details, receive confirmation, then continue to payment.</p><ol class="step-list"><li><b>01</b>Submit your registration</li><li><b>02</b>Your details are recorded</li><li><b>03</b>Receive the next-step/payment instructions</li><li><b>04</b>Complete the $100 one-time payment</li></ol><p class="portal-note">After payment, the academy team verifies enrollment and activates student access. Approved students receive their personal access code.</p></div></div></div></section><section id="faq"><div class="wrap"><div class="head"><div class="label">10 / FAQ</div><h2>Frequently Asked <span>Questions</span></h2></div><div class="faq"><div class="faq-item"><button class="q" type="button">What is Hybrid Traders Online Academy?<span>+</span></button><div class="answer">Hybrid Traders Online Academy is an educational platform focused on developing practical trading knowledge, market understanding and disciplined trading processes.</div></div><div class="faq-item"><button class="q" type="button">Who is the academy for?<span>+</span></button><div class="answer">The academy is being developed for people who want to build or strengthen their understanding of forex and financial markets through structured learning and practical application.</div></div><div class="faq-item"><button class="q" type="button">What is included in the Complete Academy Package?<span>+</span></button><div class="answer">The package covers forex foundations, market structure, technical analysis, price action, risk management, trading psychology, trade execution and live market analysis.</div></div><div class="faq-item"><button class="q" type="button">How much is the package?<span>+</span></button><div class="answer">The Complete Academy Package is $100 one-time. Students register first, then continue to the payment stage after registration is confirmed.</div></div><div class="faq-item"><button class="q" type="button">Is the Discord community available yet?<span>+</span></button><div class="answer">The Hybrid Traders Discord environment is being prepared for student onboarding. Access details will be provided to enrolled students after verification.</div></div><div class="faq-item"><button class="q" type="button">Does the academy guarantee trading profits?<span>+</span></button><div class="answer">No. The academy is educational. Trading involves substantial risk, and learning does not guarantee profits or prevent losses.</div></div></div></div></section>
+<section class="section dark" id="curriculum">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">04 / Curriculum</div>
+      <h2>Everything You Need To <span class="gold-text">Learn.</span></h2>
+      <p class="lead">The Complete Academy Package brings the core Hybrid Traders curriculum into one structured learning journey.</p>
+    </div>
+    <div class="curriculum">
+      <div class="course"><div class="course-number">01</div><div><h3>Forex Foundations</h3><p>Market basics, terminology, instruments, sessions and order concepts.</p></div></div>
+      <div class="course"><div class="course-number">02</div><div><h3>Market Structure</h3><p>Trends, swings, breaks, shifts and areas of interest.</p></div></div>
+      <div class="course"><div class="course-number">03</div><div><h3>Technical Analysis</h3><p>Levels, context, confluence and structured chart analysis.</p></div></div>
+      <div class="course"><div class="course-number">04</div><div><h3>Price Action</h3><p>Price behaviour, reactions and continuation structures.</p></div></div>
+      <div class="course"><div class="course-number">05</div><div><h3>Risk Management</h3><p>Risk per trade, sizing, invalidation and capital preservation.</p></div></div>
+      <div class="course"><div class="course-number">06</div><div><h3>Trading Psychology</h3><p>Discipline, patience, decision-making and process over emotion.</p></div></div>
+      <div class="course"><div class="course-number">07</div><div><h3>Trade Execution</h3><p>Setup planning, entries, management and post-trade review.</p></div></div>
+      <div class="course"><div class="course-number">08</div><div><h3>Live Market Analysis</h3><p>Apply the framework to live chart scenarios and market conditions.</p></div></div>
+    </div>
+  </div>
+</section>
 
-<section class="cta"><div class="wrap cta-inner"><div><div class="label">11 / Launch</div><h2>The Next Generation Starts <span>Here.</span></h2><p>Follow Hybrid Traders for academy launch updates, educational content and the official enrollment announcement.</p></div><a class="btn gold" href="#contact">Connect With Us</a></div></section>
+<section class="section" id="ecosystem">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">05 / The Academy Ecosystem</div>
+      <h2>More Than A <span class="gold-text">Course.</span></h2>
+      <p class="lead">The goal is to create a connected learning environment where education, practice, review and community work together.</p>
+    </div>
+    <div class="eco">
+      <div class="eco-card featured">
+        <div class="eyebrow">Student Classroom</div>
+        <h3>Learn At Your Own Pace.</h3>
+        <p>Structured modules, lesson material and practical exercises designed to help you work through the academy pathway.</p>
+        <ul class="checks"><li>Course modules</li><li>Lesson progression</li><li>Student resources</li><li>Trade journal</li></ul>
+      </div>
+      <div class="eco-card">
+        <div class="eyebrow">Market Development</div>
+        <h3>Study The Market.</h3>
+        <p>Use analysis, trade planning and review to turn knowledge into practical learning.</p>
+        <ul class="checks"><li>Live market analysis</li><li>Trade recaps</li><li>Scenario planning</li><li>Review habits</li></ul>
+      </div>
+      <div class="eco-card">
+        <div class="eyebrow">Community</div>
+        <h3>Build With Others.</h3>
+        <p>Hybrid Traders is being developed as a serious community for discussion, accountability and shared learning.</p>
+        <ul class="checks"><li>Discord community</li><li>Live sessions</li><li>Academy communication</li></ul>
+      </div>
+      <div class="eco-card">
+        <div class="eyebrow">Long-Term Development</div>
+        <h3>Keep Growing.</h3>
+        <p>The academy can expand with additional resources, lessons and practical learning opportunities as the platform develops.</p>
+        <ul class="checks"><li>Future content updates</li><li>Additional resources</li><li>Continuous improvement</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="contact"><div class="wrap"><div class="head"><div class="label">12 / Contact</div><h2>Connect With <span>Hybrid Traders</span></h2><p class="lead">For academy enquiries, launch information or collaboration, use the contact details below.</p></div><div class="contact-grid"><div class="contact"><small>Email</small><p><a href="mailto:shernwillduraan@gmail.com">shernwillduraan@gmail.com</a></p></div><div class="contact"><small>WhatsApp</small><p><a href="https://wa.me/264813810493?text=Hello%20Hybrid%20Traders%20Online%20Academy%2C%20I%20would%20like%20more%20information%20about%20the%20%24100%20Complete%20Academy%20Package." target="_blank" rel="noopener noreferrer">+264 81 381 0493</a></p></div><div class="contact"><small>TikTok</small><p>Hybrid Traders Academy</p></div></div></div></section>
+<section class="section dark" id="academy">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">06 / Academy Access</div>
+      <h2>One Academy. <span class="gold-text">One Package.</span></h2>
+      <p class="lead">Keep the offer simple: one complete academy pathway with one one-time price.</p>
+    </div>
+    <div class="package-grid">
+      <div class="package">
+        <div class="eyebrow">Complete Academy Package</div>
+        <h3>Hybrid Traders Online Academy</h3>
+        <p class="lead">Full access to the academy learning pathway and student environment after enrollment and payment verification.</p>
+        <div class="price">$100 <small>ONE-TIME PAYMENT</small></div>
+        <ul class="included">
+          <li>Forex Foundations</li><li>Market Structure</li>
+          <li>Technical Analysis</li><li>Price Action</li>
+          <li>Risk Management</li><li>Trading Psychology</li>
+          <li>Trade Execution</li><li>Live Market Analysis</li>
+          <li>Student Classroom</li><li>Trading Journal</li>
+        </ul>
+        <a class="btn gold" href="#registration">Join The Academy →</a>
+      </div>
+      <div class="package-side">
+        <div class="eyebrow">Simple Enrollment</div>
+        <h3>One Connected Journey.</h3>
+        <p class="lead">The registration process is designed to stay simple while the academy payment and activation system is being completed.</p>
+        <ol class="flow">
+          <li><b>01</b> Register your details</li>
+          <li><b>02</b> Continue to the payment stage</li>
+          <li><b>03</b> Payment is verified</li>
+          <li><b>04</b> Student access is activated</li>
+          <li><b>05</b> Enter the classroom and community</li>
+        </ol>
+        <a class="btn ghost full" href="#portal">Student Login</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer><div class="wrap footer"><div><div class="brand">HYBRID TRADERS ONLINE ACADEMY</div><div>Real Skills. Financial Freedom. Lasting Wealth.</div></div><div>© 2026 Hybrid Traders. All rights reserved.</div></div><div class="wrap disclaimer">Educational content only. Trading financial markets involves risk, including the possible loss of capital. Nothing on this website constitutes financial, investment or trading advice, and no profit or performance outcome is guaranteed.</div></footer>
+<section class="section" id="founder">
+  <div class="wrap founder">
+    <img class="founder-photo" src="https://raw.githubusercontent.com/shernwillduraan/shernwillduraan.github.io/main/shernwill-duraan.jpg" alt="Shernwill Duraan, CEO and Founder">
+    <div>
+      <div class="eyebrow">07 / Founder</div>
+      <h2>Shernwill <span class="gold-text">Duraan.</span></h2>
+      <div class="role">CEO & Founder — Hybrid Traders Online Academy</div>
+      <p class="lead" style="margin-top:20px">Hybrid Traders Online Academy was created with a vision to build a serious learning environment around trading education, structured analysis, discipline and long-term development.</p>
+      <p class="quote">“Real Skills. Financial Freedom. Lasting Wealth.”</p>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="portal">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">08 / Student Portal</div>
+      <h2>Your <span class="gold-text">Classroom.</span></h2>
+      <p class="lead">Registered students can use their email and access code to enter the Hybrid Traders classroom.</p>
+    </div>
+    <div class="portal-grid">
+      <div class="portal-card">
+        <div class="eyebrow">Student Experience</div>
+        <h3 style="font-size:30px;margin:10px 0">Learn. Practise. Review. Grow.</h3>
+        <p class="lead">The student area is being built around a clear learning pathway and practical trading development.</p>
+        <div class="portal-features">
+          <div class="portal-feature"><b>01 / Courses</b>Structured academy modules.</div>
+          <div class="portal-feature"><b>02 / Progress</b>Track your learning journey.</div>
+          <div class="portal-feature"><b>03 / Journal</b>Record your trade process.</div>
+          <div class="portal-feature"><b>04 / Community</b>Connect after activation.</div>
+        </div>
+        <a class="btn gold" href="#registration">Register For Access</a>
+      </div>
+      <div class="portal-login">
+        <div class="eyebrow">Student Login</div>
+        <h3 style="font-size:24px;margin:10px 0">Open Your Classroom</h3>
+        <input id="studentEmail" type="email" placeholder="Registered email" autocomplete="email">
+        <input id="studentCode" type="text" placeholder="Student access code" autocomplete="off">
+        <button class="btn gold full" id="portalLoginBtn" type="button">Open Classroom</button>
+        <div id="portalStatus" class="portal-status" role="status" aria-live="polite"></div>
+        <p class="portal-note">Your access code is issued after your enrollment has been verified.</p>
+      </div>
+    </div>
+
+    <div class="classroom" id="classroom">
+      <div class="student-grid">
+        <aside class="student-sidebar">
+          <div class="eyebrow" style="margin-bottom:8px">Student Area</div>
+          <button class="dash-tab active" data-tab="dashboard">Dashboard</button>
+          <button class="dash-tab" data-tab="courses">My Courses</button>
+          <button class="dash-tab" data-tab="journal">Trade Journal</button>
+          <button class="dash-tab" data-tab="live">Live Sessions</button>
+          <button class="dash-tab" data-tab="community">Community</button>
+        </aside>
+
+        <main>
+          <div class="portal-panel active" id="panel-dashboard">
+            <div class="eyebrow">Welcome Back</div>
+            <h3 id="studentWelcome" style="font-size:28px;margin:8px 0">Hybrid Traders Student Dashboard</h3>
+            <p class="lead">Your learning environment for structured trading education and review.</p>
+            <div class="portal-kpis">
+              <div class="kpi"><strong>08</strong><span>Core Modules</span></div>
+              <div class="kpi"><strong>01</strong><span>Framework</span></div>
+              <div class="kpi"><strong>100%</strong><span>Learning Focus</span></div>
+            </div>
+            <div class="lesson-detail"><b>Continue Learning</b><p class="lead" style="margin:8px 0 0">Start with Forex Foundations, then move through market structure, analysis, risk and execution.</p></div>
+          </div>
+
+          <div class="portal-panel" id="panel-courses">
+            <div class="eyebrow">My Courses</div>
+            <h3 style="font-size:28px;margin:8px 0">Trading Curriculum</h3>
+            <div class="module-grid">
+              <div class="module"><div class="eyebrow">01</div><h4>Forex Foundations</h4><p>Core terminology, instruments and market basics.</p></div>
+              <div class="module"><div class="eyebrow">02</div><h4>Market Structure</h4><p>Trends, swings, breaks and areas of interest.</p></div>
+              <div class="module"><div class="eyebrow">03</div><h4>Technical Analysis</h4><p>Levels, context and chart analysis.</p></div>
+              <div class="module"><div class="eyebrow">04</div><h4>Price Action</h4><p>Price behaviour and continuation structures.</p></div>
+              <div class="module"><div class="eyebrow">05</div><h4>Risk Management</h4><p>Risk, sizing, invalidation and preservation.</p></div>
+              <div class="module"><div class="eyebrow">06</div><h4>Trading Psychology</h4><p>Discipline, patience and decision-making.</p></div>
+              <div class="module"><div class="eyebrow">07</div><h4>Trade Execution</h4><p>Setups, entries and trade management.</p></div>
+              <div class="module"><div class="eyebrow">08</div><h4>Live Market Analysis</h4><p>Apply the framework to market conditions.</p></div>
+            </div>
+          </div>
+
+          <div class="portal-panel" id="panel-journal">
+            <div class="eyebrow">Trade Journal</div>
+            <h3 style="font-size:28px;margin:8px 0">Record Your Process</h3>
+            <form id="journalForm" class="journal-form">
+              <input id="jDate" type="date" required>
+              <input id="jPair" placeholder="Pair / Instrument" required>
+              <select id="jDirection"><option>Buy</option><option>Sell</option></select>
+              <select id="jResult"><option>Planned</option><option>Win</option><option>Loss</option><option>Breakeven</option></select>
+              <textarea id="jNotes" placeholder="Why did you take the trade? What did you see?"></textarea>
+              <button class="btn gold" type="submit">Save Journal Entry</button>
+            </form>
+            <table class="journal-table"><thead><tr><th>Date</th><th>Instrument</th><th>Direction</th><th>Result</th><th>Notes</th></tr></thead><tbody id="journalRows"></tbody></table>
+          </div>
+
+          <div class="portal-panel" id="panel-live">
+            <div class="eyebrow">Live Sessions</div>
+            <h3 style="font-size:28px;margin:8px 0">Academy Live Learning</h3>
+            <div class="lesson-detail"><b>Live Market Analysis</b><p class="lead" style="margin-top:8px">Live session information will be posted here as the academy schedule is finalised.</p></div>
+          </div>
+
+          <div class="portal-panel" id="panel-community">
+            <div class="eyebrow">Community</div>
+            <h3 style="font-size:28px;margin:8px 0">Hybrid Traders Community</h3>
+            <p class="lead">Discord access will be connected to this area once the final student community invite is ready.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="registration">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">09 / Registration</div>
+      <h2>Start Your <span class="gold-text">Journey.</span></h2>
+      <p class="lead">Register first. Then continue to the $100 one-time payment stage.</p>
+    </div>
+    <div class="registration-grid">
+      <div class="registration-card">
+        <div class="eyebrow">Complete Academy Package — $100 One-Time</div>
+        <h3>Student Registration</h3>
+        <p class="lead">Enter your details. Your registration is sent to the Hybrid Traders student system.</p>
+        <form id="academyRegistrationForm">
+          <div class="form-grid">
+            <div class="field"><label for="fullName">Full Name</label><input id="fullName" name="fullName" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="whatsapp">WhatsApp Number</label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+264..." required></div>
+            <div class="field"><label>Package</label><input type="text" value="Complete Academy Package — $100 one-time" disabled></div>
+            <div class="field full"><button class="btn gold full" id="submitRegistration" type="submit">Submit Registration</button></div>
+          </div>
+          <div class="form-note">Registration does not itself complete payment.</div>
+          <div id="registrationStatus" class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+      <div class="registration-side">
+        <div class="eyebrow">How It Works</div>
+        <h3>Simple Enrollment.</h3>
+        <p class="lead">We keep the first step straightforward while the full automated payment system is being completed.</p>
+        <ol class="flow">
+          <li><b>01</b> Submit your registration</li>
+          <li><b>02</b> Your details are recorded</li>
+          <li><b>03</b> Receive payment instructions</li>
+          <li><b>04</b> Complete the $100 payment</li>
+          <li><b>05</b> Student access is activated</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">10 / FAQ</div>
+      <h2>Answers To Your <span class="gold-text">Questions.</span></h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item"><button class="q" type="button">Can beginners join the academy?<span>+</span></button><div class="answer">Yes. The learning pathway starts with foundations and progresses into analysis, risk management and execution.</div></div>
+      <div class="faq-item"><button class="q" type="button">What is included in the $100 package?<span>+</span></button><div class="answer">The package covers the full academy curriculum, student classroom, trading journal and the academy resources being developed for enrolled students.</div></div>
+      <div class="faq-item"><button class="q" type="button">Is the $100 a one-time payment?<span>+</span></button><div class="answer">Yes. The current academy offer is designed as a $100 one-time payment for the Complete Academy Package.</div></div>
+      <div class="faq-item"><button class="q" type="button">How do I get student access?<span>+</span></button><div class="answer">Register first, complete the payment stage, and after enrollment is verified the academy system can activate your student access and issue your access code.</div></div>
+      <div class="faq-item"><button class="q" type="button">Will I get trading signals?<span>+</span></button><div class="answer">The academy is primarily an education platform. Its focus is on developing your understanding, analysis, risk awareness and trading process rather than promising signals or guaranteed outcomes.</div></div>
+      <div class="faq-item"><button class="q" type="button">Does the academy guarantee profits?<span>+</span></button><div class="answer">No. Trading involves substantial risk. Education can develop knowledge and process, but it cannot guarantee profits or prevent losses.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap cta-inner">
+    <div>
+      <div class="eyebrow">11 / Your Next Step</div>
+      <h2>Become The Trader <span class="gold-text">You Are Building.</span></h2>
+      <p>Start with knowledge. Build a process. Develop discipline. Keep growing.</p>
+    </div>
+    <a class="btn gold" href="#registration">Join Hybrid Traders →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer">
+    <div><div class="brand">HYBRID TRADERS ONLINE ACADEMY</div><div>Real Skills. Financial Freedom. Lasting Wealth.</div></div>
+    <div>© 2026 Hybrid Traders. All rights reserved.</div>
+  </div>
+  <div class="wrap disclaimer">Educational content only. Trading financial markets involves risk, including the possible loss of capital. Nothing on this website constitutes financial, investment or trading advice, and no profit or performance outcome is guaranteed.</div>
+</footer>
+
 <script>
-const menuBtn=document.getElementById('menuBtn'),links=document.getElementById('siteLinks');
-menuBtn.addEventListener('click',()=>{const open=links.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open);menuBtn.textContent=open?'×':'☰';document.body.classList.toggle('menu-open',open)});
-document.querySelectorAll('#siteLinks a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';document.body.classList.remove('menu-open')}));
-document.querySelectorAll('.q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.parentElement;const open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>{x.classList.remove('open');x.querySelector('.q span').textContent='+'});if(!open){item.classList.add('open');btn.querySelector('span').textContent='−'}}));
-const sections=[...document.querySelectorAll('header[id],section[id]')],navLinks=[...document.querySelectorAll('.links a')];
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-35% 0px -55% 0px'});sections.forEach(s=>observer.observe(s));
-</script>
+const REGISTRATION_ENDPOINT='https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec';
 
-<script>
-const REGISTRATION_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec';
-const registrationForm = document.getElementById('academyRegistrationForm');
-if (registrationForm) {
-  registrationForm.addEventListener('submit', async function(event) {
+const menuBtn=document.getElementById('menuBtn');
+const links=document.getElementById('siteLinks');
+if(menuBtn){
+  menuBtn.addEventListener('click',()=>{
+    const open=links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded',open);
+    menuBtn.textContent=open?'×':'☰';
+    document.body.classList.toggle('menu-open',open);
+  });
+}
+document.querySelectorAll('#siteLinks a').forEach(a=>a.addEventListener('click',()=>{
+  links.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded','false');
+  menuBtn.textContent='☰';
+  document.body.classList.remove('menu-open');
+}));
+
+document.querySelectorAll('.q').forEach(btn=>btn.addEventListener('click',()=>{
+  const item=btn.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(x=>{
+    x.classList.remove('open');
+    x.querySelector('.q span').textContent='+';
+  });
+  if(!wasOpen){
+    item.classList.add('open');
+    btn.querySelector('span').textContent='−';
+  }
+}));
+
+const sections=[...document.querySelectorAll('header[id],section[id]')];
+const navLinks=[...document.querySelectorAll('.links a')];
+if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+    }
+  }),{rootMargin:'-35% 0px -55% 0px'});
+  sections.forEach(s=>observer.observe(s));
+}
+
+/* REGISTRATION — keeps the existing working academy endpoint */
+const registrationForm=document.getElementById('academyRegistrationForm');
+if(registrationForm){
+  registrationForm.addEventListener('submit',async function(event){
     event.preventDefault();
-    const button = document.getElementById('submitRegistration');
-    const status = document.getElementById('registrationStatus');
-    const formData = new URLSearchParams(new FormData(registrationForm));
-    formData.set('package', 'Complete Academy Package — $100 one-time');
-    button.disabled = true;
-    button.textContent = 'Submitting...';
-    status.className = 'form-status show';
-    status.textContent = 'Submitting your registration...';
-    try {
-      const response = await fetch(REGISTRATION_ENDPOINT, {
-        method: 'POST',
-        body: formData
-      });
-      const result = await response.json();
-      if (!result.success) throw new Error(result.error || 'Registration failed.');
-      status.className = 'form-status show success';
-      status.textContent = 'Registration received. Please check your email/WhatsApp for the next payment step.';
+    const button=document.getElementById('submitRegistration');
+    const status=document.getElementById('registrationStatus');
+    const formData=new URLSearchParams(new FormData(registrationForm));
+    formData.set('package','Complete Academy Package — $100 one-time');
+    button.disabled=true;
+    button.textContent='Submitting...';
+    status.className='form-status show';
+    status.textContent='Submitting your registration...';
+    try{
+      const response=await fetch(REGISTRATION_ENDPOINT,{method:'POST',body:formData});
+      const result=await response.json();
+      if(!result.success) throw new Error(result.error||'Registration failed.');
+      status.className='form-status show success';
+      status.textContent='Registration received. Please check your email/WhatsApp for the next payment step.';
       registrationForm.reset();
-    } catch (error) {
-      status.className = 'form-status show error';
-      status.textContent = 'We could not submit the registration. Please try again or contact us on WhatsApp.';
-    } finally {
-      button.disabled = false;
-      button.textContent = 'Submit Registration';
+    }catch(error){
+      status.className='form-status show error';
+      status.textContent='We could not submit the registration. Please try again or contact Hybrid Traders.';
+    }finally{
+      button.disabled=false;
+      button.textContent='Submit Registration';
     }
   });
 }
 
+/* STUDENT LOGIN — keeps the existing academy backend action */
 const portalLoginBtn=document.getElementById('portalLoginBtn');
 if(portalLoginBtn){
   portalLoginBtn.addEventListener('click',async()=>{
@@ -296,87 +801,85 @@ if(portalLoginBtn){
     const status=document.getElementById('portalStatus');
     const classroom=document.getElementById('classroom');
     status.className='portal-status show';
-    if(!email || !code){
+    if(!email||!code){
       status.className='portal-status show error';
       status.textContent='Enter both your registered email and student access code.';
-      classroom.classList.remove('show'); return;
+      classroom.classList.remove('show');
+      return;
     }
     status.textContent='Verifying your student access...';
     try{
       const body=new URLSearchParams({action:'login',email:email,accessCode:code});
-      const response=await fetch(REGISTRATION_ENDPOINT,{method:'POST',body:body});
+      const response=await fetch(REGISTRATION_ENDPOINT,{method:'POST',body});
       const result=await response.json();
       if(!result.success) throw new Error(result.error||'Access denied.');
-      result.student.accessCode=code; sessionStorage.setItem('hybridStudent',JSON.stringify(result.student));
+      result.student.accessCode=code;
+      sessionStorage.setItem('hybridStudent',JSON.stringify(result.student));
       status.className='portal-status show success';
       status.textContent='Access verified. Welcome, '+(result.student.fullName||'Student')+'.';
-      const welcome=document.querySelector('#panel-dashboard h3');
+      const welcome=document.getElementById('studentWelcome');
       if(welcome) welcome.textContent='Welcome, '+(result.student.fullName||'Student');
       classroom.classList.add('show');
       classroom.scrollIntoView({behavior:'smooth',block:'start'});
     }catch(error){
       status.className='portal-status show error';
-      status.textContent=error.message||'Access could not be verified. Please contact Hybrid Traders.';
+      status.textContent=error.message||'Access could not be verified.';
       classroom.classList.remove('show');
     }
   });
 }
-document.querySelectorAll('.lesson-btn').forEach(btn=>btn.addEventListener('click',()=>{
-  alert('Module access is ready for the classroom build. The full lesson content will be added to this module before student launch.');
-}));
 
-
-/* ===== V3 STUDENT DASHBOARD ===== */
+/* DASHBOARD TABS */
 document.querySelectorAll('.dash-tab').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('.dash-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+  document.querySelectorAll('.dash-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
   document.querySelectorAll('.portal-panel').forEach(p=>p.classList.remove('active'));
-  const panel=document.getElementById('panel-'+btn.dataset.tab); if(panel) panel.classList.add('active');
-}));
-document.querySelectorAll('.dash-open').forEach(btn=>btn.addEventListener('click',()=>{
-  const b=document.querySelector('.dash-tab[data-tab="'+btn.dataset.tabTarget+'"]'); if(b) b.click();
-}));
-const lessonMap={
-"Forex Foundations":["What is Forex?","Currency Pairs","Pips, Lots & Spread","Trading Sessions","Market Orders & Execution"],
-"Market Structure":["Structure Basics","Higher Highs & Higher Lows","Breaks & Shifts","Key Areas","Top-Down Context"],
-"Technical Analysis":["Chart Reading","Support & Resistance","Confluence","Market Context","Building a Trading Plan"],
-"Price Action":["Candlestick Behaviour","Reactions","Continuation Structures","Position & Structure","Entry Context"],
-"Risk Management":["Risk Per Trade","Position Sizing","Stop Loss Planning","Risk / Reward","Capital Preservation"],
-"Trading Psychology":["Trading Discipline","Patience","Emotional Decisions","Process Over Outcome","Review Habits"],
-"Trade Execution":["Trade Plan","Entry Models","Invalidation","Trade Management","Post-Trade Review"],
-"Live Market Analysis":["Top-Down Analysis","Scenario Planning","Position / Structure / Entry","Execution Review","Weekly Review"]
-};
-document.querySelectorAll('.course-open').forEach(btn=>btn.addEventListener('click',()=>{
- const c=btn.dataset.course, lessons=lessonMap[c]||[];
- const box=document.getElementById('courseLessonDetail');
- box.innerHTML='<h4>'+c+'</h4><ul class="check-list">'+lessons.map((x,i)=>'<li>'+x+' <span style="float:right;color:#6f6a61">Lesson '+(i+1)+'</span></li>').join('')+'</ul>';
- box.scrollIntoView({behavior:'smooth',block:'nearest'});
+  const panel=document.getElementById('panel-'+btn.dataset.tab);
+  if(panel) panel.classList.add('active');
 }));
 
+/* JOURNAL */
 function renderJournal(){
- const rows=document.getElementById('journalRows'); if(!rows) return;
- const data=JSON.parse(localStorage.getItem('hybridJournal')||'[]');
- rows.innerHTML=data.length?data.map(x=>'<tr><td>'+x.date+'</td><td>'+x.pair+'</td><td>'+x.direction+'</td><td>'+x.result+'</td><td>'+x.notes.replace(/</g,'&lt;')+'</td></tr>').join(''):'<tr><td colspan="5">No journal entries yet.</td></tr>';
+  const rows=document.getElementById('journalRows');
+  if(!rows)return;
+  const data=JSON.parse(localStorage.getItem('hybridJournal')||'[]');
+  rows.innerHTML=data.length?data.map(x=>'<tr><td>'+x.date+'</td><td>'+x.pair+'</td><td>'+x.direction+'</td><td>'+x.result+'</td><td>'+String(x.notes).replace(/</g,'&lt;')+'</td></tr>').join(''):'<tr><td colspan="5">No journal entries yet.</td></tr>';
 }
 const jf=document.getElementById('journalForm');
-if(jf) jf.addEventListener('submit',async e=>{
- e.preventDefault();
- const student=JSON.parse(sessionStorage.getItem('hybridStudent')||'null');
- const entry={date:document.getElementById('jDate').value,pair:document.getElementById('jPair').value,direction:document.getElementById('jDirection').value,result:document.getElementById('jResult').value,notes:document.getElementById('jNotes').value};
- if(student && student.email && student.accessCode){
-   try{
-     const body=new URLSearchParams({action:'journal',email:student.email,accessCode:student.accessCode,date:entry.date,instrument:entry.pair,direction:entry.direction,result:entry.result,notes:entry.notes});
-     const r=await fetch(REGISTRATION_ENDPOINT,{method:'POST',body});
-     const result=await r.json();
-     if(!result.success) throw new Error(result.error||'Could not save journal.');
-   }catch(err){ alert(err.message||'Journal could not be saved online.'); return; }
- }
- const data=JSON.parse(localStorage.getItem('hybridJournal')||'[]');
- data.unshift(entry); localStorage.setItem('hybridJournal',JSON.stringify(data.slice(0,50))); jf.reset(); renderJournal();
-});
+if(jf){
+  jf.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const student=JSON.parse(sessionStorage.getItem('hybridStudent')||'null');
+    const entry={
+      date:document.getElementById('jDate').value,
+      pair:document.getElementById('jPair').value,
+      direction:document.getElementById('jDirection').value,
+      result:document.getElementById('jResult').value,
+      notes:document.getElementById('jNotes').value
+    };
+    if(student&&student.email&&student.accessCode){
+      try{
+        const body=new URLSearchParams({
+          action:'journal',email:student.email,accessCode:student.accessCode,
+          date:entry.date,instrument:entry.pair,direction:entry.direction,
+          result:entry.result,notes:entry.notes
+        });
+        const r=await fetch(REGISTRATION_ENDPOINT,{method:'POST',body});
+        const result=await r.json();
+        if(!result.success)throw new Error(result.error||'Could not save journal.');
+      }catch(err){
+        alert(err.message||'Journal could not be saved online.');
+        return;
+      }
+    }
+    const data=JSON.parse(localStorage.getItem('hybridJournal')||'[]');
+    data.unshift(entry);
+    localStorage.setItem('hybridJournal',JSON.stringify(data.slice(0,50)));
+    jf.reset();
+    renderJournal();
+  });
+}
 renderJournal();
-const db=document.getElementById('discordBtn');
-if(db) db.addEventListener('click',()=>alert('Your final Hybrid Traders Discord invite link can be connected here once you provide the invite URL.'));
-
 </script>
 </body>
 </html>
