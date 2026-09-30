@@ -1,68 +1,102 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Assessment | Hybrid Traders Academy</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Assessments | Hybrid Traders Academy</title>
 <link rel="stylesheet" href="styles.css?v=20260930">
 <style>
-.assess-wrap{max-width:900px;margin:auto}.question{margin:18px 0;padding:22px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.025)}.question h3{margin:0 0 15px}.option{display:block;padding:10px 12px;margin:8px 0;border:1px solid rgba(255,255,255,.08);border-radius:10px;color:#ddd;cursor:pointer}.option:hover{border-color:rgba(212,175,55,.45)}.result{display:none;margin-top:24px;padding:24px;border:1px solid rgba(212,175,55,.35);border-radius:16px}.answer{margin-top:10px;color:var(--muted);font-size:.92rem}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.assess-wrap{max-width:900px;margin:auto}.question{margin:18px 0;padding:22px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.025)}.question h3{margin:0 0 15px}.option{display:block;padding:12px;margin:8px 0;border:1px solid rgba(255,255,255,.08);border-radius:10px;color:#ddd;cursor:pointer}.option:hover{border-color:rgba(212,175,55,.45)}.option input{margin-right:9px}.result{display:none;margin-top:24px;padding:24px;border:1px solid rgba(212,175,55,.35);border-radius:16px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.error{padding:25px;border:1px solid rgba(255,80,80,.3);border-radius:16px;color:#ddd}
 </style>
 </head>
 <body>
-<header class="nav"><a class="logo" href="index.html"><span class="mark">H</span><span>HYBRID TRADERS <b>ACADEMY</b></span></a><div class="nav-actions"><a class="login" href="student-dashboard.html">DASHBOARD</a><a class="login" href="course.html">COURSE HUB</a></div></header>
+<header class="nav">
+<a class="logo" href="index.html"><span class="mark">H</span><span>HYBRID TRADERS <b>ACADEMY</b></span></a>
+<div class="nav-actions"><a class="login" href="student-dashboard.html">DASHBOARD</a><a class="login" href="course.html">COURSE HUB</a></div>
+</header>
 <main class="form-page"><div class="assess-wrap" id="app"></div></main>
 <script>
+const API='https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec';
 const banks={
-"market-structure":{title:"Market Structure",qs:[
-["What sequence describes a bullish trend?","Higher highs and higher lows",["Lower highs and lower lows","Equal highs and equal lows","Random highs and lows"]],
-["What should you define before relying on a structural break?","The level that invalidates your thesis",["A guaranteed target","A fixed indicator setting","A news headline"]],
-["What is a useful starting point for structural analysis?","Meaningful swing highs and lows",["Every candle","Only the lowest timeframe","A random entry signal"]],
-["Why combine structure with location?","Because context helps determine whether a structural signal is meaningful",["Because location guarantees profit","Because indicators become unnecessary","Because every zone is tradable"]],
-["If a lower timeframe is unclear, what should you do?","Keep the higher-timeframe context rather than forcing a lower-timeframe entry",["Enter anyway","Change instruments immediately","Increase risk"]]]
-,"technical-analysis":{title:"Technical Analysis",qs:[
-["What is the purpose of a significant support or resistance zone?","To identify an area where price has previously reacted",["To guarantee a reversal","To predict every candle","To replace risk management"]],
-["What is the preferred role of a lower timeframe?","Refine a higher-timeframe thesis when it becomes clearer",["Replace the higher timeframe","Create more signals","Increase trade frequency"]],
-["What is confluence?","Several independent pieces of evidence supporting the same scenario",["Using as many indicators as possible","Adding random levels","A guaranteed setup"]],
-["Which sequence follows the Academy's top-down approach?","Weekly → Daily → 4H → 1H",["1H → 5M → Weekly → Daily","Random timeframes","1M → 5M only"]],
-["What should be removed from a chart?","Information that does not improve the decision",["All structure","All price action","The trading plan"]]]
-,"price-action":{title:"Price Action",qs:[
-["When does a candle reaction have the most meaning?","When it occurs at a meaningful location",["When it is the biggest candle","When it appears alone","When an indicator confirms it"]],
-["What should a formation be treated as?","Evidence that must be interpreted in context",["An automatic signal","A guaranteed reversal","A reason to ignore structure"]],
-["What can follow an impulse before continuation?","A consolidation or continuation structure",["Guaranteed reversal","No price movement","A fixed profit"]],
-["What should an entry condition include?","A clear trigger and invalidation",["Only a target","Only an indicator","A prediction with no invalidation"]],
-["Why is isolated candle reading risky?","Because the same candle can mean different things in different contexts",["Candles have no value","All candles are identical","It guarantees losses"]]]
-,"risk-management":{title:"Risk Management",qs:[
-["When should risk be defined?","Before the trade is opened",["After profit appears","After the stop is hit","At random"]],
-["What does the invalidation level represent?","Where the trade thesis is considered wrong",["A guaranteed target","The entry price","A profit guarantee"]],
-["If the stop distance becomes wider while account risk stays fixed, what generally happens to position size?","It becomes smaller",["It becomes larger","It stays guaranteed","Risk disappears"]],
-["Which is part of responsible exposure management?","Considering correlation and daily limits",["Adding unlimited positions","Moving stops emotionally","Ignoring account risk"]],
-["What should a pre-trade checklist include?","Risk, invalidation, exposure and target",["Only the entry price","Only the chart color","Only recent wins"]]]
-,"trading-psychology":{title:"Trading Psychology",qs:[
-["What is the goal of a defined trading process?","More consistent decision making",["Certainty","Guaranteed profits","Predicting every move"]],
-["What is patience in trading?","Waiting for your conditions instead of forcing a setup",["Trading every session","Entering early","Increasing size"]],
-["Why journal behaviour?","To turn experience into useful feedback",["To guarantee the next result","To avoid reviewing trades","To predict news"]],
-["What should a weekly review identify?","What worked, what failed and what changes next",["Only winning trades","Only profit","A guaranteed forecast"]],
-["Which is an example of process discipline?","Following predefined rules even when emotions are strong",["Chasing a move","Moving invalidation randomly","Ignoring the plan"]]]
-,"trade-execution":{title:"Trade Execution",qs:[
-["What does PSE stand for?","Position / Structure / Entry",["Price / Stop / Equity","Profit / Size / Exit","Plan / Signal / Emotion"]],
-["What does Position answer?","Where price is in the broader market context",["How much profit is guaranteed","Which broker to use","What news will happen"]],
-["What does Structure answer?","What price is doing within that location",["What profit is guaranteed","Which indicator is best","How many trades to take"]],
-["What should invalidate an entry?","A predefined condition showing the thesis is wrong",["Fear after entry","A random candle","A larger position"]],
-["How should targets be selected?","Using meaningful opposing structure or left-side inflections",["At a random distance","Only after price moves","By guaranteeing a fixed return"]]]
-,"live-market-analysis":{title:"Live Market Analysis",qs:[
-["What should a top-down routine begin with?","Higher-timeframe context and important areas",["A random entry","The smallest timeframe","A trade size"]],
-["Why create primary and alternative scenarios?","Markets can develop in more than one way",["To guarantee the outcome","To avoid invalidation","To increase risk"]],
-["What should each scenario have?","A clear activation condition and invalidation",["A guaranteed target only","No rules","Unlimited risk"]],
-["Why review analysis after the market develops?","To compare the original thesis with what actually happened",["To rewrite history","To guarantee future results","To avoid journaling"]],
-["What is a key live-analysis principle?","Do not force a trade when the conditions are unclear",["Always trade","Increase risk when uncertain","Ignore higher timeframes"]]]
-}};
-const key=new URLSearchParams(location.search).get("module"),b=banks[key],app=document.getElementById("app");
-const student=JSON.parse(sessionStorage.getItem("hybridStudent")||"null");
-const API=window.HYBRID_API||'https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec';
-async function serverAssessment(score,total,passed){if(!student?.email||!student?.accessCode)return null;try{const r=await fetch(API,{method:'POST',body:new URLSearchParams({action:'save_assessment',email:student.email,accessCode:student.accessCode,module:key,score:String(score),total:String(total),passed:String(passed),completedAt:new Date().toISOString()})});return await r.json();}catch(e){return null;}}
-if(!b){app.innerHTML='<span class="eyebrow">ASSESSMENTS</span><h1>MODULE ASSESSMENTS</h1><p style="color:var(--muted)">Complete the assessment for each Academy subject.</p><div class="dashboard-grid">'+Object.entries(banks).map(([k,v],i)=>'<a class="dash-card" href="assessment.html?module='+k+'"><span>'+String(i+1).padStart(2,"0")+' · ASSESSMENT</span><h2>'+v.title+'</h2><p>5 questions · 80% pass threshold</p></a>').join("")+'</div><a class="button gold" style="display:inline-block;margin-top:30px" href="student-dashboard.html">BACK TO DASHBOARD</a>';}
-else{
-app.innerHTML='<span class="eyebrow">MODULE ASSESSMENT</span><h1>'+b.title+'</h1><p style="color:var(--muted)">5 questions. Pass mark: <strong>80%</strong>. Your result is saved on this browser.</p><form id="quiz">'+b.qs.map((q,i)=>'<section class="question"><h3>'+(i+1)+'. '+q[0]+'</h3>'+[q[1],...q[2]].map((o,j)=>'<label class="option"><input required type="radio" name="q'+i+'" value="'+j+'"> '+o+'</label>').join("")+'<div class="answer" id="a'+i+'"></div></section>').join("")+'<div class="actions"><button class="button gold" type="submit">SUBMIT ASSESSMENT</button><a class="button" href="course.html?module='+key+'">BACK TO MODULE</a></div></form><div class="result" id="result"></div>';}
-document.getElementById("quiz")?.addEventListener("submit",e=>{e.preventDefault();let score=0;b.qs.forEach((q,i)=>{const chosen=+document.querySelector('input[name=q'+i+']:checked').value;if(chosen===0)score++;document.getElementById("a"+i).textContent="Correct answer: "+q[1];});const pass=score/b.qs.length>=.8;const results=JSON.parse(localStorage.getItem("htaAssessments")||"{}");results[key]={score,total:b.qs.length,passed:pass,completedAt:new Date().toISOString()};localStorage.setItem("htaAssessments",JSON.stringify(results));serverAssessment(score,b.qs.length,pass);const r=document.getElementById("result");r.style.display="block";r.innerHTML='<h2>'+score+'/'+b.qs.length+' — '+(pass?"Assessment Passed":"Assessment Not Passed")+'</h2><p style="color:var(--muted)">'+(pass?"You reached the 80% pass threshold.":"Review the module lessons and try again when ready.")+'</p><div class="actions"><a class="button gold" href="assessment.html?module='+key+'">RETAKE</a><a class="button" href="student-dashboard.html">DASHBOARD</a></div>';window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});});
+'market-structure':{title:'Market Structure',qs:[
+['What sequence describes a bullish trend?','Higher highs and higher lows',['Lower highs and lower lows','Equal highs and equal lows','Random highs and lows']],
+['What should you define before relying on a structural break?','The level that invalidates your thesis',['A guaranteed target','A fixed indicator setting','A news headline']],
+['What is a useful starting point for structural analysis?','Meaningful swing highs and lows',['Every candle','Only the lowest timeframe','A random entry signal']],
+['Why combine structure with location?','Because context helps determine whether a structural signal is meaningful',['Because location guarantees profit','Because indicators become unnecessary','Because every zone is tradable']],
+['If a lower timeframe is unclear, what should you do?','Keep the higher-timeframe context rather than forcing a lower-timeframe entry',['Enter anyway','Change instruments immediately','Increase risk']]]},
+' technical-analysis':{title:'Technical Analysis',qs:[
+['What is the purpose of a significant support or resistance zone?','To identify an area where price has previously reacted',['To guarantee a reversal','To predict every candle','To replace risk management']],
+['What is the preferred role of a lower timeframe?','Refine a higher-timeframe thesis when it becomes clearer',['Replace the higher timeframe','Create more signals','Increase trade frequency']],
+['What is confluence?','Several independent pieces of evidence supporting the same scenario',['Using as many indicators as possible','Adding random levels','A guaranteed setup']],
+['Which sequence follows the Academy top-down approach?','Weekly → Daily → 4H → 1H',['1H → 5M → Weekly → Daily','Random timeframes','1M → 5M only']],
+['What should be removed from a chart?','Information that does not improve the decision',['All structure','All price action','The trading plan']]]},
+'price-action':{title:'Price Action',qs:[
+['When does a candle reaction have the most meaning?','When it occurs at a meaningful location',['When it is the biggest candle','When it appears alone','When an indicator confirms it']],
+['What should a formation be treated as?','Evidence that must be interpreted in context',['An automatic signal','A guaranteed reversal','A reason to ignore structure']],
+['What can follow an impulse before continuation?','A consolidation or continuation structure',['Guaranteed reversal','No price movement','A fixed profit']],
+['What should an entry condition include?','A clear trigger and invalidation',['Only a target','Only an indicator','A prediction with no invalidation']],
+['Why is isolated candle reading risky?','Because the same candle can mean different things in different contexts',['Candles have no value','All candles are identical','It guarantees losses']]]},
+'risk-management':{title:'Risk Management',qs:[
+['When should risk be defined?','Before the trade is opened',['After profit appears','After the stop is hit','At random']],
+['What does the invalidation level represent?','Where the trade thesis is considered wrong',['A guaranteed target','The entry price','A profit guarantee']],
+['If stop distance becomes wider while account risk stays fixed, what generally happens to position size?','It becomes smaller',['It becomes larger','It stays guaranteed','Risk disappears']],
+['Which is part of responsible exposure management?','Considering correlation and daily limits',['Adding unlimited positions','Moving stops emotionally','Ignoring account risk']],
+['What should a pre-trade checklist include?','Risk, invalidation, exposure and target',['Only the entry price','Only the chart color','Only recent wins']]]},
+'trading-psychology':{title:'Trading Psychology',qs:[
+['What is the goal of a defined trading process?','More consistent decision making',['Certainty','Guaranteed profits','Predicting every move']],
+['What is patience in trading?','Waiting for your conditions instead of forcing a setup',['Trading every session','Entering early','Increasing size']],
+['Why journal behaviour?','To turn experience into useful feedback',['To guarantee the next result','To avoid reviewing trades','To predict news']],
+['What should a weekly review identify?','What worked, what failed and what changes next',['Only winning trades','Only profit','A guaranteed forecast']],
+['Which is an example of process discipline?','Following predefined rules even when emotions are strong',['Chasing a move','Moving invalidation randomly','Ignoring the plan']]]},
+'trade-execution':{title:'Trade Execution',qs:[
+['What does PSE stand for?','Position / Structure / Entry',['Price / Stop / Equity','Profit / Size / Exit','Plan / Signal / Emotion']],
+['What does Position answer?','Where price is in the broader market context',['How much profit is guaranteed','Which broker to use','What news will happen']],
+['What does Structure answer?','What price is doing within that location',['What profit is guaranteed','Which indicator is best','How many trades to take']],
+['What should invalidate an entry?','A predefined condition showing the thesis is wrong',['Fear after entry','A random candle','A larger position']],
+['How should targets be selected?','Using meaningful opposing structure or left-side inflections',['At a random distance','Only after price moves','By guaranteeing a fixed return']]]},
+'live-market-analysis':{title:'Live Market Analysis',qs:[
+['What should a top-down routine begin with?','Higher-timeframe context and important areas',['A random entry','The smallest timeframe','A trade size']],
+['Why create primary and alternative scenarios?','Markets can develop in more than one way',['To guarantee the outcome','To avoid invalidation','To increase risk']],
+['What should each scenario have?','A clear activation condition and invalidation',['A guaranteed target only','No rules','Unlimited risk']],
+['Why review analysis after the market develops?','To compare the original thesis with what actually happened',['To rewrite history','To guarantee future results','To avoid journaling']],
+['What is a key live-analysis principle?','Do not force a trade when the conditions are unclear',['Always trade','Increase risk when uncertain','Ignore higher timeframes']]]}
+};
+// Remove accidental leading whitespace from the technical-analysis key.
+banks['technical-analysis']=banks[' technical-analysis'];delete banks[' technical-analysis'];
+const app=document.getElementById('app');
+const key=new URLSearchParams(location.search).get('module');
+const bank=banks[key];
+const student=JSON.parse(sessionStorage.getItem('hybridStudent')||'null');
+function esc(v){return String(v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c];});}
+function renderBank(){
+ if(!bank){
+  app.innerHTML='<span class="eyebrow">ASSESSMENTS</span><h1>MODULE ASSESSMENTS</h1><p style="color:var(--muted)">Choose a subject to begin its five-question assessment. Pass mark: 80%.</p><div class="dashboard-grid">'+Object.keys(banks).map(function(k,i){return '<a class="dash-card" href="assessment.html?module='+encodeURIComponent(k)+'"><span>'+String(i+1).padStart(2,'0')+' · ASSESSMENT</span><h2>'+esc(banks[k].title)+'</h2><p>5 questions · 80% pass threshold</p></a>';}).join('')+'</div><a class="button gold" style="display:inline-block;margin-top:30px" href="student-dashboard.html">BACK TO DASHBOARD</a>';
+  return;
+ }
+ app.innerHTML='<span class="eyebrow">MODULE ASSESSMENT</span><h1>'+esc(bank.title)+'</h1><p style="color:var(--muted)">Five questions. Pass mark: <strong>80%</strong>. Your result is saved to your Academy account.</p><form id="quiz">'+bank.qs.map(function(q,i){var opts=[q[1]].concat(q[2]);return '<section class="question"><h3>'+(i+1)+'. '+esc(q[0])+'</h3>'+opts.map(function(o,j){return '<label class="option"><input required type="radio" name="q'+i+'" value="'+j+'"> '+esc(o)+'</label>';}).join('')+'</section>';}).join('')+'<div class="actions"><button class="button gold" type="submit">SUBMIT ASSESSMENT</button><a class="button" href="course.html?module='+encodeURIComponent(key)+'">BACK TO MODULE</a></div></form><div class="result" id="result"></div>';
+ document.getElementById('quiz').addEventListener('submit',submitQuiz);
+}
+async function submitQuiz(e){
+ e.preventDefault();
+ var score=0;
+ bank.qs.forEach(function(q,i){var chosen=document.querySelector('input[name="q'+i+'"]:checked');if(chosen&&Number(chosen.value)===0)score++;});
+ var total=bank.qs.length,passed=score/total>=0.8;
+ var results=JSON.parse(localStorage.getItem('htaAssessments')||'{}');
+ results[key]={score:score,total:total,passed:passed,completedAt:new Date().toISOString()};
+ localStorage.setItem('htaAssessments',JSON.stringify(results));
+ var resultBox=document.getElementById('result');
+ resultBox.style.display='block';
+ resultBox.innerHTML='<h2>'+score+'/'+total+' — '+(passed?'Assessment Passed':'Assessment Not Passed')+'</h2><p style="color:var(--muted)">'+(passed?'You reached the 80% pass threshold. Your result is being saved to your student account.':'You did not reach the 80% pass threshold. Review the module and try again when ready.')+'</p><div class="actions"><a class="button gold" href="assessment.html?module='+encodeURIComponent(key)+'">RETAKE</a><a class="button" href="student-dashboard.html">DASHBOARD</a></div>';
+ if(student&&student.email&&student.accessCode){
+  try{
+   var response=await fetch(API,{method:'POST',body:new URLSearchParams({action:'save_assessment',email:student.email,accessCode:student.accessCode,module:key,score:String(score),total:String(total),passed:String(passed),completedAt:new Date().toISOString()})});
+   var data=await response.json();
+   if(!data.success)resultBox.innerHTML+='<p style="color:#aaa">The local result was saved, but the server returned: '+esc(data.error||'unknown error')+'</p>';
+  }catch(err){resultBox.innerHTML+='<p style="color:#aaa">The result was recorded on this device. Server synchronization will be retried from the dashboard.</p>';}
+ }
+ resultBox.scrollIntoView({behavior:'smooth',block:'center'});
+}
+renderBank();
 </script>
-</body></html>
+</body>
+</html>
