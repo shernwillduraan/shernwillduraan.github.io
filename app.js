@@ -1,4 +1,5 @@
 const API='https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec';
+window.HYBRID_API=API;
 const form=document.getElementById('registrationForm');
 if(form){form.addEventListener('submit',async e=>{
  e.preventDefault(); const notice=document.getElementById('notice'),button=form.querySelector('button'),d=new FormData(form);
@@ -10,7 +11,7 @@ if(form){form.addEventListener('submit',async e=>{
 const login=document.getElementById('loginForm');
 if(login){login.addEventListener('submit',async e=>{
  e.preventDefault(); const notice=document.getElementById('notice'),button=login.querySelector('button'); notice.className='notice show';notice.textContent='Checking your access...';button.disabled=true;
- try{const r=await fetch(API,{method:'POST',body:new URLSearchParams({action:'login',email:document.getElementById('email').value.trim(),accessCode:document.getElementById('code').value.trim()})});const j=await r.json();if(j.success){sessionStorage.setItem('hybridStudent',JSON.stringify(j.student));location.href='student-dashboard.html';}else throw new Error(j.error||'Login details were not accepted.');}
+ try{const email=document.getElementById('email').value.trim(),accessCode=document.getElementById('code').value.trim();const r=await fetch(API,{method:'POST',body:new URLSearchParams({action:'login',email,accessCode})});const j=await r.json();if(j.success){sessionStorage.setItem('hybridStudent',JSON.stringify({...j.student,accessCode}));location.href='student-dashboard.html';}else throw new Error(j.error||'Login details were not accepted.');}
  catch(err){notice.textContent=err.message||'Login could not be completed.';button.disabled=false;}
 });}
 document.querySelectorAll('.menu').forEach(m=>m.addEventListener('click',()=>document.querySelector('.nav nav')?.classList.toggle('open')));
