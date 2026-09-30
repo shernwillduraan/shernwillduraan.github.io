@@ -1,5 +1,30 @@
-const HYBRID_CONFIG={registrationApi:'https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec',paymentUrl:'payment.html'};
-const form=document.getElementById('enroll');
-if(form){form.addEventListener('submit',async e=>{e.preventDefault();const n=document.getElementById('notice'),b=form.querySelector('button'),data=new URLSearchParams(new FormData(form));data.set('action','register');data.set('package','ROAD TO SUCCESS — $100 one-time');b.disabled=true;b.textContent='PROCESSING...';n.className='notice show';n.textContent='Submitting your registration...';try{await fetch(HYBRID_CONFIG.registrationApi,{method:'POST',body:data,mode:'no-cors'});n.className='notice show';n.textContent='Registration submitted successfully. Continue to payment.';setTimeout(()=>location.href=HYBRID_CONFIG.paymentUrl,900)}catch(err){n.className='notice show';n.textContent='We could not connect to the registration service. Please try again.';b.disabled=false;b.textContent='CONTINUE'}})}
-const login=document.getElementById('login');
-if(login){login.addEventListener('submit',async e=>{e.preventDefault();const n=document.getElementById('notice'),b=login.querySelector('button'),data=new URLSearchParams({action:'login',email:document.getElementById('email').value.trim(),accessCode:document.getElementById('code').value.trim()});b.disabled=true;b.textContent='SIGNING IN...';n.className='notice show';n.textContent='Checking your academy access...';try{const r=await fetch(HYBRID_CONFIG.registrationApi,{method:'POST',body:data}),j=await r.json();if(j.success){sessionStorage.setItem('hybridStudent',JSON.stringify(j.student));location.href='student-dashboard.html'}else{n.textContent=j.error||'Login could not be completed.';b.disabled=false;b.textContent='SIGN IN'}}catch(err){n.textContent='The student service could not be reached. Please try again.';b.disabled=false;b.textContent='SIGN IN'}})}
+const API='https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec';
+const form=document.getElementById('registrationForm');
+if(form){
+ form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const notice=document.getElementById('notice'),button=form.querySelector('button');
+  const d=new FormData(form);
+  notice.className='notice show'; notice.textContent='Submitting your registration...';
+  button.disabled=true; button.textContent='PROCESSING...';
+  try{
+   await fetch(API,{method:'POST',mode:'no-cors',body:new URLSearchParams({action:'register',fullName:d.get('fullName'),email:d.get('email'),whatsapp:d.get('whatsapp'),experience:d.get('experience'),goal:d.get('goal')})});
+   notice.textContent='Registration submitted. Your details have been received. Payment is the next step.';
+   button.textContent='REGISTRATION RECEIVED'; form.reset();
+  }catch(err){notice.textContent='We could not reach the registration service. Please try again.';button.disabled=false;button.textContent='CONTINUE';}
+ });
+}
+const login=document.getElementById('loginForm');
+if(login){
+ login.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const notice=document.getElementById('notice'),button=login.querySelector('button');
+  notice.className='notice show';notice.textContent='Checking your access...';button.disabled=true;
+  try{
+   const r=await fetch(API,{method:'POST',body:new URLSearchParams({action:'login',email:document.getElementById('email').value.trim(),accessCode:document.getElementById('code').value.trim()})});
+   const j=await r.json();
+   if(j.success){sessionStorage.setItem('hybridStudent',JSON.stringify(j.student));location.href='student-dashboard.html';}
+   else{throw new Error(j.error||'Login details were not accepted.');}
+  }catch(err){notice.textContent=err.message;button.disabled=false;}
+ });
+}
