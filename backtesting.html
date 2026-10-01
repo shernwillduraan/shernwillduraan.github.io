@@ -52,10 +52,10 @@ const chart=LightweightCharts.createChart(document.getElementById('tvchart'),{
  crosshair:{mode:LightweightCharts.CrosshairMode.Normal,vertLine:{color:'#758696',width:1,style:LightweightCharts.LineStyle.Dashed,labelBackgroundColor:'#434651'},horzLine:{color:'#758696',width:1,style:LightweightCharts.LineStyle.Dashed,labelBackgroundColor:'#434651'}},
  handleScale:{axisPressedMouseMove:true,axisDoubleClickReset:true},
  rightPriceScale:{borderColor:'#2a2e39',textColor:'#d1d4dc',scaleMargins:{top:.08,bottom:.08}},
- timeScale:{borderColor:'#2a2e39',timeVisible:true,secondsVisible:false,handleScroll:true,handleScale:true,lockVisibleTimeRangeOnResize:true,rightOffset:10,barSpacing:5,minBarSpacing:1.5}
+ timeScale:{borderColor:'#2a2e39',timeVisible:true,secondsVisible:false,handleScroll:true,handleScale:true,lockVisibleTimeRangeOnResize:true,rightOffset:14,barSpacing:3.2,minBarSpacing:1}
 });
 const series=chart.addSeries(LightweightCharts.CandlestickSeries,{upColor:'#26a69a',downColor:'#ef5350',borderUpColor:'#26a69a',borderDownColor:'#ef5350',wickUpColor:'#26a69a',wickDownColor:'#ef5350'});
-let seed=42,visible=480,startIndex=400,windowSize=120,timer=null,currentSymbol='XAUUSD',currentTF='15M',trades=0,wins=0,losses=0,tool='select',drawings=[],draft=null,drag=null,selectedId=null,undoStack=[],redoStack=[],percentScale=false,scaleBase=null,measureLive=null;
+let seed=42,visible=480,startIndex=400,windowSize=180,timer=null,currentSymbol='XAUUSD',currentTF='15M',trades=0,wins=0,losses=0,tool='select',drawings=[],draft=null,drag=null,selectedId=null,undoStack=[],redoStack=[],percentScale=false,scaleBase=null,measureLive=null;
 const tfMap={'1M':60,'3M':180,'5M':300,'15M':900,'30M':1800,'1H':3600,'2H':7200,'4H':14400,'6H':21600,'8H':28800,'12H':43200,'1D':86400,'1W':604800,'1MO':2592000};
 const symbols={XAUUSD:2380,EURUSD:1.08,GBPUSD:1.27,USDJPY:150,US30:42000,GER30:19000,NAS100:20000};
 function rng(){seed=(seed*9301+49297)%233280;return seed/233280}
