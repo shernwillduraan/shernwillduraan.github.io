@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Course | Hybrid Traders Academy</title>
+<title>Beginners Package | Hybrid Traders Academy</title>
 <link rel="stylesheet" href="styles.css?v=20260930">
 <style>
 .course-wrap{max-width:1050px;margin:auto}.course-hero{padding:28px 0 10px}.module-meta{color:var(--muted);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}.lesson{margin-top:18px;padding:24px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.025)}.lesson h3{margin:5px 0 10px}.lesson p,.lesson li{color:var(--muted);line-height:1.7}.lesson ul{padding-left:20px}.progress-box{margin:22px 0;padding:18px;border:1px solid rgba(212,175,55,.25);border-radius:16px}.bar{height:8px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--gold,#d4af37);transition:.3s}.check{display:flex;gap:10px;align-items:center;margin-top:18px;color:#ddd}.check input{accent-color:#d4af37}.back{display:inline-block;margin-top:25px}.objectives{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.objective{padding:16px;border-radius:12px;background:rgba(255,255,255,.035);color:var(--muted)}.lesson-note,.study-panel{margin:20px 0;padding:18px;border:1px solid rgba(212,175,55,.2);border-radius:14px;background:rgba(212,175,55,.035)}.lesson-note strong,.study-panel strong{letter-spacing:.08em;font-size:.78rem}.lesson-note p,.study-panel p{margin-bottom:0}.study-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.study-item{padding:15px;border-radius:12px;background:rgba(255,255,255,.035)}.study-item h5{margin:0 0 8px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}.study-item p{margin:0}@media(max-width:700px){.objectives{grid-template-columns:1fr}.study-grid{grid-template-columns:1fr}}
@@ -12,17 +12,18 @@
 <body>
 <header class="nav"><a class="logo" href="index.html"><span class="mark">H</span><span>HYBRID TRADERS <b>ACADEMY</b></span></a><div class="nav-actions"><a class="login" href="student-dashboard.html">DASHBOARD</a><a class="login" href="index.html">HOME</a></div></header>
 <main class="form-page"><div class="course-wrap" id="app">
-<span class="eyebrow">ACADEMY SMC PROGRAM</span>
-<h1>COURSE HUB</h1>
-<p style="color:var(--muted);max-width:780px">Master the Hybrid Traders Academy SMC curriculum from structure and liquidity through execution and live market analysis.</p>
+<span class="eyebrow">BEGINNERS PACKAGE · SMC FOUNDATIONS</span>
+<h1>BEGINNERS PACKAGE</h1>
+<p style="color:var(--muted);max-width:780px">A structured introduction to Smart Money Concepts (SMC). Learn the core language of price: market structure, liquidity, order blocks, Fair Value Gaps, premium &amp; discount, and disciplined execution.</p>
+<div class="lesson-note"><strong>BEGINNER LEARNING PATH</strong><p>Start with the concepts in order. Each lesson explains the idea in plain language, shows what to look for on a chart, highlights common mistakes, and gives you a practical exercise. The diagrams are textbook-style teaching visuals designed to help you understand the concept before applying it to a live or historical chart.</p></div>
 <div class="dashboard-grid">
-<a class="dash-card" href="market-structure.html"><span>01 · SMC FOUNDATION</span><h2>Market Structure</h2><p>Understand structure, BOS and CHoCH.</p></a>
-<a class="dash-card" href="liquidity.html"><span>02 · SMC CORE</span><h2>Liquidity</h2><p>Study buy-side, sell-side liquidity and sweeps.</p></a>
-<a class="dash-card" href="order-blocks.html"><span>03 · SMC CORE</span><h2>Order Blocks</h2><p>Learn to identify and filter order blocks.</p></a>
-<a class="dash-card" href="fair-value-gaps.html"><span>04 · SMC CORE</span><h2>Fair Value Gaps</h2><p>Understand imbalances and FVG confluence.</p></a>
-<a class="dash-card" href="premium-discount.html"><span>05 · SMC FRAMEWORK</span><h2>Premium &amp; Discount</h2><p>Use dealing ranges and SMC location.</p></a>
-<a class="dash-card" href="trade-execution.html"><span>06 · EXECUTION</span><h2>SMC Trade Execution</h2><p>Apply the PSE execution framework.</p></a>
-<a class="dash-card" href="live-market-analysis.html"><span>07 · LIVE APPLICATION</span><h2>Live Market Analysis</h2><p>Build complete top-down SMC analysis.</p></a>
+<a class="dash-card" href="market-structure.html"><span>01 · BEGINNERS · SMC FOUNDATION</span><h2>Market Structure</h2><p>Understand structure, BOS and CHoCH.</p></a>
+<a class="dash-card" href="liquidity.html"><span>02 · BEGINNERS · SMC CORE</span><h2>Liquidity</h2><p>Study buy-side, sell-side liquidity and sweeps.</p></a>
+<a class="dash-card" href="order-blocks.html"><span>03 · BEGINNERS · SMC CORE</span><h2>Order Blocks</h2><p>Learn to identify and filter order blocks.</p></a>
+<a class="dash-card" href="fair-value-gaps.html"><span>04 · BEGINNERS · SMC CORE</span><h2>Fair Value Gaps</h2><p>Understand imbalances and FVG confluence.</p></a>
+<a class="dash-card" href="premium-discount.html"><span>05 · BEGINNERS · SMC FRAMEWORK</span><h2>Premium &amp; Discount</h2><p>Use dealing ranges and SMC location.</p></a>
+<a class="dash-card" href="trade-execution.html"><span>06 · BEGINNERS · EXECUTION</span><h2>SMC Trade Execution</h2><p>Apply the PSE execution framework.</p></a>
+<a class="dash-card" href="live-market-analysis.html"><span>07 · BEGINNERS · LIVE APPLICATION</span><h2>Live Market Analysis</h2><p>Build complete top-down SMC analysis.</p></a>
 </div>
 </div></main>
 <script>
@@ -73,7 +74,7 @@ return {focus:x[0],look:x[1],mistake:x[2],check:x[3]};
 }
 const key=new URLSearchParams(location.search).get("module"),c=courses[key];
 const app=document.getElementById("app");
-if(!c){app.innerHTML='<span class="eyebrow">ACADEMY SMC PROGRAM</span><h1>COURSE HUB</h1><p style="color:var(--muted);max-width:780px">Master the Hybrid Traders Academy SMC curriculum from structure and liquidity through execution and live market analysis.</p><div class="dashboard-grid">'+Object.entries(courses).map(([k,v],i)=>'<a class="dash-card" href="course.html?module='+k+'"><span>'+String(i+1).padStart(2,"0")+' · '+v.stage.split(" · ")[1]+'</span><h2>'+v.title+'</h2><p>'+v.intro+'</p></a>').join("")+'</div><a class="button gold" style="display:inline-block;margin-top:30px" href="student-dashboard.html">BACK TO DASHBOARD</a>';}
+if(!c){app.innerHTML='<span class="eyebrow">BEGINNERS PACKAGE · SMC FOUNDATIONS</span><h1>BEGINNERS PACKAGE</h1><p style="color:var(--muted);max-width:780px">Work through the SMC curriculum from structure and liquidity through execution and live market analysis.</p><div class="dashboard-grid">'+Object.entries(courses).map(([k,v],i)=>'<a class="dash-card" href="course.html?module='+k+'"><span>'+String(i+1).padStart(2,"0")+' · '+v.stage.split(" · ")[1]+'</span><h2>'+v.title+'</h2><p>'+v.intro+'</p></a>').join("")+'</div><a class="button gold" style="display:inline-block;margin-top:30px" href="student-dashboard.html">BACK TO DASHBOARD</a>';}
 else{
 const saved=JSON.parse(localStorage.getItem("htaProgress")||"{}"),done=saved[key]||[];
 const student=JSON.parse(sessionStorage.getItem("hybridStudent")||"null");
