@@ -6,3 +6,33 @@
 
 .dashboard-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:40px}.dash-card{padding:30px;border:1px solid var(--line);background:#0b0b0a;min-height:210px}.dash-card>span{color:var(--gold2);font-size:9px;letter-spacing:2px}.dash-card h2{font-size:24px;margin:45px 0 8px}.dash-card p{color:var(--muted);font-size:13px}.dash-card small{color:#887d68;letter-spacing:2px;font-size:8px}.legal-card{max-width:900px;margin:auto;border:1px solid var(--line);background:#0b0b0a;padding:50px}.legal-card h1{font-size:clamp(48px,7vw,82px);line-height:.9;letter-spacing:-4px;margin:15px 0 45px}.legal-card h2{font-size:22px;color:var(--gold2);margin-top:35px}.legal-card p{color:var(--muted);max-width:780px}.nav nav.open{display:flex;position:absolute;top:76px;left:0;right:0;background:#050505f5;padding:20px;flex-direction:column;gap:16px;border-bottom:1px solid var(--line)}
 @media(max-width:1000px){.dashboard-grid{grid-template-columns:1fr}}
+/* MOBILE SAFETY LAYER — 2026-10-01 */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+img,video,iframe,svg{max-width:100%;height:auto}
+button,input,select,textarea{max-width:100%;box-sizing:border-box}
+@media(max-width:600px){
+  .nav{height:68px;padding:0 12px;gap:8px}
+  .logo{min-width:0;max-width:58%;font-size:8px;letter-spacing:1px;white-space:nowrap;overflow:hidden}
+  .mark{width:32px;height:32px;min-width:32px;font-size:17px}
+  .nav-actions{display:flex!important;gap:5px;min-width:0;flex-wrap:nowrap}
+  .nav-actions .login,.nav-actions .nav-cta{padding:8px 7px;font-size:7px;letter-spacing:.7px;white-space:nowrap}
+  .form-page{padding-top:105px}
+  .dashboard-grid{grid-template-columns:1fr;gap:12px}
+  .dash-card{min-height:0;padding:22px}
+  .dash-card h2{margin-top:25px;font-size:21px}
+  .lesson{padding:18px;margin-top:14px}
+  .visual-card{padding:15px;overflow:hidden}
+  .visual-card svg{display:block;width:100%;height:auto}
+  .study-grid{grid-template-columns:1fr}
+  .objectives{grid-template-columns:1fr}
+  .question{padding:17px;margin:12px 0}
+  .option{padding:11px;font-size:14px}
+  .legal-card{padding:28px 20px}
+  .portal-card{padding:25px 18px}
+}
+@media(max-width:360px){
+  .logo{max-width:51%;font-size:7px}
+  .nav-actions .login,.nav-actions .nav-cta{padding:7px 5px;font-size:6.5px}
+  .button{width:100%;padding:0 14px}
+  .actions .button{width:100%}
+}
