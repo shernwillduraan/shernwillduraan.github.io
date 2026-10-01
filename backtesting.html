@@ -24,113 +24,52 @@
 </div></main>
 <script src="https://unpkg.com/lightweight-charts@5.0.0/dist/lightweight-charts.standalone.production.js"></script>
 <script>
-const stage=document.getElementById('chartStage');
-const overlay=document.getElementById('drawOverlay');
+const stage=document.getElementById('chartStage'),overlay=document.getElementById('drawOverlay');
 const chart=LightweightCharts.createChart(document.getElementById('tvchart'),{
  layout:{background:{type:'solid',color:'#080808'},textColor:'#999'},
  grid:{vertLines:{color:'#171717'},horzLines:{color:'#171717'}},
- rightPriceScale:{borderColor:'#333'},
- timeScale:{borderColor:'#333',timeVisible:true,secondsVisible:false,handleScroll:true,handleScale:true}
+ crosshair:{mode:LightweightCharts.CrosshairMode.Normal,vertLine:{color:'#d4af37',width:1,style:LightweightCharts.LineStyle.Dashed,labelBackgroundColor:'#d4af37'},horzLine:{color:'#d4af37',width:1,style:LightweightCharts.LineStyle.Dashed,labelBackgroundColor:'#d4af37'}},
+ rightPriceScale:{borderColor:'#333',scaleMargins:{top:.08,bottom:.08}},
+ timeScale:{borderColor:'#333',timeVisible:true,secondsVisible:false,handleScroll:true,handleScale:true,lockVisibleTimeRangeOnResize:true}
 });
 const series=chart.addSeries(LightweightCharts.CandlestickSeries,{upColor:'#d4af37',downColor:'#555',borderUpColor:'#d4af37',borderDownColor:'#555',wickUpColor:'#d4af37',wickDownColor:'#888'});
 let seed=42,visible=80,timer=null,currentSymbol='XAUUSD',currentTF='15M',trades=0,wins=0,losses=0,tool='select',drawings=[],draft=null,drag=null,selectedId=null;
 const tfMap={'1M':60,'3M':180,'5M':300,'15M':900,'30M':1800,'1H':3600,'2H':7200,'4H':14400,'6H':21600,'8H':28800,'12H':43200,'1D':86400,'1W':604800,'1MO':2592000};
 const symbols={XAUUSD:2380,EURUSD:1.08,GBPUSD:1.27,USDJPY:150,US30:42000,GER30:19000,NAS100:20000};
 function rng(){seed=(seed*9301+49297)%233280;return seed/233280}
-function make(symbol,tf){
- seed=Array.from(symbol+tf).reduce((a,c)=>a+c.charCodeAt(0),42);
- let p=symbols[symbol]||100,step=p>1000?p*.003:p*.002,base=Math.floor(Date.now()/86400000)*86400;
- return Array.from({length:300},(_,i)=>{let o=p,c=o+(rng()-.47)*step,h=Math.max(o,c)+rng()*step*.7,l=Math.min(o,c)-rng()*step*.7;p=c;return{time:base+i*(tfMap[tf]||60),open:o,high:h,low:l,close:c}})
-}
+function make(symbol,tf){seed=Array.from(symbol+tf).reduce((a,c)=>a+c.charCodeAt(0),42);let p=symbols[symbol]||100,step=p>1000?p*.003:p*.002,base=Math.floor(Date.now()/86400000)*86400;return Array.from({length:300},(_,i)=>{let o=p,c=o+(rng()-.47)*step,h=Math.max(o,c)+rng()*step*.7,l=Math.min(o,c)-rng()*step*.7;p=c;return{time:base+i*(tfMap[tf]||60),open:o,high:h,low:l,close:c}})}
 let bars=make(currentSymbol,currentTF);
 function hud(){document.getElementById('hud').textContent='CANDLE '+visible+' / '+bars.length+' · '+currentSymbol+' · '+currentTF}
 function refresh(){document.getElementById('trades').textContent=trades;document.getElementById('wins').textContent=wins;document.getElementById('losses').textContent=losses;document.getElementById('rate').textContent=(trades?Math.round(wins/trades*100):0)+'%'}
+function resizeChart(){const w=stage.clientWidth,h=stage.clientHeight;if(w&&h)chart.resize(w,h);renderDrawings()}
 function step(n){visible=Math.max(2,Math.min(bars.length,visible+n));series.setData(bars.slice(0,visible));hud();renderDrawings()}
-function render(){series.setData(bars.slice(0,visible));chart.timeScale().fitContent();hud();refresh();renderDrawings()}
-function rebuild(){bars=make(currentSymbol,currentTF);visible=80;series.setData(bars.slice(0,visible));chart.timeScale().fitContent();document.getElementById('symbol').textContent=currentSymbol+' · '+currentTF;hud();loadDrawings();selectedId=null;renderDrawings()}
-function xyToPoint(x,y){
- const rect=stage.getBoundingClientRect(),px=x-rect.left,py=y-rect.top;
- const time=chart.timeScale().coordinateToTime(px),price=series.coordinateToPrice(py);
- return time==null||price==null?null:{time,price}
-}
+function render(){series.setData(bars.slice(0,visible));chart.timeScale().fitContent();hud();refresh();resizeChart();loadDrawings();renderDrawings()}
+function rebuild(){bars=make(currentSymbol,currentTF);visible=80;series.setData(bars.slice(0,visible));document.getElementById('symbol').textContent=currentSymbol+' · '+currentTF;hud();loadDrawings();selectedId=null;resizeChart();chart.timeScale().fitContent();renderDrawings()}
+function xyToPoint(clientX,clientY){const r=stage.getBoundingClientRect(),x=clientX-r.left,y=clientY-r.top,t=chart.timeScale().coordinateToTime(x),p=series.coordinateToPrice(y);return t==null||p==null?null:{time:t,price:p}}
 function pointToXY(p){const x=chart.timeScale().timeToCoordinate(p.time),y=series.priceToCoordinate(p.price);return x==null||y==null?null:{x,y}}
 function saveDrawings(){try{localStorage.setItem('htaBacktestDrawings_'+currentSymbol+'_'+currentTF,JSON.stringify(drawings))}catch(e){}}
 function loadDrawings(){try{drawings=JSON.parse(localStorage.getItem('htaBacktestDrawings_'+currentSymbol+'_'+currentTF)||'[]')}catch(e){drawings=[]}}
 function esc(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
-function renderDrawings(){
- const r=stage.getBoundingClientRect(); overlay.setAttribute('viewBox','0 0 '+r.width+' '+r.height');overlay.innerHTML='';
- const add=(html,id)=>{overlay.insertAdjacentHTML('beforeend',html);const el=overlay.lastElementChild;if(id)el.dataset.id=id};
- drawings.forEach(d=>{
-   const a=pointToXY(d.a),b=d.b&&pointToXY(d.b),sel=d.id===selectedId?' selected':'';
-   if(!a)return;
-   if(d.type==='hline') overlay.insertAdjacentHTML('beforeend',`<line class="shape${sel}" data-id="${d.id}" x1="0" y1="${a.y}" x2="${r.width}" y2="${a.y}"/>`);
-   if(d.type==='vline') overlay.insertAdjacentHTML('beforeend',`<line class="shape${sel}" data-id="${d.id}" x1="${a.x}" y1="0" x2="${a.x}" y2="${r.height}"/>`);
-   if((d.type==='trend'||d.type==='ray')&&b){let x2=b.x,y2=b.y;if(d.type==='ray'){const dx=b.x-a.x,dy=b.y-a.y;if(Math.abs(dx)>1){x2=dx>0?r.width:0;y2=a.y+dy*(x2-a.x)/dx}}overlay.insertAdjacentHTML('beforeend',`<line class="shape${sel}" data-id="${d.id}" x1="${a.x}" y1="${a.y}" x2="${x2}" y2="${y2}"/>`)}
-   if(d.type==='rect'&&b)overlay.insertAdjacentHTML('beforeend',`<rect class="shape${sel}" data-id="${d.id}" x="${Math.min(a.x,b.x)}" y="${Math.min(a.y,b.y)}" width="${Math.abs(b.x-a.x)}" height="${Math.abs(b.y-a.y)}" fill="rgba(212,175,55,.10)"/>`);
-   if(d.type==='fib'&&b){const ys=[a.y,b.y,a.y+(b.y-a.y)*.236,a.y+(b.y-a.y)*.382,a.y+(b.y-a.y)*.5,a.y+(b.y-a.y)*.618,a.y+(b.y-a.y)*.786];ys.forEach((y,i)=>overlay.insertAdjacentHTML('beforeend',`<line class="fib" data-id="${d.id}" x1="${Math.min(a.x,b.x)}" y1="${y}" x2="${Math.max(a.x,b.x)}" y2="${y}"/><text data-id="${d.id}" x="${Math.max(a.x,b.x)+5}" y="${y-3}">${[0,100,23.6,38.2,50,61.8,78.6][i]}%</text>`))}
-   if(d.type==='text')overlay.insertAdjacentHTML('beforeend',`<text class="shape${sel}" data-id="${d.id}" x="${a.x}" y="${a.y}" fill="#d4af37">${esc(d.text||'SMC NOTE')}</text>`);
- });
- if(draft){const a=pointToXY(draft.a),b=draft.b&&pointToXY(draft.b);if(a&&b)overlay.insertAdjacentHTML('beforeend',`<line class="shape" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" opacity=".5"/>`)}
-}
-function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
-function nearestDrawing(p){
- let best=null,dist=18;
- drawings.forEach(d=>{const a=pointToXY(d.a);if(a){const q=Math.hypot(a.x-(p.x||0),a.y-(p.y||0));if(q<dist){dist=q;best={d,part:'a'}}}if(d.b){const b=pointToXY(d.b);if(b){const q=Math.hypot(b.x-(p.x||0),b.y-(p.y||0));if(q<dist){dist=q;best={d,part:'b'}}}}});
- return best;
-}
-function pointerPoint(e){return xyToPoint(e.clientX,e.clientY)}
-stage.addEventListener('pointerdown',e=>{
- if(tool==='select'){const p=pointerPoint(e);if(!p)return;const hit=nearestDrawing({x:e.clientX-stage.getBoundingClientRect().left,y:e.clientY-stage.getBoundingClientRect().top});if(hit){selectedId=hit.d.id;drag={hit,start:p};stage.setPointerCapture(e.pointerId);renderDrawings()}else{selectedId=null;renderDrawings()}return}
- const p=pointerPoint(e);if(!p)return;
- if(tool==='hline'||tool==='vline'){drawings.push({id:id(),type:tool,a:p});selectedId=drawings.at(-1).id;saveDrawings();renderDrawings();return}
- if(tool==='text'){const t=prompt('Text for this chart note:','SMC NOTE');if(t){drawings.push({id:id(),type:'text',a:p,text:t});selectedId=drawings.at(-1).id;saveDrawings();renderDrawings()}return}
- draft={id:id(),type:tool,a:p,b:p};stage.setPointerCapture(e.pointerId);overlay.classList.add('drawing');renderDrawings();
-});
-stage.addEventListener('pointermove',e=>{
- if(drag){const p=pointerPoint(e);if(!p)return;drag.hit.d[drag.hit.part]=p;saveDrawings();renderDrawings();return}
- if(draft){const p=pointerPoint(e);if(p){draft.b=p;renderDrawings()}}
-});
-stage.addEventListener('pointerup',e=>{
- if(drag){drag=null;saveDrawings();return}
- if(draft){const p=pointerPoint(e);if(p)draft.b=p;if(draft.b){drawings.push(draft);selectedId=draft.id;saveDrawings()}draft=null;overlay.classList.remove('drawing');renderDrawings()}
-});
+function renderDrawings(){const r=stage.getBoundingClientRect();overlay.setAttribute('viewBox','0 0 '+r.width+' '+r.height);overlay.innerHTML='';drawings.forEach(d=>{const a=pointToXY(d.a),b=d.b&&pointToXY(d.b),sel=d.id===selectedId?' selected':'';if(!a)return;
+ if(d.type==='hline')overlay.insertAdjacentHTML('beforeend',`<line class="shape${sel}" data-id="${d.id}" x1="0" y1="${a.y}" x2="${r.width}" y2="${a.y}"/>`);
+ if(d.type==='vline')overlay.insertAdjacentHTML('beforeend',`<line class="shape${sel}" data-id="${d.id}" x1="${a.x}" y1="0" x2="${a.x}" y2="${r.height}"/>`);
+ if((d.type==='trend'||d.type==='ray')&&b){let x2=b.x,y2=b.y;if(d.type==='ray'){const dx=b.x-a.x,dy=b.y-a.y;if(Math.abs(dx)>1){x2=dx>0?r.width:0;y2=a.y+dy*(x2-a.x)/dx}}overlay.insertAdjacentHTML('beforeend',`<line class="shape${sel}" data-id="${d.id}" x1="${a.x}" y1="${a.y}" x2="${x2}" y2="${y2}"/>`)}
+ if(d.type==='rect'&&b)overlay.insertAdjacentHTML('beforeend',`<rect class="shape${sel}" data-id="${d.id}" x="${Math.min(a.x,b.x)}" y="${Math.min(a.y,b.y)}" width="${Math.abs(b.x-a.x)}" height="${Math.abs(b.y-a.y)}" fill="rgba(212,175,55,.10)"/>`);
+ if(d.type==='fib'&&b){const levels=[0,.236,.382,.5,.618,.786,1];levels.forEach((v,i)=>{const y=a.y+(b.y-a.y)*v;overlay.insertAdjacentHTML('beforeend',`<line class="fib" data-id="${d.id}" x1="${Math.min(a.x,b.x)}" y1="${y}" x2="${Math.max(a.x,b.x)}" y2="${y}"/><text data-id="${d.id}" x="${Math.max(a.x,b.x)+5}" y="${y-3}">${(v*100).toFixed(1)}%</text>`)})}
+ if(d.type==='text')overlay.insertAdjacentHTML('beforeend',`<text class="shape${sel}" data-id="${d.id}" x="${a.x}" y="${a.y}">${esc(d.text||'SMC NOTE')}</text>`);
+});if(draft){const a=pointToXY(draft.a),b=draft.b&&pointToXY(draft.b);if(a&&b)overlay.insertAdjacentHTML('beforeend',`<line class="shape" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" opacity=".5"/>`)}}
+function nearest(p){let best=null,dist=18;drawings.forEach(d=>{const pts=[['a',pointToXY(d.a)],['b',d.b&&pointToXY(d.b)]];pts.forEach(([part,q])=>{if(q){const dd=Math.hypot(q.x-p.x,q.y-p.y);if(dd<dist){dist=dd;best={d,part}}}})});return best}
+function pointer(e){const r=stage.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+stage.addEventListener('pointerdown',e=>{const q=pointer(e);if(tool==='select'){const hit=nearest(q);selectedId=hit?hit.d.id:null;if(hit){drag={hit};stage.setPointerCapture(e.pointerId)}renderDrawings();return}const p=xyToPoint(e.clientX,e.clientY);if(!p)return;if(tool==='hline'||tool==='vline'){drawings.push({id:crypto.randomUUID(),type:tool,a:p});selectedId=drawings.at(-1).id;saveDrawings();renderDrawings();return}if(tool==='text'){const t=prompt('Text for this chart note:','SMC NOTE');if(t){drawings.push({id:crypto.randomUUID(),type:'text',a:p,text:t});selectedId=drawings.at(-1).id;saveDrawings();renderDrawings()}return}draft={id:crypto.randomUUID(),type:tool,a:p,b:p};stage.setPointerCapture(e.pointerId);renderDrawings()});
+stage.addEventListener('pointermove',e=>{if(drag){const p=xyToPoint(e.clientX,e.clientY);if(p){drag.hit.d[drag.hit.part]=p;saveDrawings();renderDrawings()}return}if(draft){const p=xyToPoint(e.clientX,e.clientY);if(p){draft.b=p;renderDrawings()}}});
+stage.addEventListener('pointerup',e=>{if(drag){drag=null;saveDrawings();return}if(draft){const p=xyToPoint(e.clientX,e.clientY);if(p)draft.b=p;if(draft.b){drawings.push(draft);selectedId=draft.id;saveDrawings()}draft=null;renderDrawings()}});
 document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{tool=b.dataset.tool;document.querySelectorAll('[data-tool]').forEach(x=>x.classList.toggle('active',x===b));overlay.style.pointerEvents=tool==='select'?'none':'auto'});
-document.getElementById('clearDrawings').onclick=()=>{if(confirm('Clear all drawings for this symbol and timeframe?')){drawings=[];selectedId=null;saveDrawings();renderDrawings()}};
+document.getElementById('clearDrawings').onclick=()=>{drawings=[];selectedId=null;saveDrawings();renderDrawings()};
 document.addEventListener('keydown',e=>{if(e.key==='Delete'&&selectedId){drawings=drawings.filter(d=>d.id!==selectedId);selectedId=null;saveDrawings();renderDrawings()}});
 document.getElementById('prev').onclick=()=>step(-1);document.getElementById('next').onclick=()=>step(1);
 document.getElementById('reset').onclick=()=>{visible=80;trades=wins=losses=0;document.getElementById('result').textContent='';render()};
 document.getElementById('play').onclick=()=>{if(timer){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶ PLAY'}else{document.getElementById('play').textContent='Ⅱ PAUSE';timer=setInterval(()=>{if(visible>=bars.length){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶ PLAY'}else step(1)},500)}};
-document.getElementById('symbolSelect').onchange=e=>{currentSymbol=e.target.value;loadDrawings();rebuild()};
-document.getElementById('tf').onchange=e=>{currentTF=e.target.value;loadDrawings();rebuild()};
-function simulate(side){
- let entry=+document.getElementById('entry').value,sl=+document.getElementById('sl').value,tp=+document.getElementById('tp').value;
- if(!entry||!sl||!tp){document.getElementById('result').textContent='Enter Entry, Stop Loss and Take Profit first.';return}
- let future=bars.slice(visible,Math.min(visible+20,bars.length));
- let win=side==='buy'?future.some(b=>b.high>=tp)&&!future.some(b=>b.low<=sl):future.some(b=>b.low<=tp)&&!future.some(b=>b.high>=sl);
- trades++;win?wins++:losses++;document.getElementById('result').textContent=(win?'✓ SIMULATED WIN':'✕ SIMULATED LOSS')+' · '+side.toUpperCase()+' · '+currentSymbol+' · '+currentTF;refresh()
-}
-document.getElementById('buy').onclick=()=>simulate('buy');document.getElementById('sell').onclick=()=>simulate('sell');
-window.addEventListener('resize',()=>{chart.resize(stage.clientWidth,stage.clientHeight);renderDrawings()});
-loadDrawings();render();
-</script>
-<script>
-const chartEl=document.querySelector('.chart'); chartEl.innerHTML='<div id="tvchart" style="position:absolute;inset:0"></div><div class="hud" id="hud">BACKTESTING</div>';
-const chart=LightweightCharts.createChart(document.getElementById('tvchart'),{layout:{background:{type:'solid',color:'#080808'},textColor:'#999'},grid:{vertLines:{color:'#171717'},horzLines:{color:'#171717'}},rightPriceScale:{borderColor:'#333'},timeScale:{borderColor:'#333',timeVisible:true,secondsVisible:false,handleScroll:true,handleScale:true}});
-const series=chart.addSeries(LightweightCharts.CandlestickSeries,{upColor:'#d4af37',downColor:'#555',borderUpColor:'#d4af37',borderDownColor:'#555',wickUpColor:'#d4af37',wickDownColor:'#888'});
-let seed=42,visible=80,timer=null,currentSymbol='XAUUSD',currentTF='1M',trades=0,wins=0,losses=0;
-const tfMap={'1M':60,'3M':180,'5M':300,'15M':900,'30M':1800,'1H':3600,'2H':7200,'4H':14400,'6H':21600,'8H':28800,'12H':43200,'1D':86400,'1W':604800,'1MO':2592000};
-function rng(){seed=(seed*9301+49297)%233280;return seed/233280}
-function make(symbol,tf){seed=Array.from(symbol+tf).reduce((a,c)=>a+c.charCodeAt(0),42);let p={XAUUSD:2380,EURUSD:1.08,GBPUSD:1.27,USDJPY:150,US30:42000,GER30:19000,NAS100:20000}[symbol]||100;let step=p>1000?p*.003:p*.002,base=Math.floor(Date.now()/86400000)*86400;return Array.from({length:300},(_,i)=>{let o=p,c=o+(rng()-.47)*step,h=Math.max(o,c)+rng()*step*.7,l=Math.min(o,c)-rng()*step*.7;p=c;return{time:base+i*(tfMap[tf]||60),open:o,high:h,low:l,close:c}})}
-let bars=make(currentSymbol,currentTF);
-function render(){series.setData(bars.slice(0,visible));chart.timeScale().fitContent();document.getElementById('hud').textContent='CANDLE '+visible+' / '+bars.length+' · '+currentSymbol+' · '+currentTF;refresh()}
-function refresh(){document.getElementById('trades').textContent=trades;document.getElementById('wins').textContent=wins;document.getElementById('losses').textContent=losses;document.getElementById('rate').textContent=(trades?Math.round(wins/trades*100):0)+'%'}
-function step(n){visible=Math.max(2,Math.min(bars.length,visible+n));series.setData(bars.slice(0,visible));document.getElementById('hud').textContent='CANDLE '+visible+' / '+bars.length+' · '+currentSymbol+' · '+currentTF}
-function rebuild(){bars=make(currentSymbol,currentTF);visible=80;series.setData(bars.slice(0,visible));chart.timeScale().fitContent();document.getElementById('symbol').textContent=currentSymbol+' · '+currentTF;document.getElementById('hud').textContent='CANDLE '+visible+' / '+bars.length+' · '+currentSymbol+' · '+currentTF}
-document.getElementById('prev').onclick=()=>step(-1);document.getElementById('next').onclick=()=>step(1);
-document.getElementById('reset').onclick=()=>{visible=80;trades=wins=losses=0;document.getElementById('result').textContent='';render()};
-document.getElementById('play').onclick=()=>{if(timer){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶ PLAY'}else{document.getElementById('play').textContent='Ⅱ PAUSE';timer=setInterval(()=>{if(visible>=bars.length){clearInterval(timer);timer=null;document.getElementById('play').textContent='▶ PLAY'}else step(1)},500)}};
-document.getElementById('symbolSelect').onchange=e=>{currentSymbol=e.target.value;rebuild()};
-document.getElementById('tf').onchange=e=>{currentTF=e.target.value;rebuild()};
-function simulate(side){let entry=+document.getElementById('entry').value,sl=+document.getElementById('sl').value,tp=+document.getElementById('tp').value;if(!entry||!sl||!tp){document.getElementById('result').textContent='Enter Entry, Stop Loss and Take Profit first.';return}let future=bars.slice(visible,Math.min(visible+20,bars.length));let win=side==='buy'?future.some(b=>b.high>=tp)&&!future.some(b=>b.low<=sl):future.some(b=>b.low<=tp)&&!future.some(b=>b.high>=sl);trades++;win?wins++:losses++;document.getElementById('result').textContent=(win?'✓ SIMULATED WIN':'✕ SIMULATED LOSS')+' · '+side.toUpperCase()+' · '+currentSymbol+' · '+currentTF;refresh()}
-document.getElementById('buy').onclick=()=>simulate('buy');document.getElementById('sell').onclick=()=>simulate('sell');document.getElementById('back').onclick=()=>history.back();render();
+document.getElementById('symbolSelect').onchange=e=>{currentSymbol=e.target.value;rebuild()};document.getElementById('tf').onchange=e=>{currentTF=e.target.value;rebuild()};
+function simulate(side){const entry=+document.getElementById('entry').value,sl=+document.getElementById('sl').value,tp=+document.getElementById('tp').value;if(!entry||!sl||!tp){document.getElementById('result').textContent='Enter Entry, Stop Loss and Take Profit first.';return}const future=bars.slice(visible,Math.min(visible+20,bars.length));const win=side==='buy'?future.some(b=>b.high>=tp)&&!future.some(b=>b.low<=sl):future.some(b=>b.low<=tp)&&!future.some(b=>b.high>=sl);trades++;win?wins++:losses++;document.getElementById('result').textContent=(win?'✓ SIMULATED WIN':'✕ SIMULATED LOSS')+' · '+side.toUpperCase()+' · '+currentSymbol+' · '+currentTF;refresh()}
+document.getElementById('buy').onclick=()=>simulate('buy');document.getElementById('sell').onclick=()=>simulate('sell');window.addEventListener('resize',resizeChart);loadDrawings();requestAnimationFrame(render);
 </script></body></html>
