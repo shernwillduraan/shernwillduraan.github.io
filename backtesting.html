@@ -47,7 +47,7 @@ function hud(){document.getElementById('hud').textContent='CANDLE '+visible+' / 
 function refresh(){document.getElementById('trades').textContent=trades;document.getElementById('wins').textContent=wins;document.getElementById('losses').textContent=losses;document.getElementById('rate').textContent=(trades?Math.round(wins/trades*100):0)+'%'}
 function step(n){visible=Math.max(2,Math.min(bars.length,visible+n));series.setData(bars.slice(0,visible));hud();renderDrawings()}
 function render(){series.setData(bars.slice(0,visible));chart.timeScale().fitContent();hud();refresh();renderDrawings()}
-function rebuild(){bars=make(currentSymbol,currentTF);visible=80;series.setData(bars.slice(0,visible));chart.timeScale().fitContent();document.getElementById('symbol').textContent=currentSymbol+' · '+currentTF;hud();drawings=[];selectedId=null;saveDrawings();renderDrawings()}
+function rebuild(){bars=make(currentSymbol,currentTF);visible=80;series.setData(bars.slice(0,visible));chart.timeScale().fitContent();document.getElementById('symbol').textContent=currentSymbol+' · '+currentTF;hud();loadDrawings();selectedId=null;renderDrawings()}
 function xyToPoint(x,y){
  const rect=stage.getBoundingClientRect(),px=x-rect.left,py=y-rect.top;
  const time=chart.timeScale().coordinateToTime(px),price=series.coordinateToPrice(py);
@@ -79,22 +79,22 @@ function nearestDrawing(p){
  return best;
 }
 function pointerPoint(e){return xyToPoint(e.clientX,e.clientY)}
-overlay.addEventListener('pointerdown',e=>{
- if(tool==='select'){const p=pointerPoint(e);if(!p)return;const hit=nearestDrawing({x:e.clientX-stage.getBoundingClientRect().left,y:e.clientY-stage.getBoundingClientRect().top});if(hit){selectedId=hit.d.id;drag={hit,start:p};overlay.setPointerCapture(e.pointerId);renderDrawings()}else{selectedId=null;renderDrawings()}return}
+stage.addEventListener('pointerdown',e=>{
+ if(tool==='select'){const p=pointerPoint(e);if(!p)return;const hit=nearestDrawing({x:e.clientX-stage.getBoundingClientRect().left,y:e.clientY-stage.getBoundingClientRect().top});if(hit){selectedId=hit.d.id;drag={hit,start:p};stage.setPointerCapture(e.pointerId);renderDrawings()}else{selectedId=null;renderDrawings()}return}
  const p=pointerPoint(e);if(!p)return;
  if(tool==='hline'||tool==='vline'){drawings.push({id:id(),type:tool,a:p});selectedId=drawings.at(-1).id;saveDrawings();renderDrawings();return}
  if(tool==='text'){const t=prompt('Text for this chart note:','SMC NOTE');if(t){drawings.push({id:id(),type:'text',a:p,text:t});selectedId=drawings.at(-1).id;saveDrawings();renderDrawings()}return}
- draft={id:id(),type:tool,a:p,b:p};overlay.setPointerCapture(e.pointerId);overlay.classList.add('drawing');renderDrawings();
+ draft={id:id(),type:tool,a:p,b:p};stage.setPointerCapture(e.pointerId);overlay.classList.add('drawing');renderDrawings();
 });
-overlay.addEventListener('pointermove',e=>{
+stage.addEventListener('pointermove',e=>{
  if(drag){const p=pointerPoint(e);if(!p)return;drag.hit.d[drag.hit.part]=p;saveDrawings();renderDrawings();return}
  if(draft){const p=pointerPoint(e);if(p){draft.b=p;renderDrawings()}}
 });
-overlay.addEventListener('pointerup',e=>{
+stage.addEventListener('pointerup',e=>{
  if(drag){drag=null;saveDrawings();return}
  if(draft){const p=pointerPoint(e);if(p)draft.b=p;if(draft.b){drawings.push(draft);selectedId=draft.id;saveDrawings()}draft=null;overlay.classList.remove('drawing');renderDrawings()}
 });
-document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{tool=b.dataset.tool;document.querySelectorAll('[data-tool]').forEach(x=>x.classList.toggle('active',x===b));overlay.style.pointerEvents=tool==='select'?'auto':'auto'});
+document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{tool=b.dataset.tool;document.querySelectorAll('[data-tool]').forEach(x=>x.classList.toggle('active',x===b));overlay.style.pointerEvents=tool==='select'?'none':'auto'});
 document.getElementById('clearDrawings').onclick=()=>{if(confirm('Clear all drawings for this symbol and timeframe?')){drawings=[];selectedId=null;saveDrawings();renderDrawings()}};
 document.addEventListener('keydown',e=>{if(e.key==='Delete'&&selectedId){drawings=drawings.filter(d=>d.id!==selectedId);selectedId=null;saveDrawings();renderDrawings()}});
 document.getElementById('prev').onclick=()=>step(-1);document.getElementById('next').onclick=()=>step(1);
