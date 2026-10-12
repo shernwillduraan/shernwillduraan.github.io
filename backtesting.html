@@ -180,9 +180,14 @@ simulate=function(side){
  const entry=+document.getElementById('entry').value,sl=+document.getElementById('sl').value,tp=+document.getElementById('tp').value;
  if(!entry||!sl||!tp){document.getElementById('result').textContent='Enter Entry, Stop Loss and Take Profit first.';return}
  if((side==='buy'&&(sl>=entry||tp<=entry))||(side==='sell'&&(tp>=entry||sl<=entry))){document.getElementById('result').textContent='Check the setup: BUY needs SL < Entry < TP; SELL needs TP < Entry < SL.';return}
- const from=Math.max(visible,startIndex)+1,future=bars.slice(from,Math.min(from+50,bars.length));let outcome='OPEN',exit=entry;
- for(const b of future){const hitSL=side==='buy'?b.low<=sl:b.high>=sl,hitTP=side==='buy'?b.high>=tp:b.low<=tp;if(hitSL&&hitTP){outcome='LOSS';exit=sl;break}if(hitTP){outcome='WIN';exit=tp;break}if(hitSL){outcome='LOSS';exit=sl;break}}
- if(outcome==='OPEN'){document.getElementById('result').textContent='OPEN · No SL/TP hit in the next 50 candles.';return}
+ const from=Math.max(visible,startIndex)+1,future=bars.slice(from,Math.min(from+50,bars.length));let outcome='OPEN',exit=entry,scan=future;
+ if(document.getElementById('orderType').value==='limit'){
+   const fillIndex=future.findIndex(b=>b.low<=entry&&b.high>=entry);
+   if(fillIndex<0){document.getElementById('result').textContent='LIMIT ORDER NOT FILLED · Entry was not reached in the next 50 candles.';return}
+   scan=future.slice(fillIndex+1);
+ }
+ for(const b of scan){const hitSL=side==='buy'?b.low<=sl:b.high>=sl,hitTP=side==='buy'?b.high>=tp:b.low<=tp;if(hitSL&&hitTP){outcome='LOSS';exit=sl;break}if(hitTP){outcome='WIN';exit=tp;break}if(hitSL){outcome='LOSS';exit=sl;break}}
+ if(outcome==='OPEN'){document.getElementById('result').textContent='OPEN · No SL/TP hit after entry within the replay window.';return}
  const bal=Math.max(1,+document.getElementById('accountBalance').value||10000),riskPct=Math.max(.1,+document.getElementById('riskPercent').value||1),riskCash=bal*riskPct/100,dist=Math.abs(entry-sl),units=dist>0?riskCash/dist:0,pnl=(side==='buy'?exit-entry:entry-exit)*units;
  trades++;if(outcome==='WIN')wins++;else losses++;dailyRealized+=pnl;
  tradeJournal.push({id:tradeJournal.length+1,symbol:currentSymbol,tf:currentTF,side,entry,sl,tp,outcome,pnl,riskCash,units,exit,candle:from,orderType:document.getElementById('orderType').value});
