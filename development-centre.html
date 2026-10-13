@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Student Development Centre — build trading skill through practice, reflection and disciplined improvement.">
+<title>Student Development Centre | Hybrid Traders Academy</title>
+<link rel="stylesheet" href="styles.css?v=20261001">
+<style>
+.dev-wrap{max-width:1050px;margin:auto}.dev-hero{padding:22px 0 28px}.dev-hero p,.muted{color:var(--muted);line-height:1.7}.dev-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0}.dev-card{padding:24px;border:1px solid rgba(212,175,55,.24);border-radius:16px;background:rgba(255,255,255,.025)}.dev-card h2{margin:7px 0 10px}.dev-card p{color:var(--muted);line-height:1.65}.dev-kicker{font-size:.72rem;letter-spacing:.14em;color:#d4af37}.dev-card label{display:block;margin:14px 0 7px;color:#ddd;font-size:.9rem}.dev-card input,.dev-card select,.dev-card textarea{width:100%;box-sizing:border-box;background:#0c0c0c;color:#f4f4f4;border:1px solid #373737;border-radius:8px;padding:12px;font:inherit}.dev-card textarea{min-height:95px;resize:vertical}.skill{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07);color:#ddd}.skill input{width:auto;margin-top:4px;accent-color:#d4af37}.dev-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.status{font-size:.9rem;color:#d4af37;min-height:1.2em;margin-top:12px}.dev-stat{font-size:35px;font-weight:700;color:#d4af37}.review-log{margin-top:18px}.review-entry{border-top:1px solid rgba(255,255,255,.1);padding:14px 0}.review-entry b{color:#eee}.review-entry p{margin:6px 0}.warning{border-left:3px solid #d4af37;padding:10px 14px;background:rgba(212,175,55,.05);color:var(--muted);line-height:1.6}@media(max-width:700px){.dev-grid{grid-template-columns:1fr}.dev-card{padding:18px}}
+</style>
+</head>
+<body>
+<header class="nav"><a class="logo" href="index.html"><span class="mark">H</span><span>HYBRID TRADERS <b>ACADEMY</b></span></a><div class="nav-actions"><a class="login" href="student-dashboard.html">DASHBOARD</a><a class="login" href="course.html">COURSES</a><a class="login" href="profile.html">PROFILE</a><button class="login" id="logout">LOG OUT</button></div></header>
+<main class="form-page"><div class="dev-wrap">
+<section class="dev-hero"><span class="eyebrow">STUDENT DEVELOPMENT CENTRE</span><h1>BUILD THE <em>TRADER.</em></h1><p>Knowledge is only the beginning. Use this centre to set a learning goal, practise core skills, review your decisions and build a repeatable process. Your aim is not to rush into live trading; it is to demonstrate understanding and disciplined practice.</p><div class="warning">Educational practice only. Backtesting and simulated results do not guarantee future performance. Never risk money you cannot afford to lose.</div></section>
+<div class="dev-grid">
+<section class="dev-card"><span class="dev-kicker">01 · YOUR DIRECTION</span><h2>Weekly development goal</h2><p>Choose one skill to improve this week. Keep the goal specific and achievable.</p><label for="goal">My focus this week</label><select id="goal"><option value="Market structure">Market structure</option><option value="Liquidity">Liquidity</option><option value="Order blocks and FVGs">Order blocks and FVGs</option><option value="Multi-timeframe analysis">Multi-timeframe analysis</option><option value="Risk management">Risk management</option><option value="Trade execution and PSE">Trade execution and PSE</option><option value="Psychology and discipline">Psychology and discipline</option><option value="Trade review">Trade review</option></select><label for="target">How will I know I improved?</label><textarea id="target" placeholder="Example: annotate 10 historical charts and explain the setup and invalidation on each."></textarea><div class="dev-actions"><button class="button gold" id="saveGoal" type="button">SAVE MY GOAL</button></div><div class="status" id="goalStatus" aria-live="polite"></div></section>
+<section class="dev-card"><span class="dev-kicker">02 · SKILL CHECK</span><h2>Core trader habits</h2><p>Tick a skill only when you can explain and demonstrate it on a chart without guessing.</p><div id="skills">
+<label class="skill"><input type="checkbox" value="context"> I can describe higher-timeframe context before looking for entries.</label>
+<label class="skill"><input type="checkbox" value="structure"> I can mark meaningful swing highs/lows and explain BOS or CHoCH.</label>
+<label class="skill"><input type="checkbox" value="liquidity"> I can identify likely liquidity areas without assuming they must be taken.</label>
+<label class="skill"><input type="checkbox" value="setup"> I can explain why a setup is valid and what would invalidate it.</label>
+<label class="skill"><input type="checkbox" value="risk"> I calculate risk and position size before simulated execution.</label>
+<label class="skill"><input type="checkbox" value="journal"> I record the plan and review the result, including mistakes.</label>
+</div><div class="dev-stat" id="skillCount">0 / 6</div><p class="muted">Self-check progress. It is not a certification or proof of profitability.</p></section>
+<section class="dev-card"><span class="dev-kicker">03 · WEEKLY REVIEW</span><h2>Reflect and improve</h2><p>Complete a short review after your practice session. Focus on decisions and process, not only wins or losses.</p><label for="practice">What did I practise?</label><textarea id="practice" placeholder="Charts reviewed, lesson completed, or simulated trades taken"></textarea><label for="strength">What did I do well?</label><textarea id="strength" placeholder="Name the decision or rule you followed correctly"></textarea><label for="improve">What will I change next time?</label><textarea id="improve" placeholder="Identify one specific adjustment"></textarea><label for="discipline">Did I follow my plan?</label><select id="discipline"><option value="Yes">Yes — I followed my rules</option><option value="Partly">Partly — I missed a rule</option><option value="No">No — I need to review my process</option></select><div class="dev-actions"><button class="button gold" id="saveReview" type="button">SAVE WEEKLY REVIEW</button><button class="button" id="clearReview" type="button">CLEAR FORM</button></div><div class="status" id="reviewStatus" aria-live="polite"></div></section>
+<section class="dev-card"><span class="dev-kicker">04 · YOUR LEARNING RECORD</span><h2>Progress and next steps</h2><div class="dev-stat" id="reviewCount">0</div><p>weekly reviews saved on this browser</p><div id="goalSummary" class="muted">Set your weekly goal to get started.</div><div id="reviewLog" class="review-log"></div><div class="dev-actions"><a class="button gold" href="course.html">CONTINUE LEARNING</a><a class="button" href="backtesting.html">PRACTISE IN LAB</a><a class="button" href="journal.html">OPEN TRADE JOURNAL</a></div><p class="muted">Privacy note: this first version stores development notes in this browser only. It does not submit reviews to your mentor or sync them to another device.</p></section>
+</div>
+</div></main>
+<script>
+const session = (()=>{try{return JSON.parse(sessionStorage.getItem('hybridStudent')||'null')}catch(e){return null}})();
+if(!session){location.href='student.html'}
+const studentKey = (session && session.email ? session.email.trim().toLowerCase().replace(/[^a-z0-9]/g,'_') : 'guest');
+const storageKey = 'htaDevelopment_' + studentKey;
+const read = ()=>{try{return JSON.parse(localStorage.getItem(storageKey)||'{}')}catch(e){return {}}};
+const write = d=>localStorage.setItem(storageKey,JSON.stringify(d));
+document.getElementById('logout').onclick=()=>{sessionStorage.removeItem('hybridStudent');location.href='student.html'};
+const skills=[...document.querySelectorAll('#skills input')];
+function render(){
+ const d=read(); document.getElementById('goal').value=d.goal?.focus||'Market structure';document.getElementById('target').value=d.goal?.target||'';
+ const done=d.skills||[];skills.forEach(s=>s.checked=done.includes(s.value));document.getElementById('skillCount').textContent=done.length+' / '+skills.length;
+ const reviews=d.reviews||[];document.getElementById('reviewCount').textContent=reviews.length;
+ document.getElementById('goalSummary').textContent=d.goal?.target?'This week: '+d.goal.focus+' — '+d.goal.target:'Set your weekly goal to get started.';
+ document.getElementById('reviewLog').innerHTML=reviews.slice().reverse().map(r=>'<div class="review-entry"><b>'+escapeHtml(r.date)+' · '+escapeHtml(r.discipline)+'</b><p><strong>Practised:</strong> '+escapeHtml(r.practice||'Not recorded')+'</p><p><strong>Went well:</strong> '+escapeHtml(r.strength||'Not recorded')+'</p><p><strong>Next improvement:</strong> '+escapeHtml(r.improve||'Not recorded')+'</p></div>').join('')||'<p class="muted">Your saved weekly reviews will appear here.</p>';
+}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+skills.forEach(s=>s.addEventListener('change',()=>{const d=read();d.skills=skills.filter(x=>x.checked).map(x=>x.value);write(d);render()}));
+document.getElementById('saveGoal').onclick=()=>{const d=read();d.goal={focus:document.getElementById('goal').value,target:document.getElementById('target').value.trim(),updated:new Date().toISOString()};write(d);document.getElementById('goalStatus').textContent='Goal saved on this browser.';render()};
+document.getElementById('saveReview').onclick=()=>{const d=read();d.reviews=d.reviews||[];d.reviews.push({date:new Date().toLocaleDateString(),practice:document.getElementById('practice').value.trim(),strength:document.getElementById('strength').value.trim(),improve:document.getElementById('improve').value.trim(),discipline:document.getElementById('discipline').value});write(d);document.getElementById('reviewStatus').textContent='Review saved. Use your improvement point in your next practice session.';render()};
+document.getElementById('clearReview').onclick=()=>{['practice','strength','improve'].forEach(id=>document.getElementById(id).value='');document.getElementById('discipline').value='Yes';document.getElementById('reviewStatus').textContent='Review form cleared.'};
+render();
+</script></body></html>
