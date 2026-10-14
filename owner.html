@@ -13,7 +13,7 @@ main{max-width:1240px;margin:auto;padding:120px 22px 70px}.panel{background:#0b0
 <div class="panel"><h2>Recent academy activity</h2><ul id="activity" class="activity"><li>Loading…</li></ul></div><p class="note">Sessions expire after 30 minutes. Sign out on shared devices.</p></section>
 </main>
 <script>
-(()=>{const API='https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec';const $=id=>document.getElementById(id);let token=sessionStorage.getItem('htaOwnerToken')||'';
+(()=>{const API='https://script.google.com/macros/s/AKfycbyN7uLMdAO1G30h_9qwBSH0FEunS6LS7tN7APiznB6ATpDt80sy0-rwpyBDSoCPWVCntw/exec';const $=id=>document.getElementById(id);let token=sessionStorage.getItem('htaOwnerToken')||'';
 const msg=(id,s)=>{$(id).textContent=s;$(id).classList.add('show')};
 async function call(action,values={}){const res=await fetch(API,{method:'POST',body:new URLSearchParams({action,...values})});let j;try{j=await res.json()}catch(e){throw Error('The service response was unreadable. Install the updated Code.gs and redeploy the web app.')}if(!j.success)throw Error(j.error||'Request failed');return j}
 function dashboard(){ $('loginPanel').classList.add('hidden');$('dashboard').classList.remove('hidden');$('logout').classList.remove('hidden');load()}
