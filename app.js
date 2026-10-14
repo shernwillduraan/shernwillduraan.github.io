@@ -28,10 +28,11 @@ const login=$('loginForm');
 if(login){
   const portal=$('studentPortal');
   function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-  function renderPortal(student,modules){
+  function renderPortal(student,modules,completedModules=[]){
     if(!portal)return;
-    portal.innerHTML='<section class="panel" style="margin-top:24px;padding:24px;border:1px solid #514329;background:#0b0b09"><span class="eyebrow">STUDENT PORTAL · ACTIVE</span><h2 style="color:#e4c46d">Welcome, '+esc(student.fullName)+'</h2><p style="color:var(--muted)">Student ID: '+esc(student.studentId)+' · '+esc(student.email)+'</p><p>Your account is active. Keep your access code private.</p><h3>YOUR LEARNING PATHWAY</h3><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px">'+modules.map((m,i)=>'<article style="padding:16px;border:1px solid #332b1c;background:#080807"><span style="color:#d4af37">MODULE '+String(i+1).padStart(2,'0')+'</span><h3>'+esc(m)+'</h3><p style="color:var(--muted);font-size:13px">Included in your Academy program.</p></article>').join('')+'</div><button id="studentLogout" class="button ghost" type="button" style="margin-top:18px">SIGN OUT</button></section>';
+    portal.innerHTML='<section class="panel" style="margin-top:24px;padding:24px;border:1px solid #514329;background:#0b0b09"><span class="eyebrow">STUDENT PORTAL · ACTIVE</span><h2 style="color:#e4c46d">Welcome, '+esc(student.fullName)+'</h2><p style="color:var(--muted)">Student ID: '+esc(student.studentId)+' · '+esc(student.email)+'</p><p>Your account is active. Keep your access code private.</p><h3>YOUR LEARNING PATHWAY</h3><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px">'+modules.map((m,i)=>'<article style="padding:16px;border:1px solid #332b1c;background:#080807"><span style="color:#d4af37">MODULE '+String(i+1).padStart(2,'0')+'</span><h3>'+esc(m)+'</h3><p style="color:var(--muted);font-size:13px">Included in your Academy program.</p><button type="button" class="button '+(completedModules.includes(m)?'ghost':'gold')+'" data-complete-module="'+esc(m)+'" '+(completedModules.includes(m)?'disabled':'')+'>'+(completedModules.includes(m)?'COMPLETED ✓':'MARK COMPLETE')+'</button></article>').join('')+'</div><button id="studentLogout" class="button ghost" type="button" style="margin-top:18px">SIGN OUT</button></section>';
     $('studentLogout').addEventListener('click',()=>{sessionStorage.removeItem('htaStudentEmail');sessionStorage.removeItem('htaStudentCode');if(portal)portal.innerHTML='';login.classList.remove('hidden');show($('notice'),'You have signed out.');});
+    portal.querySelectorAll('[data-complete-module]').forEach(btn=>btn.addEventListener('click',async()=>{btn.disabled=true;btn.textContent='SAVING…';try{await api({action:'saveProgress',email:sessionStorage.getItem('htaStudentEmail'),accessCode:sessionStorage.getItem('htaStudentCode'),module:btn.dataset.completeModule});const d=await api({action:'studentDashboard',email:sessionStorage.getItem('htaStudentEmail'),accessCode:sessionStorage.getItem('htaStudentCode')});renderPortal(student,d.modules||[],d.completedModules||[]);}catch(err){btn.disabled=false;btn.textContent='MARK COMPLETE';alert(err.message||'Progress could not be saved.');}}));
     login.classList.add('hidden');
   }
   async function signIn(email,code){
@@ -39,7 +40,7 @@ if(login){
     const dash=await api({action:'studentDashboard',email,accessCode:code});
     sessionStorage.setItem('htaStudentEmail',email);sessionStorage.setItem('htaStudentCode',code);
     show($('notice'),'Login successful. Your student portal is ready.');
-    renderPortal(result.student,dash.modules||[]);
+    renderPortal(result.student,dash.modules||[],dash.completedModules||[]);
   }
   login.addEventListener('submit',async e=>{
     e.preventDefault();const email=$('email').value.trim(),code=$('code').value.trim(),button=login.querySelector('button');
