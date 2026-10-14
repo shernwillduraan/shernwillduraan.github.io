@@ -54,6 +54,7 @@ function htRoute_(e) {
       case 'register': return htRegister_(p);
       case 'login': case 'studentlogin': return htLogin_(p);
       case 'studentdashboard': return htStudentDashboard_(p);
+      case 'saveprogress': return htSaveProgress_(p);
       case 'ownerlogin': return htAdminLogin_(p);
       case 'ownersetup': return htOwnerSetup_(p);
       case 'ownerdata': case 'adminliststudents': return htAdminData_(p);
@@ -126,7 +127,24 @@ function htStudentDashboard_(p) {
   const found=htFindStudent_(email);
   if(!found||String(found.student.Status).toLowerCase()!=='active'||String(found.student['Payment Status']).toLowerCase()!=='paid'||String(found.student['Access Code']).toUpperCase()!==code)
     return htJson_({success:false,error:'Please sign in again with an active student account.'});
-  return htJson_({success:true,student:{studentId:found.student['Student ID'],fullName:found.student['Full Name'],email:found.student.Email,package:found.student.Package},modules:['Market Structure','Technical Analysis','Price Action','Risk Management','Trading Psychology','Trade Execution','Live Market Analysis']});
+  const progressSh=htSS_().getSheetByName('Progress'), progressData=progressSh.getLastRow()>1?progressSh.getRange(2,1,progressSh.getLastRow()-1,5).getValues():[], completedModules=[];
+  progressData.forEach(r=>{if(String(r[1])===String(found.student['Student ID'])){try{const list=JSON.parse(String(r[4]||'[]'));if(Array.isArray(list)&&list.length)completedModules.push(String(r[3]));}catch(_){}}});
+  return htJson_({success:true,student:{studentId:found.student['Student ID'],fullName:found.student['Full Name'],email:found.student.Email,package:found.student.Package},modules:['Market Structure','Technical Analysis','Price Action','Risk Management','Trading Psychology','Trade Execution','Live Market Analysis'],completedModules:completedModules});
+}
+function htSaveProgress_(p) {
+  const email=htClean_(p.email).toLowerCase(), code=htClean_(p.accessCode||p.code).toUpperCase(), module=htClean_(p.module);
+  const allowed=['Market Structure','Technical Analysis','Price Action','Risk Management','Trading Psychology','Trade Execution','Live Market Analysis'];
+  const found=htFindStudent_(email);
+  if(!found||String(found.student.Status).toLowerCase()!=='active'||String(found.student['Payment Status']).toLowerCase()!=='paid'||String(found.student['Access Code']).toUpperCase()!==code)
+    return htJson_({success:false,error:'Please sign in again with an active student account.'});
+  if(!allowed.includes(module))return htJson_({success:false,error:'Unknown learning module.'});
+  const sh=htSS_().getSheetByName('Progress'), last=sh.getLastRow(), data=last>1?sh.getRange(2,1,last-1,5).getValues():[];
+  let rowNum=0;
+  for(let i=0;i<data.length;i++)if(String(data[i][1])===String(found.student['Student ID'])&&String(data[i][3])===module){rowNum=i+2;break;}
+  const row=[new Date(),found.student['Student ID'],email,module,JSON.stringify(['completed'])];
+  if(rowNum)sh.getRange(rowNum,1,1,row.length).setValues([row]);else sh.appendRow(row);
+  htLog_('MODULE_COMPLETED',found.student['Student ID'],email,'Student marked module complete: '+module);
+  return htJson_({success:true,message:'Progress saved.',module:module});
 }
 function htAdminLogin_(p) {
   const email=htClean_(p.email).toLowerCase(), password=String(p.password||'');
