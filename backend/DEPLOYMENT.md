@@ -19,8 +19,12 @@ The website pages in the repository are updated to use the Academy API. The live
 5. Save the script. Select and run `setupAcademy()` once, approve the Google permissions, and check the execution log says it completed. It only writes headers when a tab's first row is empty; it does not replace the existing Students header or records.
 6. Select and run `sendOwnerSetupLink()` once. Approve email permission if asked. A one-time owner password setup link will be sent to `shernwillduraan@gmail.com`. Open that email and set a unique password of at least 14 characters on the Academy admin page. Do not share this password in chat or add it to GitHub.
 7. Go to **Deploy → Manage deployments → Edit** (pencil) → choose **New version** → **Deploy**. Keep the deployment as a web app that executes as you and is accessible to anyone, because students use the public registration/login page. The backend still requires an owner password for admin actions.
-8. Open the existing `/exec` URL and confirm the response says the Academy service is online, version 5.1.
+8. Open the existing `/exec` URL and confirm the response says the Academy service is online, version 5.2.
 9. Hard-refresh the website with Ctrl+F5. Test a registration using your own email first. Check the Students row and registration email. Do not test with a real student's details until this passes.
+
+
+
+**Important safety note:** The GitHub backend source is now version 5.2 and fixes duplicate-email detection. This change does not alter the private Google Apps Script deployment automatically. The existing deployed backend remains in place until the new source is copied into Apps Script and redeployed. No student rows or sheet headers are changed by this code fix.
 
 ## Payment and activation
 
