@@ -55,6 +55,7 @@ function htRoute_(e) {
       case 'login': case 'studentlogin': return htLogin_(p);
       case 'studentdashboard': return htStudentDashboard_(p);
       case 'ownerlogin': return htAdminLogin_(p);
+      case 'ownersetup': return htOwnerSetup_(p);
       case 'ownerdata': case 'adminliststudents': return htAdminData_(p);
       case 'owneractivate': return htAdminActivate_(p);
       case 'ownersetstatus': case 'adminupdatestudent': return htAdminSetStatus_(p);
@@ -201,17 +202,26 @@ function htAdminLogout_(p) {
   const token=htClean_(p.token); if(token)CacheService.getScriptCache().remove('HTA_OWNER_'+token);
   return htJson_({success:true,message:'Signed out.'});
 }
-function setupOwnerPassword() {
-  const ui=SpreadsheetApp.getUi();
-  const a=ui.prompt('Set Academy Owner Password','Enter a unique password of at least 14 characters.',ui.ButtonSet.OK_CANCEL);
-  if(a.getSelectedButton()!==ui.Button.OK)return;
-  const pw=String(a.getResponseText()||'');
-  if(pw.length<14){ui.alert('Password must be at least 14 characters. Nothing saved.');return;}
-  const b=ui.prompt('Confirm Owner Password','Enter the same password again.',ui.ButtonSet.OK_CANCEL);
-  if(b.getSelectedButton()!==ui.Button.OK)return;
-  if(pw!==String(b.getResponseText()||'')){ui.alert('Passwords did not match. Nothing saved.');return;}
-  PropertiesService.getScriptProperties().setProperty('HTA_OWNER_PASSWORD_SHA256',htSha256_(pw));
-  ui.alert('Owner password hash saved privately in Script Properties. Redeploy the web app after code changes.');
+function sendOwnerSetupLink() {
+  const props=PropertiesService.getScriptProperties();
+  const token=Utilities.getUuid().replace(/-/g,'')+Utilities.getUuid().replace(/-/g,'');
+  props.setProperty('HTA_OWNER_SETUP_TOKEN',token);
+  const link=HT_CONFIG.websiteUrl+'admin.html?setup='+encodeURIComponent(token);
+  MailApp.sendEmail({to:HT_CONFIG.adminEmail,subject:'Hybrid Traders Academy — Secure Owner Password Setup',
+    htmlBody:'<p>A request was made to configure the owner password for Hybrid Traders Academy.</p><p><a href="'+link+'">Set your owner password securely</a></p><p>This one-time link expires after it is used. If you did not request this, ignore this email.</p>'});
+  return 'Owner password setup link emailed to '+HT_CONFIG.adminEmail+'. Open that email and use the link.';
+}
+function htOwnerSetup_(p) {
+  const props=PropertiesService.getScriptProperties();
+  const expected=props.getProperty('HTA_OWNER_SETUP_TOKEN')||'';
+  const supplied=htClean_(p.setupToken);
+  const password=String(p.password||'');
+  if(!expected||!supplied||!htConstantEqual_(expected,supplied))return htJson_({success:false,error:'This setup link is invalid or has already been used. Run sendOwnerSetupLink() again.'});
+  if(password.length<14)return htJson_({success:false,error:'Choose a unique password with at least 14 characters.'});
+  props.setProperty('HTA_OWNER_PASSWORD_SHA256',htSha256_(password));
+  props.deleteProperty('HTA_OWNER_SETUP_TOKEN');
+  htLog_('OWNER_PASSWORD_SET','',HT_CONFIG.adminEmail,'Owner password configured through one-time email link.');
+  return htJson_({success:true,message:'Owner password saved securely. You can now sign in.'});
 }
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('Hybrid Academy').addItem('Setup / Repair Sheets','setupAcademy').addItem('Set Owner Password','setupOwnerPassword').addToUi();
