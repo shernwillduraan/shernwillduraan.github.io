@@ -12,7 +12,7 @@
 <main class="admin-wrap">
 <section class="admin-hero"><span class="eyebrow">RESTRICTED AREA · OWNER ACCESS</span><h1>OWNER <em>ADMIN PORTAL.</em></h1><p style="color:var(--muted);max-width:720px">A central workspace for enrollment, payment status, student access and learning activity. This portal must authenticate through the private academy backend before displaying student records.</p></section>
 <section class="admin-panel" id="loginPanel"><h2>Owner sign in</h2><p class="admin-warning">Use the owner credentials configured in the academy backend. Do not use your student access code here. Admin authentication is not enabled by this page alone; the server must verify your credentials.</p>
-<form id="adminLogin"><div class="admin-field"><label for="adminEmail">Owner email</label><input id="adminEmail" type="email" autocomplete="username" required></div><div class="admin-field"><label for="adminPassword">Owner password</label><input id="adminPassword" type="password" autocomplete="current-password" required></div><button class="button gold" type="submit" id="loginBtn">SIGN IN SECURELY</button></form><div class="admin-notice show" id="notice">Secure admin authentication must be enabled in Google Apps Script before this portal can grant access. No password is stored in this website.</div></section>
+<form id="adminLogin"><div class="admin-field"><label for="adminEmail">Owner email</label><input id="adminEmail" type="email" autocomplete="username" required></div><div class="admin-field"><label for="adminPassword">Owner password</label><input id="adminPassword" type="password" autocomplete="current-password" required></div><button class="button gold" type="submit" id="loginBtn">SIGN IN SECURELY</button></form><div class="admin-notice show" id="notice">Use the owner password configured privately in Google Apps Script. The password is never stored in this website.</div></section>
 <section id="dashboard" class="admin-hidden">
 <div class="admin-top"><div><span class="eyebrow">ACADEMY OVERVIEW</span><h2>Owner dashboard</h2></div><button class="button" id="adminLogout">LOG OUT</button></div>
 <div class="admin-grid"><div class="admin-stat"><small>TOTAL STUDENTS</small><strong id="totalStudents">—</strong></div><div class="admin-stat"><small>AWAITING APPROVAL</small><strong id="pendingStudents">—</strong></div><div class="admin-stat"><small>ACTIVE STUDENTS</small><strong id="activeStudents">—</strong></div></div>
@@ -21,7 +21,7 @@
 </section>
 </main>
 <script>
-const API='https://script.google.com/macros/s/AKfycbwxgOfgGp5IsOvTpxvwqT1lLzIHYG6wvIqlCilmJPfAKqDyax5k5tcI0O-yK7ZhXov2rg/exec';
+const API='https://script.google.com/macros/s/AKfycbyN7uLMdAO1G30h_9qwBSH0FEunS6LS7tN7APiznB6ATpDt80sy0-rwpyBDSoCPWVCntw/exec';
 const form=document.getElementById('adminLogin'),notice=document.getElementById('notice'),loginPanel=document.getElementById('loginPanel'),dashboard=document.getElementById('dashboard');
 function showNotice(message){notice.textContent=message;notice.classList.add('show')}
 async function api(payload){const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:new URLSearchParams(payload)});return response.json()}
