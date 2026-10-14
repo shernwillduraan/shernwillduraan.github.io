@@ -1,5 +1,5 @@
 /**
- * HYBRID TRADERS ONLINE ACADEMY — BACKEND 5.1
+ * HYBRID TRADERS ONLINE ACADEMY — BACKEND 5.2
  * Uses the existing 12-column Students sheet without rewriting its headers/data.
  * Actions: register, login, studentDashboard, owner_login, owner_data,
  * owner_activate, owner_set_status, owner_logout, adminLogin, adminListStudents,
@@ -50,7 +50,7 @@ function htRoute_(e) {
     }
     const action = htClean_(p.action || 'health').toLowerCase().replace(/[-_]/g,'');
     switch (action) {
-      case 'health': return htJson_({success:true,service:'Hybrid Traders Online Academy',version:'5.1',status:'online'});
+      case 'health': return htJson_({success:true,service:'Hybrid Traders Online Academy',version:'5.2',status:'online'});
       case 'register': return htRegister_(p);
       case 'login': case 'studentlogin': return htLogin_(p);
       case 'studentdashboard': return htStudentDashboard_(p);
@@ -79,7 +79,7 @@ function htRegister_(p) {
   const sh=htSS_().getSheetByName('Students'), cols=htColumns_(sh), last=sh.getLastRow();
   if (last>=2) {
     const rows=sh.getRange(2,1,last-1,sh.getLastColumn()).getValues();
-    for (const r of rows) if (String(r[cols.email-1]||'').trim().toLowerCase()===email) {
+    for (const r of rows) if (String(r[cols['Email']-1]||'').trim().toLowerCase()===email) {
       return htJson_({success:false,error:'This email is already registered. Please use Student Login or contact the Academy.'});
     }
   }
