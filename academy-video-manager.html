@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<title>Hybrid Traders Academy | Video Manager</title>
+<style>
+:root{color-scheme:dark;--bg:#090909;--panel:#141414;--line:#34302a;--gold:#c8a85d;--muted:#aaa69d;--white:#f4f1e9;--danger:#f29b8f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#211b0e 0,#090909 48%);font:16px/1.5 Inter,system-ui,Segoe UI,Arial,sans-serif;color:var(--white)}a{color:var(--gold)}.wrap{max-width:1050px;margin:auto;padding:28px 18px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:20px}.brand{font-size:12px;letter-spacing:.22em;color:var(--gold);font-weight:800}.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 10px;border-radius:99px}h1{font-size:clamp(30px,5vw,48px);line-height:1.08;margin:30px 0 12px;letter-spacing:-.04em}h1 span{color:var(--gold)}.lead{max-width:720px;color:#c3beb2}.notice{margin:22px 0;padding:15px 17px;border:1px solid #66552c;background:#1b170d;border-radius:12px;color:#e8d9b0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}.panel{background:rgba(20,20,20,.96);border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0}.panel h2{font-size:18px;margin:0 0 14px}.step{display:flex;gap:12px;margin:16px 0}.num{flex:0 0 30px;height:30px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-weight:800}.step p{margin:0;color:#c6c1b7}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--gold);background:var(--gold);color:#111;font-weight:800;text-decoration:none;border-radius:9px;padding:11px 15px;cursor:pointer;font-size:14px}.btn.secondary{background:transparent;color:var(--gold)}.btn.danger{border-color:#7d4038;color:var(--danger);background:transparent}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}label{display:block;font-size:13px;color:#d7d0c2;margin:14px 0 6px}input,textarea{width:100%;background:#0b0b0b;color:var(--white);border:1px solid #49443a;border-radius:8px;padding:12px;font:inherit}input:focus,textarea:focus{outline:2px solid #9e813f;border-color:transparent}small,.hint{color:var(--muted);font-size:12px}.hint{margin-top:6px}.preview{margin-top:18px;aspect-ratio:16/9;background:#080808;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid;place-items:center;color:var(--muted);text-align:center;padding:16px}.preview iframe{width:100%;height:100%;border:0}.list{margin-top:24px}.listhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.lesson{display:grid;grid-template-columns:150px 1fr;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.thumb{aspect-ratio:16/9;background:#080808;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;color:var(--gold);font-size:26px}.lesson h3{margin:0 0 5px;font-size:16px}.lesson p{margin:0;color:var(--muted);font-size:13px}.lesson-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.lesson-actions button{font-size:12px;padding:7px 10px}.empty{padding:22px;text-align:center;border:1px dashed #484236;border-radius:10px;color:var(--muted);margin-top:14px}.foot{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.status{min-height:22px;color:var(--gold);font-size:13px;margin-top:10px}.warning{color:#e6c98c}.hidden{display:none!important}@media(max-width:760px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.lesson{grid-template-columns:100px 1fr}.wrap{padding:20px 13px 45px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div><div class="brand">HYBRID TRADERS</div><div style="font-size:12px;color:var(--muted);letter-spacing:.16em;margin-top:4px">ONLINE ACADEMY</div></div><div class="tag">VIDEO MANAGER · BETA</div></header>
+<main>
+<h1>Your lessons.<br><span>Your academy.</span></h1>
+<p class="lead">Upload your own trading lessons to a video host, then add them here so you can preview and organise the lesson links. No YouTube required.</p>
+<div class="notice"><strong>Free-hosting limits:</strong> VideoBB currently advertises uploads up to 4 GB each and 10 uploads per rolling 24 hours on its free account. Unlisted videos are accessible to anyone with the link, and its help centre says unlisted/private videos without views may be deleted after 30 days. Keep a backup of every original video. <a href="https://videobb.com/help/uploading/supported-formats-and-limits" target="_blank" rel="noopener">Check current limits</a>.</div>
+<div class="grid">
+<section class="panel">
+<h2>Step 1 — Upload a video</h2>
+<div class="step"><div class="num">1</div><p>Open the video host and sign in with your Google account. Upload directly from your computer; the upload can resume if your connection drops.</p></div>
+<div class="step"><div class="num">2</div><p>When the video is ready, copy its watch/share link. For lessons you don't want publicly listed, choose Unlisted if available and keep the link private.</p></div>
+<div class="actions"><a class="btn" href="https://videobb.com/" target="_blank" rel="noopener">Open VideoBB upload ↗</a><a class="btn secondary" href="https://videobb.com/help" target="_blank" rel="noopener">Upload help</a></div>
+<p class="hint">VideoBB is a separate service. The actual file is stored there, not in GitHub.</p>
+</section>
+<section class="panel">
+<h2>Step 2 — Add it to your lesson list</h2>
+<form id="lessonForm">
+<label for="lessonTitle">Lesson title *</label><input id="lessonTitle" maxlength="120" required placeholder="e.g. Understanding market structure">
+<label for="lessonUrl">VideoBB watch/share URL *</label><input id="lessonUrl" type="url" required placeholder="https://videobb.com/VIDEO_ID">
+<div class="hint">Paste the normal watch/share link, not the whole iframe code.</div>
+<label for="lessonDesc">Lesson description (optional)</label><textarea id="lessonDesc" rows="3" maxlength="500" placeholder="What will the student learn?"></textarea>
+<div class="actions"><button class="btn" type="submit">Save lesson in this browser</button><button class="btn secondary" type="button" id="previewBtn">Preview video</button></div>
+<div id="formStatus" class="status" role="status"></div>
+</form>
+<div class="preview" id="preview">Your video preview will appear here after you paste a valid VideoBB link.</div>
+</section>
+</div>
+<section class="list">
+<div class="listhead"><div><h2 style="margin:0">Lesson list</h2><small id="count">0 lessons saved in this browser</small></div><div class="actions" style="margin-top:0"><button class="btn secondary" id="exportBtn" type="button">Export backup</button><label class="btn secondary" for="importFile" style="margin:0;cursor:pointer">Import backup</label><input class="hidden" id="importFile" type="file" accept="application/json"></div></div>
+<div id="lessonList"></div>
+</section>
+<div class="notice" style="margin-top:24px"><strong>Important:</strong> this first version saves the lesson list only in this browser. It is a working upload-and-preview helper, but it is <strong>not yet connected to a shared student database</strong>; students on other devices will not automatically see these saved lessons. The website backend still needs to be connected before this becomes the live student classroom.</div>
+</main>
+<footer class="foot">HYBRID TRADERS ONLINE ACADEMY · Keep original lesson files backed up. Never upload material you do not own or have permission to share.</footer>
+</div>
+<script>
+(function(){
+'use strict';
+const STORE='hybridAcademyVideoLessons_v1';
+const form=document.getElementById('lessonForm');
+const title=document.getElementById('lessonTitle');
+const url=document.getElementById('lessonUrl');
+const desc=document.getElementById('lessonDesc');
+const preview=document.getElementById('preview');
+const status=document.getElementById('formStatus');
+let lessons=read();
+function read(){try{const v=JSON.parse(localStorage.getItem(STORE)||'[]');return Array.isArray(v)?v:[]}catch(e){return []}}
+function write(){try{localStorage.setItem(STORE,JSON.stringify(lessons));return true}catch(e){status.textContent='Could not save in this browser. Export your backup and clear some browser storage.';return false}}
+function videoId(raw){try{const u=new URL(raw);if(!['videobb.com','www.videobb.com'].includes(u.hostname.toLowerCase()))return null;const p=u.pathname.split('/').filter(Boolean);if(p[0]==='embed'&&p[1])return p[1];if(p[0]==='watch'&&p[1])return p[1];if(p.length===1)return p[0];return null}catch(e){return null}}
+function setPreview(raw){const id=videoId(raw);preview.replaceChildren();if(!id){preview.textContent='Paste a valid VideoBB watch/share link to preview the video.';return false}const frame=document.createElement('iframe');frame.src='https://videobb.com/embed/'+encodeURIComponent(id);frame.title='Lesson video preview';frame.allow='autoplay; fullscreen; picture-in-picture';frame.allowFullscreen=true;frame.loading='lazy';preview.appendChild(frame);return true}
+document.getElementById('previewBtn').addEventListener('click',()=>{status.textContent=setPreview(url.value.trim())?'Preview loaded.':'That link does not look like a VideoBB watch link.'});
+url.addEventListener('change',()=>{if(url.value.trim())setPreview(url.value.trim())});
+form.addEventListener('submit',e=>{e.preventDefault();const id=videoId(url.value.trim());if(!id){status.textContent='Please paste a valid VideoBB watch/share link.';return}const item={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),title:title.value.trim(),url:url.value.trim(),description:desc.value.trim(),savedAt:new Date().toISOString()};lessons.unshift(item);if(!write())return;render();form.reset();preview.textContent='Your video preview will appear here after you paste a valid VideoBB link.';status.textContent='Lesson saved in this browser.'});
+function render(){const root=document.getElementById('lessonList');root.replaceChildren();document.getElementById('count').textContent=lessons.length+' lesson'+(lessons.length===1?'':'s')+' saved in this browser';if(!lessons.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='No lessons added yet. Upload a video, then add its link above.';root.appendChild(empty);return}lessons.forEach(item=>{const row=document.createElement('article');row.className='lesson';const thumb=document.createElement('div');thumb.className='thumb';thumb.textContent='▶';const content=document.createElement('div');const h=document.createElement('h3');h.textContent=item.title;const p=document.createElement('p');p.textContent=item.description||'No description added.';const actions=document.createElement('div');actions.className='lesson-actions';const view=document.createElement('button');view.className='btn secondary';view.textContent='Preview';view.type='button';view.addEventListener('click',()=>{url.value=item.url;setPreview(item.url);window.scrollTo({top:0,behavior:'smooth'})});const open=document.createElement('a');open.className='btn secondary';open.textContent='Open video';open.href=item.url;open.target='_blank';open.rel='noopener';const del=document.createElement('button');del.className='btn danger';del.textContent='Delete';del.type='button';del.addEventListener('click',()=>{if(!confirm('Delete this lesson from this browser?'))return;lessons=lessons.filter(x=>x.id!==item.id);write();render()});actions.append(view,open,del);content.append(h,p,actions);row.append(thumb,content);root.appendChild(row)})}
+document.getElementById('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(lessons,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='hybrid-traders-lessons-backup.json';a.click();URL.revokeObjectURL(a.href)});
+document.getElementById('importFile').addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;try{const incoming=JSON.parse(await file.text());if(!Array.isArray(incoming)||incoming.some(x=>!x||typeof x.title!=='string'||typeof x.url!=='string'||!videoId(x.url)))throw new Error('Invalid lesson backup');const seen=new Set(lessons.map(x=>x.url));incoming.forEach(x=>{if(!seen.has(x.url)){lessons.push({id:x.id||Date.now().toString(36)+Math.random().toString(36).slice(2,7),title:x.title,url:x.url,description:typeof x.description==='string'?x.description:'',savedAt:x.savedAt||new Date().toISOString()});seen.add(x.url)}});write();render();status.textContent='Backup imported.'}catch(err){status.textContent='Could not import that file. Choose a lesson backup exported from this page.'}e.target.value=''});
+render();
+})();
+</script>
+</body>
+</html>
