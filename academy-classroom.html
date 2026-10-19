@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>Hybrid Traders Academy | Student Classroom</title>
+<style>
+:root{color-scheme:dark;--bg:#090909;--panel:#151515;--line:#393328;--gold:#c9a95f;--text:#f4f1e9;--muted:#b5afa3;--red:#e79b8d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#352710,transparent 48%),var(--bg);color:var(--text);font:16px/1.55 Inter,system-ui,Segoe UI,Arial,sans-serif}a{color:var(--gold)}.wrap{max-width:1120px;margin:auto;padding:22px 18px 60px}.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 0 20px;border-bottom:1px solid var(--line)}.brand{font-weight:900;letter-spacing:.17em;color:var(--gold);font-size:13px}.sub{color:var(--muted);font-size:11px;letter-spacing:.18em;margin-top:3px}.navright{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.pill{font-size:12px;border:1px solid #66552d;color:var(--gold);border-radius:99px;padding:6px 10px}.hero{padding:45px 0 25px}.eyebrow{font-size:11px;letter-spacing:.2em;color:var(--gold);font-weight:800}.hero h1{font-size:clamp(35px,6vw,60px);line-height:1.03;letter-spacing:-.05em;margin:12px 0}.hero h1 span{color:var(--gold)}.muted{color:var(--muted)}.panel{background:linear-gradient(145deg,#191919,#101010);border:1px solid var(--line);border-radius:15px;padding:21px;margin:15px 0}.panel h2{font-size:20px;margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:#141414;border:1px solid var(--line);border-radius:13px;padding:18px;min-width:0}.card h3{margin:0 0 8px;font-size:17px}.card p{font-size:14px;color:var(--muted);margin:0 0 10px}.btn{border:1px solid var(--gold);background:var(--gold);color:#111;border-radius:8px;padding:11px 15px;font-weight:800;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.btn.alt{background:transparent;color:var(--gold)}.btn.danger{border-color:#70433b;color:var(--red);background:transparent}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}label{display:block;color:#d8d0c1;font-size:13px;margin:12px 0 5px}input,textarea,select{width:100%;background:#0a0a0a;color:var(--text);border:1px solid #494338;border-radius:8px;padding:11px;font:inherit}textarea{min-height:90px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.status{min-height:22px;color:var(--gold);font-size:13px;margin-top:8px}.hidden{display:none!important}.lesson{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}.video{aspect-ratio:16/9;border:1px solid var(--line);background:#050505;border-radius:10px;overflow:hidden}.video iframe{width:100%;height:100%;border:0}.video a{display:grid;place-items:center;height:100%;padding:20px;text-align:center}.lesson h3{margin:0 0 6px}.meta{font-size:12px;color:var(--gold);letter-spacing:.06em}.empty{border:1px dashed #514936;border-radius:10px;padding:20px;color:var(--muted);text-align:center}.foot{margin-top:35px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.small{font-size:12px;color:var(--muted)}@media(max-width:760px){.grid{grid-template-columns:1fr}.lesson,.row{grid-template-columns:1fr}.wrap{padding:15px 12px 45px}.hero{padding-top:34px}.nav{align-items:flex-start;flex-direction:column}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+</head>
+<body><div class="wrap">
+<header class="nav"><div><div class="brand">HYBRID TRADERS</div><div class="sub">ONLINE ACADEMY</div></div><div class="navright"><span class="pill">FREE BETA</span><a href="index.html">Home</a></div></header>
+<main>
+<section class="hero"><div class="eyebrow">STUDENT WORKSPACE</div><h1>Learn with focus.<br><span>Trade with purpose.</span></h1><p class="muted">Sign in to access published lessons and track your progress. Your instructor controls the lesson library.</p></section>
+<section class="panel" id="authPanel">
+<h2>Student access</h2><p class="muted">Create an account for the beta or sign in to continue.</p>
+<div class="row"><div><label for="fullName">Full name (for registration)</label><input id="fullName" autocomplete="name" placeholder="Your full name"></div><div><label for="email">Email address</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com"></div></div>
+<label for="password">Password</label><input id="password" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters">
+<div class="actions"><button class="btn" id="signup">Create account</button><button class="btn alt" id="login">Sign in</button></div><div class="status" id="authStatus" role="status"></div>
+<p class="small">If email confirmation is enabled in Supabase, confirm the message sent to your inbox before signing in. Use a password you have not shared with anyone.</p>
+</section>
+<section id="workspace" class="hidden">
+<div class="panel"><div class="sectionhead"><div><div class="meta">SIGNED IN</div><h2 id="welcome">Welcome</h2><div id="roleText" class="muted"></div></div><button class="btn alt" id="logout">Log out</button></div><div class="status" id="appStatus" role="status"></div></div>
+<section class="panel"><div class="sectionhead"><div><h2>Published lessons</h2><p class="muted">Lessons published by the academy owner appear here across devices.</p></div><button class="btn alt" id="refresh">Refresh lessons</button></div><div id="lessonList"><div class="empty">Sign in to load lessons.</div></div></section>
+<section class="panel"><h2>SMC concepts — foundations</h2><p class="muted">These are general concept explanations, not a substitute for your personal entry rules or trading methodology.</p><div class="grid">
+<article class="card"><h3>Market structure</h3><p>Price swings can form higher highs and higher lows in an uptrend, or lower highs and lower lows in a downtrend. A break of a meaningful swing may suggest a change in control, but context matters.</p></article>
+<article class="card"><h3>Liquidity</h3><p>Liquidity is often discussed around obvious swing highs/lows and equal highs/lows where stop orders may cluster. A sweep alone does not guarantee reversal; wait for confirmation within a plan.</p></article>
+<article class="card"><h3>Order blocks</h3><p>Traders commonly label a final opposing candle before a strong displacement as an order block. These zones are interpretive, can fail, and should not be treated as guaranteed institutional orders.</p></article>
+<article class="card"><h3>Fair value gaps</h3><p>A fair value gap describes a three-candle price imbalance where the first and third candles leave an unoverlapped range. Price may revisit it, but it is not required to do so.</p></article>
+<article class="card"><h3>Break of structure</h3><p>A break of structure (BOS) is commonly used for continuation when price breaks a relevant swing in the prevailing direction. The chosen swing and timeframe affect the reading.</p></article>
+<article class="card"><h3>Change of character</h3><p>A change of character (CHOCH) is often used to describe an early break against the prior swing sequence. Treat it as a possible shift, not confirmation by itself.</p></article>
+</div></section>
+<section class="panel hidden" id="adminPanel"><div class="sectionhead"><div><div class="meta">OWNER CONTROLS</div><h2>Manage academy lessons</h2><p class="muted">Add your own lesson title, description and hosted video URL. Publish when ready.</p></div><span class="pill">ADMIN</span></div>
+<form id="lessonForm"><input type="hidden" id="lessonId"><div class="row"><div><label for="lessonTitle">Lesson title</label><input id="lessonTitle" maxlength="160" required placeholder="Lesson title"></div><div><label for="lessonCategory">Category</label><select id="lessonCategory"><option>My Methodology</option><option>SMC Concepts</option><option>Market Analysis</option><option>Risk Management</option><option>Trade Review</option><option>Other</option></select></div></div>
+<label for="lessonDescription">Description</label><textarea id="lessonDescription" maxlength="2000" placeholder="What should students understand from this lesson?"></textarea>
+<label for="lessonUrl">Hosted video URL</label><input id="lessonUrl" type="url" required placeholder="https://..."><div class="row"><div><label for="lessonOrder">Display order (lower appears first)</label><input id="lessonOrder" type="number" value="0"></div><div><label><input id="lessonPublished" type="checkbox" style="width:auto;margin-right:8px"> Publish for students</label><p class="small">Leave unchecked to save as a draft visible only to you.</p></div></div>
+<div class="actions"><button class="btn" type="submit">Save lesson</button><button class="btn alt" type="button" id="cancelEdit">Clear form</button></div><div class="status" id="adminStatus" role="status"></div></form>
+<div style="margin-top:22px"><h3>All lessons and drafts</h3><div id="adminLessonList"><div class="empty">No lessons loaded.</div></div></div>
+</section>
+</section>
+</main><footer class="foot">HYBRID TRADERS ONLINE ACADEMY · Educational content only. Trading involves risk; no results are guaranteed.</footer>
+</div>
+<script>
+(() => {
+ const cfg = window.HYBRID_SUPABASE_CONFIG || {};
+ const ready = cfg.url && cfg.anonKey && !cfg.url.includes("PASTE_") && !cfg.anonKey.includes("PASTE_") && window.supabase;
+ let client = null, user = null, profile = null, lessons = [];
+ const $ = id => document.getElementById(id);
+ const status = (id, msg) => { $(id).textContent = msg || ""; };
+ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ const videoFrame = url => {
+   try { const u = new URL(url); if (!["https:","http:"].includes(u.protocol)) return ""; 
+     if (u.hostname === "www.youtube.com" || u.hostname === "youtube.com") { const id=u.searchParams.get("v"); return id ? "https://www.youtube-nocookie.com/embed/"+encodeURIComponent(id) : ""; }
+     if (u.hostname === "youtu.be") return "https://www.youtube-nocookie.com/embed/"+encodeURIComponent(u.pathname.slice(1));
+     if (u.hostname === "player.vimeo.com" && u.pathname.startsWith("/video/")) return url;
+     if (u.hostname === "vimeo.com") { const id=u.pathname.split("/").filter(Boolean)[0]; return id && /^\d+$/.test(id) ? "https://player.vimeo.com/video/"+id : ""; }
+     if (u.pathname.includes("/embed/") || u.hostname.startsWith("iframe.")) return url;
+     return "";
+   } catch { return ""; }
+ };
+ function setBusy(el,busy){el.disabled=busy;el.style.opacity=busy?".65":"1";}
+ function renderLesson(l, admin=false) {
+   const embed=videoFrame(l.video_url);
+   const media=embed ? '<iframe src="'+esc(embed)+'" title="'+esc(l.title)+'" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>' : '<a href="'+esc(l.video_url)+'" target="_blank" rel="noopener">▶ Open hosted video in a new tab</a>';
+   return '<article class="lesson"><div class="video">'+media+'</div><div><div class="meta">'+esc(l.category)+' · '+(l.published?'PUBLISHED':'DRAFT')+'</div><h3>'+esc(l.title)+'</h3><p class="muted">'+esc(l.description || "No description added.")+'</p>'+(admin?'<div class="actions"><button class="btn alt" data-edit="'+esc(l.id)+'">Edit</button><button class="btn alt" data-publish="'+esc(l.id)+'">'+(l.published?'Unpublish':'Publish')+'</button><button class="btn danger" data-delete="'+esc(l.id)+'">Delete</button></div>':'<div class="actions"><button class="btn alt" data-progress="'+esc(l.id)+'">'+(l.done?'✓ Completed — mark incomplete':'Mark lesson completed')+'</button></div>')+'</div></article>';
+ }
+ async function loadLessons() {
+   const {data,error}=await client.from("lessons").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false});
+   if(error){status("appStatus","Could not load lessons: "+error.message);return;}
+   lessons=data||[];
+   const visible=lessons.filter(l=>profile?.role==="admin"||l.published);
+   $("lessonList").innerHTML=visible.length?visible.map(l=>renderLesson(l,false)).join(""):'<div class="empty">No published lessons yet. Your instructor will add lessons here.</div>';
+   if(profile?.role==="admin") $("adminLessonList").innerHTML=lessons.length?lessons.map(l=>renderLesson(l,true)).join(""):'<div class="empty">No lessons yet. Add your first lesson above.</div>';
+   await loadProgress();
+ }
+ async function loadProgress() {
+   if(!user) return;
+   const {data,error}=await client.from("lesson_progress").select("lesson_id,completed").eq("user_id",user.id);
+   if(error) { status("appStatus","Lessons loaded, but progress is not available yet. Check that the SQL setup was run."); return; }
+   const map=new Map((data||[]).map(p=>[p.lesson_id,p.completed]));
+   $("lessonList").innerHTML=lessons.filter(l=>profile?.role==="admin"||l.published).map(l=>renderLesson({...l,done:map.get(l.id)===true},false)).join("") || '<div class="empty">No published lessons yet. Your instructor will add lessons here.</div>';
+ }
+ async function enterSession(u) {
+   user=u;
+   const {data,error}=await client.from("profiles").select("full_name,role").eq("id",u.id).single();
+   if(error){status("authStatus","Signed in, but profile could not load. Run the Supabase SQL setup and check its policies.");return;}
+   profile=data;
+   $("authPanel").classList.add("hidden");$("workspace").classList.remove("hidden");
+   $("welcome").textContent="Welcome"+(profile.full_name?" , "+profile.full_name:"");
+   $("roleText").textContent=profile.role==="admin"?"Owner/admin access enabled.":"Student account · published lessons only.";
+   $("adminPanel").classList.toggle("hidden",profile.role!=="admin");
+   await loadLessons();
+ }
+ async function boot() {
+   if(!ready){$("authStatus").textContent="Supabase is not connected yet. Once the project is created, the project URL and anon/publishable key must be added to supabase-config.js.";return;}
+   client=window.supabase.createClient(cfg.url,cfg.anonKey);
+   const {data:{session}}=await client.auth.getSession();
+   if(session) await enterSession(session.user);
+   client.auth.onAuthStateChange((_event,session)=>{if(session) setTimeout(()=>enterSession(session.user),0);else {user=null;profile=null;$("workspace").classList.add("hidden");$("authPanel").classList.remove("hidden");}});
+ }
+ $("signup").addEventListener("click",async()=>{
+   if(!ready||!client){status("authStatus","Supabase setup is not connected yet.");return;}
+   const name=$("fullName").value.trim(), email=$("email").value.trim(), password=$("password").value;
+   if(!name||!email||password.length<8){status("authStatus","Enter your name, a valid email and a password of at least 8 characters.");return;}
+   setBusy($("signup"),true);status("authStatus","Creating account…");
+   const {data,error}=await client.auth.signUp({email,password,options:{data:{full_name:name}}});
+   setBusy($("signup"),false);
+   if(error){status("authStatus",error.message);return;}
+   if(data.session) await enterSession(data.user); else status("authStatus","Account created. Check your email for a confirmation link, then sign in.");
+ });
+ $("login").addEventListener("click",async()=>{
+   if(!ready||!client){status("authStatus","Supabase setup is not connected yet.");return;}
+   setBusy($("login"),true);status("authStatus","Signing in…");
+   const {data,error}=await client.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
+   setBusy($("login"),false);if(error){status("authStatus",error.message);return;}await enterSession(data.user);
+ });
+ $("logout").addEventListener("click",async()=>{if(client) await client.auth.signOut();});
+ $("refresh").addEventListener("click",loadLessons);
+ $("lessonForm").addEventListener("submit",async e=>{
+   e.preventDefault();if(profile?.role!=="admin")return;
+   const id=$("lessonId").value;
+   const payload={title:$("lessonTitle").value.trim(),category:$("lessonCategory").value,description:$("lessonDescription").value.trim(),video_url:$("lessonUrl").value.trim(),published:$("lessonPublished").checked,sort_order:Number($("lessonOrder").value)||0,updated_at:new Date().toISOString()};
+   status("adminStatus","Saving lesson…");
+   const result=id?await client.from("lessons").update(payload).eq("id",id):await client.from("lessons").insert({...payload,created_by:user.id});
+   if(result.error){status("adminStatus","Could not save: "+result.error.message);return;}
+   status("adminStatus","Lesson saved.");$("lessonForm").reset();$("lessonId").value="";$("lessonOrder").value="0";await loadLessons();
+ });
+ $("cancelEdit").addEventListener("click",()=>{$("lessonForm").reset();$("lessonId").value="";$("lessonOrder").value="0";status("adminStatus","Form cleared.");});
+ document.addEventListener("click",async e=>{
+   const edit=e.target.closest("[data-edit]")?.dataset.edit;
+   const publish=e.target.closest("[data-publish]")?.dataset.publish;
+   const del=e.target.closest("[data-delete]")?.dataset.delete;
+   const progress=e.target.closest("[data-progress]")?.dataset.progress;
+   if(edit){const l=lessons.find(x=>x.id===edit);if(!l)return;$("lessonId").value=l.id;$("lessonTitle").value=l.title;$("lessonCategory").value=l.category;$("lessonDescription").value=l.description;$("lessonUrl").value=l.video_url;$("lessonOrder").value=l.sort_order;$("lessonPublished").checked=l.published;$("lessonTitle").focus();window.scrollTo({top:$("adminPanel").offsetTop,behavior:"smooth"});}
+   if(publish){const l=lessons.find(x=>x.id===publish);if(!l)return;const {error}=await client.from("lessons").update({published:!l.published,updated_at:new Date().toISOString()}).eq("id",l.id);if(error)status("adminStatus",error.message);else await loadLessons();}
+   if(del&&confirm("Delete this lesson permanently?")){const {error}=await client.from("lessons").delete().eq("id",del);if(error)status("adminStatus",error.message);else {status("adminStatus","Lesson deleted.");await loadLessons();}}
+   if(progress){const {data,error}=await client.from("lesson_progress").select("completed").eq("user_id",user.id).eq("lesson_id",progress).maybeSingle();if(error){status("appStatus","Could not read progress. Check SQL setup.");return;}const {error:saveError}=await client.from("lesson_progress").upsert({user_id:user.id,lesson_id:progress,completed:!(data?.completed),updated_at:new Date().toISOString()});if(saveError)status("appStatus","Could not save progress: "+saveError.message);else await loadLessons();}
+ });
+ boot();
+})();
+</script>
+</body></html>
